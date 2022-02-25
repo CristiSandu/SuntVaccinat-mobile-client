@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="suntvaccinat.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="DefaultTextColor">#737373</Color>
+            <Color x:Key="AccentColor">#00B6F0</Color>
+            <Color x:Key="BackgroundWhite">#FAFAFA</Color>
+            <Color x:Key="BackgroundMainColor">CadetBlue</Color>
+            <Color x:Key="TextColorDark">CadetBlue</Color>
+            <Color x:Key="TextColorWhite">CadetBlue</Color>
+            
+            <Style x:Key="ButtonFirstPageStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="BackgroundColor" Value="CadetBlue" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="CadetBlue"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
+            <Style x:Key="Button2FirstPageStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="CadetBlue"/>
+                <Setter Property="BorderColor" Value="CadetBlue"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ButtonUnCheckStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource BackgroundMainColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource BackgroundMainColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="ButtonCheckedStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMainColor}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
