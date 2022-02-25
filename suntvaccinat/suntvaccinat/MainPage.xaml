@@ -11,7 +11,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height=".2*" />
 
-
             <RowDefinition Height="*" />
             <RowDefinition Height=".8*" />
             <RowDefinition Height="*" />
@@ -37,9 +36,8 @@
                 CornerRadius="10" 
                 Clicked="ClientBtn_Clicked" />
 
-
         <BoxView Grid.Row="5" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="2" VerticalOptions="Center" Margin="16,0,0,0" />
-        <Label Grid.Row="5" Grid.Column="1" Text="OR" FontAttributes="Bold" TextColor="CadetBlue" VerticalOptions="Center"   HorizontalOptions="CenterAndExpand"/>
+        <Label Grid.Row="5" Grid.Column="1" Text="OR" FontSize="Medium" FontAttributes="Bold" TextColor="CadetBlue" VerticalOptions="Center"   HorizontalOptions="CenterAndExpand"/>
         <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="CadetBlue" HeightRequest="2" VerticalOptions="Center" Margin="0,0,16,0" />
 
         <Button x:Name="OrganiserBtn" Grid.Row="6" 
