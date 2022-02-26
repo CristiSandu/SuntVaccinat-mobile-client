@@ -6,7 +6,6 @@ namespace suntvaccinat.Helpers
 {
     public static class DataBaseQuerys
     {
-
         public static string GetEventsOrderByDate = $"SELECT * FROM EventModel ORDER BY Date";
 
         public static string GetEventsQuery(int id)
@@ -23,6 +22,5 @@ namespace suntvaccinat.Helpers
         {
             return $"DELETE FROM ParticipantModel WHERE id_event={id}";
         }
-
     }
 }
