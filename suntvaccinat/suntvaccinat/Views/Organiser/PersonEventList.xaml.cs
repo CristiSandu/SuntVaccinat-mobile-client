@@ -46,8 +46,7 @@ namespace suntvaccinat.Views.Organiser
             emptyFrame.IsVisible = ev.IsNoEnded;
 
             eventName.Text = _evName;
-            string query = $"select * from ParticipantModel where id_event={_idEv}";
-            var list = new List<ParticipantModel>(await _eventsDataBase.GetPartPerEvent(query));
+            var list = new List<ParticipantModel>(await _eventsDataBase.GetPartPerEvent(Helpers.DataBaseQuerys.GetParticipantsQuery(_idEv)));
             _parts = new ObservableCollection<ParticipantModel>(list);
             eventsPersonsList.ItemsSource = _parts;
         }

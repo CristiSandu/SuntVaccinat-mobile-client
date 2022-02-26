@@ -26,8 +26,7 @@ namespace suntvaccinat.Views.Organiser
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            var query = $"select * from EventModel order by Date";
-            var list = new List<EventModel>(await _eventsDataBase.GetEvents(query));
+            var list = new List<EventModel>(await _eventsDataBase.GetEvents(Helpers.DataBaseQuerys.GetEventsOrderByDate));
             (BindingContext as EventsViewModel).MyEvents = new ObservableCollection<Models.EventModel>(list.Reverse<EventModel>());
             eventsList.ItemsSource = (BindingContext as EventsViewModel).MyEvents;
         }

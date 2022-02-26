@@ -52,8 +52,7 @@ namespace suntvaccinat.Services
         {
             await Init();
             await db.DeleteAsync<EventModel>(id);
-            string querie = $"Delete from ParticipantModel where id_event={id}";
-            await db.QueryAsync<EventModel>(querie);
+            await db.QueryAsync<EventModel>(Helpers.DataBaseQuerys.DeleteEventQuery(id));
         }
 
         public async Task<IEnumerable<EventModel>> GetEvents(string querie)
@@ -75,7 +74,7 @@ namespace suntvaccinat.Services
         public async Task<EventModel> GetEvByID(int id)
         {
             await Init();
-            var parts = await db.QueryAsync<EventModel>($"SELECT * FROM EventModel WHERE id_event = '{id}'");
+            var parts = await db.QueryAsync<EventModel>(Helpers.DataBaseQuerys.GetEventsQuery(id));
             return parts[0];
         }
 
