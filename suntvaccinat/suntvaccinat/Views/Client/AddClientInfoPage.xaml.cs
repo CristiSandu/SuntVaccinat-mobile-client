@@ -12,25 +12,18 @@ namespace suntvaccinat.Views.Client
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddClientInfoPage : ContentPage
     {
-        Models.User user = new Models.User(); 
-
         public AddClientInfoPage()
         {
             InitializeComponent();
-            BindingContext = user;
+            BindingContext = new ViewModels.AddClientInfoPageViewModel();
         }
 
-        private async void buttonAddPersonBack_Clicked(object sender, EventArgs e)
+        private async void ButtonAddPersonBack_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
-        private void nextBtn_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void cancelBtn_Clicked(object sender, EventArgs e)
+        private async void CancelBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
