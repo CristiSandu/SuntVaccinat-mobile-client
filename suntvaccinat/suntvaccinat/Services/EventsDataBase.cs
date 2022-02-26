@@ -1,0 +1,96 @@
+﻿using SQLite;
+using suntvaccinat.Models;
+using suntvaccinat.Services;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+
+[assembly:Dependency(typeof(EventsDataBase))]
+namespace suntvaccinat.Services
+{
+    public class EventsDataBase : IEventsDataBase
+    {
+        SQLiteAsyncConnection db;
+
+        async Task Init()
+        {
+            if (db != null)
+                return;
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "mySubs.db");
+            db = new SQLiteAsyncConnection(databasePath);
+
+            await db.CreateTableAsync<EventModel>();
+            await db.CreateTableAsync<ParticipantModel>();
+        }
+
+        public async Task AddEvent(string name, DateTime date)
+        {
+            await Init();
+
+            var subs = new EventModel
+            {
+                Name = name,
+                Date = date,
+                IsNoEnded = true
+            };
+
+            await db.InsertAsync(subs);
+        }
+
+        public async Task AddUserToEvent(ParticipantModel part)
+        {
+            await Init();
+            await db.InsertAsync(part);
+        }
+
+        public async Task RemoveEvent(int id)
+        {
+            await Init();
+            await db.DeleteAsync<EventModel>(id);
+            string querie = $"Delete from ParticipantModel where id_event={id}";
+            await db.QueryAsync<EventModel>(querie);
+        }
+
+        public async Task<IEnumerable<EventModel>> GetEvents(string querie)
+        {
+            await Init();
+            var events = await db.QueryAsync<EventModel>(querie);
+            var events_list = events.ToList();
+            return events_list;
+        }
+
+        public async Task<IEnumerable<ParticipantModel>> GetPartPerEvent(string querie)
+        {
+            await Init();
+            var parts = await db.QueryAsync<ParticipantModel>(querie);
+            var parts_list = parts.ToList();
+            return parts_list;
+        }
+
+        public async Task<EventModel> GetEvByID(int id)
+        {
+            await Init();
+            var parts = await db.QueryAsync<EventModel>($"SELECT * FROM EventModel WHERE id_event = '{id}'");
+            return parts[0];
+        }
+
+        public async Task<bool> CloseAEvent(int id)
+        {
+            await Init();
+            var parts = await GetEvByID(id);
+
+            parts.IsNoEnded = false;
+
+            if (await db.UpdateAsync(parts) > 0)
+                return true;
+            else
+                return false;
+        }
+
+    }
+}

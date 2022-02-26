@@ -14,12 +14,10 @@ namespace suntvaccinat
         {
             InitializeComponent();
         }
-
-        private void OrganiserBtn_Clicked(object sender, EventArgs e)
+        private async void OrganiserBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Views.Organiser.EventsListPage());
         }
-
         private void ClientBtn_Clicked(object sender, EventArgs e)
         {
 
