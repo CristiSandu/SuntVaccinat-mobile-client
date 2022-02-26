@@ -21,6 +21,7 @@ namespace suntvaccinat.Services
         {
             if (db != null)
                 return;
+
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "mySubs.db");
             db = new SQLiteAsyncConnection(databasePath);
 

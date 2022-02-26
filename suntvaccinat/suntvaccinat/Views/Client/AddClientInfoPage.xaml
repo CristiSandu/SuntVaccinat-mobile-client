@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="suntvaccinat.Views.Client.AddClientInfoPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="8,8,8,0" Spacing="16">
+                <Frame  Padding="8,16,16,16" BackgroundColor="{StaticResource BackgroundMainColor}"  CornerRadius="10" >
+                    <StackLayout Orientation="Horizontal" Padding="0,0,0,0" HeightRequest="32" Spacing="32">
+                        <Button x:Name="buttonAddPersonBack" Text="arrow-left" 
+                                HeightRequest="30" 
+                                WidthRequest="30" 
+                                FontSize="24" 
+                                Padding="1" 
+                                FontFamily="FAS" 
+                                Clicked="buttonAddPersonBack_Clicked"
+                                VerticalOptions="Center" HorizontalOptions="Center"
+                                BackgroundColor="Transparent"/>
+
+                        <Label x:Name="eventName" Text="Add information"  Style="{StaticResource TitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout >
+                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                        <Entry x:Name="nameEntry" Placeholder="Nume de Familie" Text="{Binding Name}"/>
+
+                    </Frame>
+                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                        <Entry x:Name="secondNameEntry" Placeholder="Prenume (ex: Ilie-Cristian, Vasile)" Text="{Binding SecondName}"/>
+                    </Frame>
+                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                        <StackLayout>
+                            <Picker x:Name="sexPicker" Title="Sex" SelectedItem="{Binding Sex}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Masculin</x:String>
+                                        <x:String>Feminin</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                        <Entry x:Name="ageEntry" Placeholder="Varsta" Text="{Binding Age}" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <xct:NumericValidationBehavior 
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    MinimumValue="1"
+                                    MaximumValue="120" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Frame>
+                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                        <Entry x:Name="phoneNumber" 
+                               Text="{Binding PhoneNumber}" 
+                               Placeholder="Numar de Telefon" 
+                               Keyboard="Numeric"
+                               MaxLength="10" 
+                               >
+                            <Entry.Behaviors>
+                                <xct:TextValidationBehavior     
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                    MinimumLength="10"
+                                    MaximumLength="10"
+                                    RegexPattern="^07[0-9]{8}$"
+                                    />
+                            </Entry.Behaviors>   
+                        </Entry>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Button x:Name="nextBtn" Text="Next" Style="{StaticResource ButtonCheckedStyle}" Clicked="nextBtn_Clicked"/>
+                    <Button x:Name="cancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="cancelBtn_Clicked"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
