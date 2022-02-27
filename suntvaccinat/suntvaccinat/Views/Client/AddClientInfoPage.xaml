@@ -5,8 +5,8 @@
              x:Class="suntvaccinat.Views.Client.AddClientInfoPage"
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels"
              x:DataType="viewmodel:AddClientInfoPageViewModel"
-             NavigationPage.HasNavigationBar="False"
-             >
+             NavigationPage.HasNavigationBar="False">
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="8,8,8,0" Spacing="16">
@@ -28,7 +28,6 @@
                 <StackLayout >
                     <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
                         <Entry x:Name="nameEntry" Placeholder="Nume de Familie" Text="{Binding User.Name}"/>
-
                     </Frame>
                     <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
                         <Entry x:Name="secondNameEntry" Placeholder="Prenume (ex: Ilie-Cristian, Vasile)" Text="{Binding User.SecondName}"/>
@@ -51,8 +50,7 @@
                                 <xct:NumericValidationBehavior 
                                     InvalidStyle="{StaticResource InvalidEntryStyle}"
                                     MinimumValue="1"
-                                    MaximumValue="120" 
-                                    />
+                                    MaximumValue="120" />
                             </Entry.Behaviors>
                         </Entry>
                     </Frame>
@@ -61,15 +59,13 @@
                                Text="{Binding User.PhoneNumber}" 
                                Placeholder="Numar de Telefon" 
                                Keyboard="Numeric"
-                               MaxLength="10" 
-                               >
+                               MaxLength="10">
                             <Entry.Behaviors>
                                 <xct:TextValidationBehavior     
                                     InvalidStyle="{StaticResource InvalidEntryStyle}"
                                     MinimumLength="10"
                                     MaximumLength="10"
-                                    RegexPattern="^07[0-9]{8}$"
-                                    />
+                                    RegexPattern="^07[0-9]{8}$" />
                             </Entry.Behaviors>   
                         </Entry>
                     </Frame>

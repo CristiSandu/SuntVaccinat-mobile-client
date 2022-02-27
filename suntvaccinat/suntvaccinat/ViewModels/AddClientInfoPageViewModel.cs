@@ -25,7 +25,7 @@ namespace suntvaccinat.ViewModels
                     await SecureStorage.SetAsync("User", User.ToString());
 
                     await Application.Current.MainPage.DisplayAlert("Success", "User Saved", "Ok");
-                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    await Application.Current.MainPage.Navigation.PushAsync(new Views.Client.CertificateTypePage());
                     return;
                 }
 
