@@ -1,13 +1,13 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="suntvaccinat.MainPage"
-             NavigationPage.HasNavigationBar="False"
-             >
+             NavigationPage.HasNavigationBar="False">
 
-    <Grid Padding="16" RowSpacing="16">
+    <Grid Padding="16"
+          RowSpacing="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
-            
+
             <RowDefinition Height=".2*" />
             <RowDefinition Height="*" />
             <RowDefinition Height=".2*" />
@@ -24,36 +24,68 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center"  Source="{AppThemeBinding Light=logo_light.png, Dark=logo_dark.png}" HeightRequest="211" WidthRequest="211" />
-        <Label Grid.Row="2" Grid.ColumnSpan="3" Text="Continue as" FontSize="24" FontAttributes="Bold" TextColor="CadetBlue"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-        
-        <Button x:Name="ClientBtn" 
-                Grid.Row="4" 
+        <Image Grid.Row="0"
+               Grid.ColumnSpan="3"
+               VerticalOptions="Center"
+               Source="{AppThemeBinding Light=logo_light.png, Dark=logo_dark.png}"
+               HeightRequest="211"
+               WidthRequest="211" />
+        <Label Grid.Row="2"
+               Grid.ColumnSpan="3"
+               Text="Continue as"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="CadetBlue"
+               VerticalOptions="Center"
+               HorizontalOptions="CenterAndExpand" />
+
+        <Button x:Name="ClientBtn"
+                Grid.Row="4"
                 Grid.ColumnSpan="3"
-                Text="Sunt Vaccinat" 
-                HeightRequest="56" 
-                Style="{StaticResource ButtonFirstPageStyle}"  
-                VerticalOptions="Center" 
-                CornerRadius="10" 
+                Text="Sunt Vaccinat"
+                HeightRequest="56"
+                Style="{StaticResource ButtonFirstPageStyle}"
+                VerticalOptions="Center"
+                CornerRadius="10"
                 Clicked="ClientBtn_Clicked" />
 
-        <BoxView Grid.Row="5" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="2" VerticalOptions="Center" Margin="16,0,0,0" />
-        <Label Grid.Row="5" Grid.Column="1" Text="OR" FontSize="Medium" FontAttributes="Bold" TextColor="CadetBlue" VerticalOptions="Center"   HorizontalOptions="CenterAndExpand"/>
-        <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="CadetBlue" HeightRequest="2" VerticalOptions="Center" Margin="0,0,16,0" />
+        <BoxView Grid.Row="5"
+                 Grid.Column="0"
+                 BackgroundColor="CadetBlue"
+                 HeightRequest="2"
+                 VerticalOptions="Center"
+                 Margin="16,0,0,0" />
+        <Label Grid.Row="5"
+               Grid.Column="1"
+               Text="OR"
+               FontSize="Medium"
+               FontAttributes="Bold"
+               TextColor="CadetBlue"
+               VerticalOptions="Center"
+               HorizontalOptions="CenterAndExpand" />
+        <BoxView Grid.Row="5"
+                 Grid.Column="2"
+                 BackgroundColor="CadetBlue"
+                 HeightRequest="2"
+                 VerticalOptions="Center"
+                 Margin="0,0,16,0" />
 
-        <Button x:Name="OrganiserBtn" Grid.Row="6" 
+        <Button x:Name="OrganiserBtn"
+                Grid.Row="6"
                 Grid.ColumnSpan="3"
-                Text="Organizator" 
-                HeightRequest="56" 
-                Style="{StaticResource Button2FirstPageStyle}"  
-                VerticalOptions="Center" 
-                CornerRadius="10"  
-                Clicked="OrganiserBtn_Clicked"/>
+                Text="Organizator"
+                HeightRequest="56"
+                Style="{StaticResource Button2FirstPageStyle}"
+                VerticalOptions="Center"
+                CornerRadius="10"
+                Clicked="OrganiserBtn_Clicked" />
 
-        <Label Grid.ColumnSpan="3" Grid.Row="8" Text="O initiativa suntvaccinat.ro" 
-               FontAttributes="Bold" 
+        <Label Grid.ColumnSpan="3"
+               Grid.Row="8"
+               Text="O initiativa suntvaccinat.ro"
+               FontAttributes="Bold"
                HorizontalOptions="Center"
-               VerticalOptions="EndAndExpand"/>
+               VerticalOptions="EndAndExpand" />
     </Grid>
 
 </ContentPage>

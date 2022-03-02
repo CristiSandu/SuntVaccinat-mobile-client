@@ -1,81 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:fa ="clr-namespace:FontAwesome"
-             xmlns:converter ="clr-namespace:suntvaccinat.Convertors"
+             xmlns:fa="clr-namespace:FontAwesome"
+             xmlns:converter="clr-namespace:suntvaccinat.Convertors"
              x:Class="suntvaccinat.Views.Organiser.EventsListPage"
              NavigationPage.HasNavigationBar="False">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:EndedColorConverter x:Key="ColorConverter"/>
+            <converter:EndedColorConverter x:Key="ColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="8,8,8,8" >
-            <Frame  Padding="16,16,16,16" BackgroundColor="{StaticResource BackgroundMainColor}" CornerRadius="10" >
-                <StackLayout Orientation="Horizontal" HeightRequest="32" Spacing="16" >
-                    <Button x:Name="backBtn" Text="arrow-left" 
-                        HeightRequest="30" 
-                        WidthRequest="30" 
-                        FontSize="24" 
-                        Padding="1" 
-                        Clicked="backBtn_Clicked"
-                        FontFamily="FAS" 
-                        VerticalOptions="Center" HorizontalOptions="Center"
-                        BackgroundColor="Transparent"/>
-                    <Label Text="Events"  Style="{StaticResource TitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                    <Button x:Name="buttonEvent" Text="plus" 
-                            HeightRequest="10" WidthRequest="30" FontSize="24" Padding="1" BackgroundColor="Transparent" 
-                            FontFamily="FAS" Clicked="buttonEvent_Clicked"/>
+        <StackLayout Padding="8,8,8,8">
+            <Frame  Padding="16,16,16,16"
+                    BackgroundColor="{StaticResource BackgroundMainColor}"
+                    CornerRadius="10">
+                <StackLayout Orientation="Horizontal"
+                             HeightRequest="32"
+                             Spacing="16">
+                    <Button x:Name="backBtn"
+                            Style="{StaticResource BackButtonStyle}"
+                            Clicked="backBtn_Clicked" />
+                    <Label Text="Events"
+                           Style="{StaticResource TitleStyle}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
+                    <Button x:Name="buttonEvent"
+                            Text="plus"
+                            Style="{StaticResource BackButtonStyle}"
+                            Clicked="buttonEvent_Clicked" />
                 </StackLayout>
             </Frame>
-            <CollectionView x:Name="eventsList"  
-                        SelectionMode="Single" 
-                        SelectionChanged="eventsList_SelectionChanged"
-                        ItemsSource="{Binding MyEvents}">
+            <CollectionView x:Name="eventsList"
+                            SelectionMode="Single"
+                            SelectionChanged="eventsList_SelectionChanged"
+                            ItemsSource="{Binding MyEvents}">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="7" VerticalItemSpacing="8"/>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="1"
+                                     HorizontalItemSpacing="7"
+                                     VerticalItemSpacing="8" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
                             <SwipeView.RightItems>
-                                <SwipeItems >
-                                    <SwipeItemView Command="{Binding Path=BindingContext.DeleteEvent, Source={Reference eventsList}}" CommandParameter="{Binding .}" >
-                                        <Button Text="{x:Static fa:FontAwesomeIcons.TrashAlt}" CornerRadius="5" FontSize="25" FontFamily="FAR" BackgroundColor="Red"/>
+                                <SwipeItems>
+                                    <SwipeItemView Command="{Binding Path=BindingContext.DeleteEvent, Source={Reference eventsList}}"
+                                                   CommandParameter="{Binding .}">
+                                        <Button Text="{x:Static fa:FontAwesomeIcons.TrashAlt}"
+                                                CornerRadius="5"
+                                                FontSize="25"
+                                                FontFamily="FAR"
+                                                BackgroundColor="Red" />
                                     </SwipeItemView>
                                 </SwipeItems>
                             </SwipeView.RightItems>
-                            <Frame BackgroundColor="{Binding IsNoEnded, Converter={StaticResource ColorConverter}}" CornerRadius="5"  Padding="16,10,16,10">
-                                <Grid VerticalOptions="FillAndExpand" HeightRequest="44" >
+                            <Frame BackgroundColor="{Binding IsNoEnded, Converter={StaticResource ColorConverter}}"
+                                   CornerRadius="5"
+                                   Padding="16,10,16,10">
+                                <Grid VerticalOptions="FillAndExpand"
+                                      HeightRequest="44">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
 
                                     <Label Text="{Binding Name}"
-                                       Grid.Column="0"
-                                       Grid.RowSpan="2"
-                                       Style="{StaticResource TitleStyle}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="Start"
-                                       VerticalOptions="Center"/>
+                                           Grid.Column="0"
+                                           Grid.RowSpan="2"
+                                           Style="{StaticResource TitleStyle}"
+                                           FontSize="Medium"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
 
                                     <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
                                            Grid.Column="1"
                                            HorizontalOptions="Center"
-                                           VerticalOptions="Center"/>
+                                           VerticalOptions="Center" />
                                     <Label Text="{Binding Date, StringFormat='{0:H:mm}'}"
                                            Grid.Column="1"
                                            Grid.Row="1"
                                            HorizontalOptions="Center"
-                                           VerticalOptions="Center"/>
+                                           VerticalOptions="Center" />
                                 </Grid>
                             </Frame>
                         </SwipeView>
@@ -85,25 +98,27 @@
                 <CollectionView.EmptyView>
                     <ContentView>
                         <StackLayout HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="CenterAndExpand">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                                     VerticalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center">
                                 <Label Text="Apasati pe "
-                                   Margin="10,25,10,10"
-                                   FontAttributes="Bold"
-                                   FontSize="18"
-                                   HorizontalOptions="Fill"
-                                   HorizontalTextAlignment="Center" />
+                                       Margin="10,25,10,10"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       HorizontalOptions="Fill"
+                                       HorizontalTextAlignment="Center" />
 
                                 <Label Text="{x:Static fa:FontAwesomeIcons.Plus}"
-                                   TextColor="{StaticResource DefaultTextColor}"  
-                                   HeightRequest="20"
-                                   WidthRequest="20" 
-                                   FontFamily="FAS"
-                                   Margin="10,25,10,10"
-                                   FontAttributes="Bold"
-                                   FontSize="24"
-                                   HorizontalOptions="Fill"
-                                   HorizontalTextAlignment="Center" />
+                                       TextColor="{StaticResource DefaultTextColor}"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       FontFamily="FAS"
+                                       Margin="10,25,10,10"
+                                       FontAttributes="Bold"
+                                       FontSize="24"
+                                       HorizontalOptions="Fill"
+                                       HorizontalTextAlignment="Center" />
                             </StackLayout>
                             <Label Text="Pentru a adauga un eveniment nou"
                                    Margin="10,15,10,10"

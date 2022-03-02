@@ -16,5 +16,10 @@ namespace suntvaccinat.Views.Client.GreenPass
         {
             InitializeComponent();
         }
+
+        private async void ScannGreenPassBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ScanPage { BindingContext = new ViewModels.Client.ScanClientViewModel()});
+        }
     }
 }

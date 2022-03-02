@@ -1,65 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
              x:Class="suntvaccinat.Views.Client.CertificateTypePage"
-             NavigationPage.HasNavigationBar="False" >
-    
+             NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="0,16,0,0" Spacing="200">
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="0,16,0,0"
+                     Spacing="200">
             <StackLayout>
-                <Label Text="Selecteaza tipul "   FontAttributes="Bold" FontSize="24" 
-                   TextColor="CadetBlue"  
-                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
-                <Label Text="de certificat "   FontAttributes="Bold" FontSize="24" 
-                   TextColor="CadetBlue"  
-                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Selecteaza tipul "
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       TextColor="CadetBlue"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
+                <Label Text="de certificat "
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       TextColor="CadetBlue"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
             </StackLayout>
 
             <Grid Padding="16,0,16,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width=".2*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="GreenPass_Flow" 
-                        Grid.Row="0" 
+                <Button x:Name="GreenPass_Flow"
+                        Grid.Row="0"
                         Grid.ColumnSpan="3"
                         Text="Certificat Verde"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"
-                        HeightRequest="56" 
-                        Style="{StaticResource ButtonFirstPageStyle}"  
-                        VerticalOptions="Center" 
-                        CornerRadius="10" 
-                        Clicked="GreenPass_Flow_Clicked"
-                        />
+                        HeightRequest="56"
+                        Style="{StaticResource ButtonFirstPageStyle}"
+                        VerticalOptions="Center"
+                        CornerRadius="10"
+                        Clicked="GreenPass_Flow_Clicked" />
 
-                <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="CadetBlue" HeightRequest="2" VerticalOptions="Center"  Margin="16,0,0,0" />
-                <Label Grid.Row="1" Grid.Column="1" Text="OR" FontSize="Medium" FontAttributes="Bold" TextColor="CadetBlue" HorizontalOptions="Center" VerticalOptions="Center" />
-                <BoxView Grid.Row="1" Grid.Column="2" BackgroundColor="CadetBlue" HeightRequest="2"  VerticalOptions="Center" Margin="0,0,16,0" />
+                <BoxView Grid.Row="1"
+                         Grid.Column="0"
+                         BackgroundColor="CadetBlue"
+                         HeightRequest="2"
+                         VerticalOptions="Center"
+                         Margin="16,0,0,0" />
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="OR"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       TextColor="CadetBlue"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <BoxView Grid.Row="1"
+                         Grid.Column="2"
+                         BackgroundColor="CadetBlue"
+                         HeightRequest="2"
+                         VerticalOptions="Center"
+                         Margin="0,0,16,0" />
 
-                <Button x:Name="OrganiserBtn" Grid.Row="2" 
+                <Button x:Name="OrganiserBtn"
+                        Grid.Row="2"
                         Grid.ColumnSpan="3"
-                        Text="Ministerul Sanataii PDF" 
+                        Text="Ministerul Sanataii PDF"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"
-                        HeightRequest="56" 
-                        Style="{StaticResource Button2FirstPageStyle}"  
-                        VerticalOptions="Center" 
-                        CornerRadius="10"/>
+                        HeightRequest="56"
+                        Style="{StaticResource Button2FirstPageStyle}"
+                        VerticalOptions="Center"
+                        CornerRadius="10" />
             </Grid>
 
-            <cells:LogoCard/>
+            <cells:LogoCard />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

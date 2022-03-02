@@ -6,35 +6,45 @@
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels"
              x:DataType="viewmodel:AddClientInfoPageViewModel"
              NavigationPage.HasNavigationBar="False">
-    
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="8,8,8,0" Spacing="16">
-                <Frame  Padding="8,16,16,16" BackgroundColor="{StaticResource BackgroundMainColor}"  CornerRadius="10" >
-                    <StackLayout Orientation="Horizontal" Padding="0,0,0,0" HeightRequest="32" Spacing="32">
-                        <Button x:Name="ButtonAddPersonBack" Text="arrow-left" 
-                                HeightRequest="30" 
-                                WidthRequest="30" 
-                                FontSize="24" 
-                                Padding="1" 
-                                FontFamily="FAS" 
-                                Clicked="ButtonAddPersonBack_Clicked"
-                                VerticalOptions="Center" HorizontalOptions="Center"
-                                BackgroundColor="Transparent"/>
+            <StackLayout Padding="8,8,8,0"
+                         Spacing="16">
+                <Frame  Padding="8,16,16,16"
+                        BackgroundColor="{StaticResource BackgroundMainColor}"
+                        CornerRadius="10">
+                    <StackLayout Orientation="Horizontal"
+                                 Padding="0,0,0,0"
+                                 HeightRequest="32"
+                                 Spacing="32">
+                        <Button x:Name="ButtonAddPersonBack"
+                                Style="{StaticResource BackButtonStyle}"
+                                Clicked="ButtonAddPersonBack_Clicked"/>
 
-                        <Label x:Name="eventName" Text="Add information"  Style="{StaticResource TitleStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                        <Label x:Name="eventName"
+                               Text="Add information"
+                               Style="{StaticResource TitleStyle}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
-                <StackLayout >
-                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
-                        <Entry x:Name="nameEntry" Placeholder="Nume de Familie" Text="{Binding User.Name}"/>
+                <StackLayout>
+                    <Frame Style="{StaticResource FormFrame}">
+                        <Entry x:Name="nameEntry"
+                               Placeholder="Nume de Familie"
+                               Text="{Binding User.Name}" />
                     </Frame>
-                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
-                        <Entry x:Name="secondNameEntry" Placeholder="Prenume (ex: Ilie-Cristian, Vasile)" Text="{Binding User.SecondName}"/>
+                    <Frame Style="{StaticResource FormFrame}">
+                        <Entry x:Name="secondNameEntry"
+                               Placeholder="Prenume (ex: Ilie-Cristian, Vasile)"
+                               Text="{Binding User.SecondName}" />
                     </Frame>
-                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
+                    <Frame Style="{StaticResource FormFrame}">
                         <StackLayout>
-                            <Picker x:Name="sexPicker" Title="Sex" SelectedItem="{Binding User.Sex}">
+                            <Picker x:Name="sexPicker"
+                                    Title="Sex"
+                                    SelectedItem="{Binding User.Sex}">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Masculin</x:String>
@@ -44,35 +54,43 @@
                             </Picker>
                         </StackLayout>
                     </Frame>
-                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
-                        <Entry x:Name="ageEntry" Placeholder="Varsta" Text="{Binding User.Age}" Keyboard="Numeric">
+                    <Frame Style="{StaticResource FormFrame}">
+                        <Entry x:Name="ageEntry"
+                               Placeholder="Varsta"
+                               Text="{Binding User.Age}"
+                               Keyboard="Numeric">
                             <Entry.Behaviors>
-                                <xct:NumericValidationBehavior 
-                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                    MinimumValue="1"
-                                    MaximumValue="120" />
+                                <xct:NumericValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                               MinimumValue="1"
+                                                               MaximumValue="120" />
                             </Entry.Behaviors>
                         </Entry>
                     </Frame>
-                    <Frame Padding="8" CornerRadius="8" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}">
-                        <Entry x:Name="phoneNumber" 
-                               Text="{Binding User.PhoneNumber}" 
-                               Placeholder="Numar de Telefon" 
+                    <Frame Style="{StaticResource FormFrame}">
+                        <Entry x:Name="phoneNumber"
+                               Text="{Binding User.PhoneNumber}"
+                               Placeholder="Numar de Telefon"
                                Keyboard="Numeric"
                                MaxLength="10">
                             <Entry.Behaviors>
-                                <xct:TextValidationBehavior     
-                                    InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                    MinimumLength="10"
-                                    MaximumLength="10"
-                                    RegexPattern="^07[0-9]{8}$" />
-                            </Entry.Behaviors>   
+                                <xct:TextValidationBehavior InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                            MinimumLength="10"
+                                                            MaximumLength="10"
+                                                            RegexPattern="^07[0-9]{8}$" />
+                            </Entry.Behaviors>
                         </Entry>
                     </Frame>
                 </StackLayout>
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                    <Button x:Name="NextBtn" Text="Next" Style="{StaticResource ButtonCheckedStyle}" Command="{Binding NextCommand}"/>
-                    <Button x:Name="CancelBtn" Text="Cancel" Style="{StaticResource ButtonUnCheckStyle}" Clicked="CancelBtn_Clicked"/>
+                <StackLayout HorizontalOptions="Center"
+                             Orientation="Horizontal">
+                    <Button x:Name="NextBtn"
+                            Text="Next"
+                            Style="{StaticResource ButtonCheckedStyle}"
+                            Command="{Binding NextCommand}" />
+                    <Button x:Name="CancelBtn"
+                            Text="Cancel"
+                            Style="{StaticResource ButtonUnCheckStyle}"
+                            Clicked="CancelBtn_Clicked" />
                 </StackLayout>
 
             </StackLayout>

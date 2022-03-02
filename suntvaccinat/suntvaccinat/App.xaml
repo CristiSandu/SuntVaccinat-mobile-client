@@ -10,56 +10,132 @@
             <Color x:Key="BackgroundMainColor">CadetBlue</Color>
             <Color x:Key="TextColorDark">CadetBlue</Color>
             <Color x:Key="TextColorWhite">CadetBlue</Color>
+
+            <Style x:Key="ButtonFirstPageStyle"
+                   TargetType="Button">
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="BackgroundColor"
+                        Value="CadetBlue" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="BorderColor"
+                        Value="CadetBlue" />
+                <Setter Property="BorderWidth"
+                        Value="2" />
+            </Style>
+
+            <Style x:Key="Button2FirstPageStyle"
+                   TargetType="Button">
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="TextColor"
+                        Value="CadetBlue" />
+                <Setter Property="BorderColor"
+                        Value="CadetBlue" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="BorderWidth"
+                        Value="2" />
+            </Style>
+
+            <Style x:Key="TitleStyle"
+                   TargetType="Label">
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="FontSize"
+                        Value="Large" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+
+            <Style x:Key="ButtonUnCheckStyle"
+                   TargetType="Button">
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BackgroundMainColor}" />
+                <Setter Property="BorderColor"
+                        Value="{StaticResource BackgroundMainColor}" />
+                <Setter Property="BorderWidth"
+                        Value="2" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+            </Style>
+
+
+            <Style x:Key="InvalidEntryStyle"
+                   TargetType="Entry">
+                <Setter Property="TextColor"
+                        Value="Red" />
+                <Setter Property="Opacity"
+                        Value="0.7" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+            </Style>
+
+
+            <Style x:Key="ButtonCheckedStyle"
+                   TargetType="Button">
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource BackgroundMainColor}" />
+                <Setter Property="BorderWidth"
+                        Value="2" />
+            </Style>
+
+
+            <Style x:Key="FormFrame"
+                   TargetType="Frame">
+                <Setter Property="Padding"
+                        Value="8" />
+                <Setter Property="CornerRadius"
+                        Value="8" />
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DefaultTextColor}}" />
+                <Setter Property="Padding"
+                        Value="8" />
+                <Setter Property="Padding"
+                        Value="8" />
+            </Style>
+
+            <Style x:Key="BackButtonStyle"
+                   TargetType="Button">
+                <Setter Property="Text"
+                        Value="arrow-left" />
+                <Setter Property="HeightRequest"
+                        Value="30" />
+                <Setter Property="WidthRequest"
+                        Value="30" />
+                <Setter Property="FontSize"
+                        Value="24" />
+                <Setter Property="Padding"
+                        Value="1" />
+                <Setter Property="FontFamily"
+                        Value="FAS" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource BackgroundWhite} } " />
+                <Setter Property="Opacity"
+                        Value="0.7" />
+            </Style>
             
-            <Style x:Key="ButtonFirstPageStyle" TargetType="Button">
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="BackgroundColor" Value="CadetBlue" />
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderColor" Value="CadetBlue"/>
-                <Setter Property="BorderWidth" Value="2"/>
-            </Style>
-
-            <Style x:Key="Button2FirstPageStyle" TargetType="Button">
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="CadetBlue"/>
-                <Setter Property="BorderColor" Value="CadetBlue"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderWidth" Value="2"/>
-            </Style>
-
-            <Style x:Key="TitleStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-            </Style>
-
-            <Style x:Key="ButtonUnCheckStyle" TargetType="Button">
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="{StaticResource BackgroundMainColor}"/>
-                <Setter Property="BorderColor" Value="{StaticResource BackgroundMainColor}"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-
-
-            <Style x:Key="InvalidEntryStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="Red"/>
-                <Setter Property="Opacity" Value="0.7"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-
-
-            <Style x:Key="ButtonCheckedStyle" TargetType="Button">
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundMainColor}"/>
-                <Setter Property="BorderWidth" Value="2"/>
-            </Style>
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>
