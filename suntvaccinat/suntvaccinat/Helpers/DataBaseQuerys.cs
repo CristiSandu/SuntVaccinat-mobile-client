@@ -24,3 +24,10 @@ namespace suntvaccinat.Helpers
         }
     }
 }
+
+
+// validarea unicitatii -> un telefon -- un certificat /
+// un 
+// schema :
+//  - ma duc la server cer tocken 
+//  - 

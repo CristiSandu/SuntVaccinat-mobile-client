@@ -19,7 +19,6 @@ namespace suntvaccinat.Convertors
                     Color col = Color.Tan;
                     return Color.FromHex("#8e9c8b");
                 }
-
             }
             return Color.Tan;
         }
