@@ -6,10 +6,21 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand"
-                     Padding="0,16,0,0"
-                     Spacing="200">
-            <StackLayout>
+        <Grid Padding="0,4,0,4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BackBtn"
+                    Margin="10"
+                    VerticalOptions="Start"
+                    Style="{StaticResource BackButtonOnBackgroundStyle}"
+                    Clicked="BackBtn_Clicked" />
+
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Center">
                 <Label Text="Selecteaza tipul "
                        FontAttributes="Bold"
                        FontSize="24"
@@ -24,7 +35,8 @@
                        HorizontalOptions="CenterAndExpand" />
             </StackLayout>
 
-            <Grid Padding="16,0,16,0">
+            <Grid Padding="16,0,16,0"
+                  Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -84,7 +96,7 @@
                         CornerRadius="10" />
             </Grid>
 
-            <cells:LogoCard />
-        </StackLayout>
+            <cells:LogoCard Grid.Row="2" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

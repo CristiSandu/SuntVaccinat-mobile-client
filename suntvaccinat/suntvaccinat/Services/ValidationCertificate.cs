@@ -18,7 +18,7 @@ namespace suntvaccinat.Services
         public async static Task<bool> SaveUser(User user)
         {
             SecureStorage.RemoveAll();
-            await SecureStorage.SetAsync("User", user.ToString());
+            await SecureStorage.SetAsync(Helpers.Constants.User, user.ToString());
 
             return true;
         }

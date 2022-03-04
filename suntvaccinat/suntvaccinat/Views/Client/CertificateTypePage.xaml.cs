@@ -22,5 +22,10 @@ namespace suntvaccinat.Views.Client
         {
             await Navigation.PushAsync(new EnterGreenPassPage());
         }
+
+        private async void BackBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

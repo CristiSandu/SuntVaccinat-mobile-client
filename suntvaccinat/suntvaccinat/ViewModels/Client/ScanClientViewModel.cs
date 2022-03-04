@@ -10,18 +10,18 @@ namespace suntvaccinat.ViewModels.Client
 {
     public class ScanClientViewModel : BaseViewModel
     {
-        private string barcode = string.Empty;
+        private string _certificate = string.Empty;
 
-        public string Barcode
+        public string Certificate
         {
             get
             {
-                return barcode;
+                return _certificate;
             }
             set
             {
-                barcode = value;
-                OnPropertyChanged(nameof(Barcode));
+                _certificate = value;
+                OnPropertyChanged(nameof(Certificate));
             }
         }
         private bool _isAnalyzing = true;
@@ -65,9 +65,17 @@ namespace suntvaccinat.ViewModels.Client
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Barcode = Result.Text;
-                        await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Barcode);
-                        await Application.Current.MainPage.Navigation.PopAsync();
+                        Certificate = Result.Text;
+                        if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
+                        {
+                            await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Certificate);
+                            Preferences.Set(Helpers.Constants.GreenPass, true);
+
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                        }else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
+                        }
                     });
 
                     IsAnalyzing = true;

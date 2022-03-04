@@ -14,5 +14,13 @@ namespace suntvaccinat.Helpers
         public static string DefaultValue = "";
         public static string GreenPassPref = "GP";
         public static string INSPPref = "INSP";
+
+        //Messages 
+        public static string SuccessMsg= "Success";
+        public static string ErrorMsg = "Error";
+
+        //vars
+        public static bool IsSet = true;
+        public static bool IsNotSet = false;
     }
 }

@@ -12,9 +12,7 @@ namespace suntvaccinat.ViewModels
     public class AddClientInfoPageViewModel : BaseViewModel
     {
         public User User { get; set; } = new User();
-
         public ICommand NextCommand { get; set; }
-
         public AddClientInfoPageViewModel()
         {
             NextCommand = new Command(async () =>
@@ -22,14 +20,15 @@ namespace suntvaccinat.ViewModels
                 if (ValidationInput(User))
                 {
                     SecureStorage.RemoveAll();
-                    await SecureStorage.SetAsync("User", User.ToString());
+                    await SecureStorage.SetAsync(Helpers.Constants.User, User.ToString());
+                    Preferences.Set(Helpers.Constants.User, true);
 
-                    await Application.Current.MainPage.DisplayAlert("Success", "User Saved", "Ok");
+                    await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "User Saved", "Ok");
                     await Application.Current.MainPage.Navigation.PushAsync(new Views.Client.CertificateTypePage());
                     return;
                 }
 
-                await Application.Current.MainPage.DisplayAlert("Error", "Same Fileds are empty", "Ok");
+                await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Same Fileds are empty", "Ok");
             });
         }
 

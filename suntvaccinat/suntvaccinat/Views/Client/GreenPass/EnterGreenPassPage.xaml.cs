@@ -15,11 +15,17 @@ namespace suntvaccinat.Views.Client.GreenPass
         public EnterGreenPassPage()
         {
             InitializeComponent();
+            BindingContext = new ViewModels.Client.EnterCodeViewModel();
         }
 
         private async void ScannGreenPassBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScanPage { BindingContext = new ViewModels.Client.ScanClientViewModel()});
+        }
+
+        private async void BackBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }
