@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
+             xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             x:DataType="viewmodel:ShowGreenPassViewModel"
+             x:Class="suntvaccinat.Views.Client.ShowCertificatePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource BackButtonOnBackgroundStyle}"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    Margin="10,12,12,8"
+                    Clicked="BackButton_Clicked"
+                    />
+
+            <Label  Style="{StaticResource TitleStyle}"
+                    HorizontalOptions="Center"
+                    Text="{Binding Title}"
+                    Grid.ColumnSpan="3"
+                    FontSize="32"
+                    Margin="10,12,12,8"
+                    VerticalOptions="Start" />
+
+            <StackLayout Grid.Row="0"
+                         Grid.Column="2"
+                         VerticalOptions="Start"
+                         Padding="8,12,12,8">
+
+                <Button x:Name="SettingsButton"
+                        Text="ellipsis-vertical"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        FontSize="32"
+                        TextColor="{StaticResource DefaultTextColor}"
+                        Padding="1,1,1,1"
+                        FontFamily="FAS"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+                        BackgroundColor="Transparent"
+                        Clicked="SettingsButton_Clicked" />
+            </StackLayout>
+
+            <Button x:Name="ADSButton"
+                    BackgroundColor="Transparent"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Clicked="ADSButton_Clicked" />
+
+            <zxing:ZXingBarcodeImageView Grid.Row="1"
+                                         Grid.ColumnSpan="3"
+                                         x:Name="QRCode"
+                                         BarcodeValue="{Binding GreenPass}"
+                                         BackgroundColor="Transparent"
+                                         WidthRequest="390"
+                                         HeightRequest="390">
+                <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    <zxingcommon:EncodingOptions Height="500"
+                                                 Width="500" />
+                </zxing:ZXingBarcodeImageView.BarcodeOptions>
+            </zxing:ZXingBarcodeImageView>
+
+            <cells:LogoCard Grid.Row="2"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+
+            <Button BackgroundColor="Transparent"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Clicked="ADSButton_Clicked" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

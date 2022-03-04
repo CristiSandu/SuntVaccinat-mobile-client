@@ -142,11 +142,11 @@
                 <Setter Property="Text"
                         Value="arrow-left" />
                 <Setter Property="HeightRequest"
-                        Value="30" />
+                        Value="40" />
                 <Setter Property="WidthRequest"
-                        Value="30" />
+                        Value="40" />
                 <Setter Property="FontSize"
-                        Value="24" />
+                        Value="32" />
                 <Setter Property="Padding"
                         Value="1" />
                 <Setter Property="FontFamily"

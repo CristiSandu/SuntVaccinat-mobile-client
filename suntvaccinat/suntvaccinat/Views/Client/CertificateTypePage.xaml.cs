@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,7 +20,10 @@ namespace suntvaccinat.Views.Client
 
         private async void GreenPass_Flow_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EnterGreenPassPage());
+            if (Preferences.Get(Helpers.Constants.GreenPass, false))
+                await Navigation.PushAsync(new ShowCertificatePage { BindingContext = new ViewModels.Client.ShowGreenPassViewModel() });
+            else
+                await Navigation.PushAsync(new EnterGreenPassPage());
         }
 
         private async void BackBtn_Clicked(object sender, EventArgs e)

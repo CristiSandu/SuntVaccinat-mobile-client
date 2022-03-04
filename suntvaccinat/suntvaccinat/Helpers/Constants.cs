@@ -22,5 +22,9 @@ namespace suntvaccinat.Helpers
         //vars
         public static bool IsSet = true;
         public static bool IsNotSet = false;
+
+
+        //url 
+        public static string SiteURL = "https://www.suntvaccinat.ro";
     }
 }

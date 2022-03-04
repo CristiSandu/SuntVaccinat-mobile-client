@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace suntvaccinat
@@ -20,7 +21,11 @@ namespace suntvaccinat
         }
         private async void ClientBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Views.Client.AddClientInfoPage());
+
+            if (Preferences.Get(Helpers.Constants.User, false))
+                await Navigation.PushAsync(new Views.Client.CertificateTypePage());
+            else
+                await Navigation.PushAsync(new Views.Client.AddClientInfoPage());
         }
     }
 }
