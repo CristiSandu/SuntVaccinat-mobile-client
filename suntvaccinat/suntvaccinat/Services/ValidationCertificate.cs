@@ -1,4 +1,6 @@
-﻿using GemBox.Pdf;
+﻿using DgcReader;
+using DgcReader.Models;
+using GemBox.Pdf;
 using GemBox.Pdf.Forms;
 using suntvaccinat.Models;
 using System;
@@ -21,6 +23,30 @@ namespace suntvaccinat.Services
             await SecureStorage.SetAsync(Helpers.Constants.User, user.ToString());
 
             return true;
+        }
+
+        public async static Task<SignedDgc> DecodeGreenPass(string certificate)
+        {
+            var dgcReader = new DgcReaderService();
+            var decoded = await dgcReader.Decode(certificate);
+
+            return decoded;
+        }
+
+        public async static Task<DgcValidationResult> DecodeVerifyGreenPass(string certificate)
+        {
+            var dgcReader = new DgcReaderService();
+
+            string acceptanceCountry = "IT";    // Specify the 2-letter ISO code of the acceptance country
+
+            // Decode and validate the qr code data.
+            // The result will contain all the details of the validated object
+            var result = await dgcReader.GetValidationResult(certificate, acceptanceCountry);
+
+            var status = result.Status;
+            // Note: all the validation details are available in the result
+
+            return result;
         }
 
         public async static Task<ResultModel> GetDataToCompute(Stream pdfStream)

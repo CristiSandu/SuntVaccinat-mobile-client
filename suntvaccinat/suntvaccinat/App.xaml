@@ -11,6 +11,17 @@
             <Color x:Key="TextColorDark">CadetBlue</Color>
             <Color x:Key="TextColorWhite">CadetBlue</Color>
 
+            <Color x:Key="DarkBackgroudColor">#2e2e2e</Color>
+            
+            <Color x:Key="OrangePeel">#FF9F1C</Color>
+            <Color x:Key="MellowApricot">#FFBF69</Color>
+            <Color x:Key="White">#FFFFFF</Color>
+
+            <Color x:Key="CadetBlue">#5F9EA0</Color>
+            <Color x:Key="LightCyan">#CBF3F0</Color>
+            <Color x:Key="TiffanyBlue">#2EC4B6</Color>
+
+
             <Style x:Key="ButtonFirstPageStyle"
                    TargetType="Button">
                 <Setter Property="CornerRadius"
@@ -21,8 +32,6 @@
                         Value="White" />
                 <Setter Property="FontAttributes"
                         Value="Bold" />
-                <Setter Property="BorderColor"
-                        Value="CadetBlue" />
                 <Setter Property="BorderWidth"
                         Value="2" />
             </Style>
