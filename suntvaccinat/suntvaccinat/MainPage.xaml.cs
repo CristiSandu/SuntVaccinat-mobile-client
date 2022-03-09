@@ -23,7 +23,7 @@ namespace suntvaccinat
         {
 
             if (Preferences.Get(Helpers.Constants.User, false))
-                await Navigation.PushAsync(new Views.Client.CertificateTypePage());
+                await Navigation.PushAsync(new Views.Client.ProfilePage());
             else
                 await Navigation.PushAsync(new Views.Client.AddClientInfoPage());
         }
