@@ -1,9 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿using SQLite;
+using System.Text.RegularExpressions;
 
 namespace suntvaccinat.Models
 {
     public class User
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Name { set; get; }
         public string SecondName { set; get; }
         public string Sex { set; get; }

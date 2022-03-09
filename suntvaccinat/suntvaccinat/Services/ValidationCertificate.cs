@@ -67,8 +67,6 @@ namespace suntvaccinat.Services
                         var a3 = signatureField.Name;
                         var a4 = signatureField.Value;
 
-
-
                         var signature = signatureField.Value;
                         string rowDataContent = BytesToString(signatureField.Value.Content.SignerCertificate.GetRawData());
                         int i = 0;
@@ -89,7 +87,6 @@ namespace suntvaccinat.Services
                                 Console.Write("Signature '{0}' is VALID, signed by '{1}'. ", signatureField.Name, signature.Content.SignerCertificate.SubjectCommonName);
                                 Console.WriteLine("The document has not been modified since this signature was applied.");
                             }
-
                         }
                     }
                 }
