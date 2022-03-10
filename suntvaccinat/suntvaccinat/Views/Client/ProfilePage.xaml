@@ -1,12 +1,195 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="suntvaccinat.Views.Client.ProfilePage">
+             xmlns:xtc="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             x:Class="suntvaccinat.Views.Client.ProfilePage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="TestIMEI" Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <BoxView BackgroundColor="{StaticResource CadetBlue}" />
+
+            <Grid Grid.RowSpan="2"
+                  ColumnSpacing="20"
+                  Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height=".5*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height=".75*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Spacing="4" Grid.ColumnSpan="2">
+                    <Label Text="Bine ati revenit, "
+                           FontSize="32"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+                    <Label TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="user "
+                                      FontFamily="FAS"
+                                      LineHeight="1.8"
+                                      FontSize="Large" />
+                                <Span Text="Sandu Ilie-Cristian"
+                                      LineHeight="1.8" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="venus-mars "
+                                      FontFamily="FAS"
+                                      FontSize="Large" />
+                                <Span Text="M" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="cake-candles "
+                                      FontFamily="FAS"
+                                      FontSize="Large" />
+                                <Span Text="21" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="phone "
+                                      FontFamily="FAS"
+                                      FontSize="Large" />
+                                <Span Text="0725315952" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="mobile-screen-button "
+                                      FontFamily="FAS"
+                                      FontSize="Large" />
+                                <Span Text="{Binding PhoneModel}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+                <xtc:AvatarView Grid.Column="1"
+                                Text="SIC"
+                                HorizontalOptions="End"
+                                VerticalOptions="StartAndExpand"
+                                TextColor="{StaticResource White}"
+                                BorderColor="Thistle"
+                                Size="96"
+                                FontAttributes="Bold" />
+
+                <BoxView Grid.Column="0"
+                         Grid.Row="2"
+                         HeightRequest="140"
+                         CornerRadius="10"
+                         WidthRequest="140"
+                         BackgroundColor="White" />
+
+                <zxing:ZXingBarcodeImageView Grid.Row="2"
+                                             x:Name="QRCode"
+                                             BarcodeValue="HC1:NCFOXN%TSMAHN-HBUKN8N2A709SZ%KUB2I:ID 4NPVJ59HYB1VC-RI4*V59D-MPW$NLEEEJCY S2%KYZP-3WK34JWLG56H0API0NSLK3GW3CA58X4JK4B920AUOB5FY58O4K1O6S56-I0CCWK4FBSHD�%K:XF:EFQA5*CBVZ0G.85$0ORNYZ0-B5S8AELNRIKMIAY82O6QFE4IWM0EP8L6IWMW KAHA508XIORW6%5L*M47Q4UYQD*O%+Q.SQBDO4A7E:7LYPFTQCLA6EOPCRWF6L/5R3FMIA5.B*EM96KL8D6LFQ3MA7IUVLJREK3DICHITKOKE/BZR8SA7T5MRR5JK0DL5TW5A 6+O67N6I8EE4VOLFNJMTHEFTT*7VX3A8GWV:BI SZS4TYIT6UGKM-.TNHF:4C/2GNRRAORNFD LJ U/O71/U4V8I:N9VU.$H3IG6:4N1CLSR53S330A8B91"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="390"
+                                             HeightRequest="390">
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxingcommon:EncodingOptions Height="400"
+                                                     Width="400" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+                
+                <Button Grid.Column="0"
+                        x:Name="GreenPassButton"
+                        Grid.Row="2"
+                        Text="Green Pass"
+                        TextColor="{StaticResource MellowApricot}"
+                        FontAttributes="Bold"
+                        FontSize="50"
+                        Padding="0"
+                        Clicked="Button_Clicked"
+                        HeightRequest="140"
+                        WidthRequest="140"
+                        CornerRadius="10"
+                        BackgroundColor="Transparent" />
+
+                <BoxView Grid.Column="1"
+                         Grid.Row="2"
+                         HeightRequest="140"
+                         CornerRadius="10"
+                         WidthRequest="140"
+                         BackgroundColor="White" />
+
+                <zxing:ZXingBarcodeImageView Grid.Row="2"
+                                             x:Name="QRCode2"
+                                             Grid.Column="1"
+                                             BarcodeValue="testofGereatiron"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="390"
+                                             HeightRequest="390">
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxingcommon:EncodingOptions Height="400"
+                                                     Width="400" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+
+                <zxing:ZXingBarcodeImageView Grid.Row="1"
+                                             Grid.RowSpan="3"
+                                             Grid.ColumnSpan="2"
+                                             IsVisible="false"
+                                             x:Name="QRCode3"
+                                             BarcodeValue="HC1:NCFOXN%TSMAHN-HBUKN8N2A709SZ%KUB2I:ID 4NPVJ59HYB1VC-RI4*V59D-MPW$NLEEEJCY S2%KYZP-3WK34JWLG56H0API0NSLK3GW3CA58X4JK4B920AUOB5FY58O4K1O6S56-I0CCWK4FBSHD�%K:XF:EFQA5*CBVZ0G.85$0ORNYZ0-B5S8AELNRIKMIAY82O6QFE4IWM0EP8L6IWMW KAHA508XIORW6%5L*M47Q4UYQD*O%+Q.SQBDO4A7E:7LYPFTQCLA6EOPCRWF6L/5R3FMIA5.B*EM96KL8D6LFQ3MA7IUVLJREK3DICHITKOKE/BZR8SA7T5MRR5JK0DL5TW5A 6+O67N6I8EE4VOLFNJMTHEFTT*7VX3A8GWV:BI SZS4TYIT6UGKM-.TNHF:4C/2GNRRAORNFD LJ U/O71/U4V8I:N9VU.$H3IG6:4N1CLSR53S330A8B91"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="390"
+                                             HeightRequest="390">
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxingcommon:EncodingOptions Height="400"
+                                                     Width="400" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+
+                <Button x:Name="ButtonBigQr"
+                        IsVisible="false"
+                        Grid.Row="1"
+                        Grid.RowSpan="3"
+                        Grid.ColumnSpan="2"
+                        Clicked="Button_Clicked" 
+                        BackgroundColor="Transparent"/>
+
+
+
+                <cells:LogoCard Grid.Row="4"
+                                Grid.ColumnSpan="2" />
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
