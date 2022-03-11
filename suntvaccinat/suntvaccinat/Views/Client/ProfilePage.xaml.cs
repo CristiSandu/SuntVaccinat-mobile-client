@@ -32,7 +32,6 @@ namespace suntvaccinat.Views.Client
         private void Button_Clicked(object sender, EventArgs e)
         {
             IsShown = !IsShown;
-            ButtonBigQr.IsVisible = IsShown;
             QRCode3.IsVisible = IsShown;
             GreenPassButton.IsVisible = !IsShown;
         }
