@@ -42,7 +42,7 @@ namespace suntvaccinat.Services
         public async Task<User> GetUser()
         {
             var users =await db.Table<User>().ToListAsync();
-            return users[0];
+            return users.Count > 0 ? users[0] : new User();
         }
 
         public async Task<bool> RemoveUser(User user)

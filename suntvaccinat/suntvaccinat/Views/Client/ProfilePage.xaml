@@ -5,6 +5,8 @@
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
+             x:DataType="viewmodel:ProfilePageViewModel"
              x:Class="suntvaccinat.Views.Client.ProfilePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -103,7 +105,7 @@
                            Style="{StaticResource TitleStyle}" />
 
 
-                    <Label Text="Sandu Ilie-Cristian"
+                    <Label Text="{Binding User.Name}"
                            Grid.Column="1"
                            Grid.Row="1"
                            HorizontalOptions="Start"
@@ -111,7 +113,7 @@
                            Style="{StaticResource TitleStyle}" />
 
 
-                    <Label Text="M"
+                    <Label Text="{Binding User.Sex}"
                            Grid.Column="1"
                            Grid.Row="2"
                            HorizontalOptions="Start"
@@ -119,21 +121,21 @@
                            Style="{StaticResource TitleStyle}" />
 
 
-                    <Label Text="21"
+                    <Label Text="{Binding User.Age}"
                            Grid.Column="1"
                            Grid.Row="3"
                            HorizontalOptions="Start"
                            TextColor="{StaticResource White}"
                            Style="{StaticResource TitleStyle}" />
 
-                    <Label Text="0725315952"
+                    <Label Text="{Binding User.PhoneNumber}"
                            Grid.Column="1"
                            Grid.Row="4"
                            HorizontalOptions="Start"
                            TextColor="{StaticResource White}"
                            Style="{StaticResource TitleStyle}" />
 
-                    <Label Text="{Binding PhoneModel}"
+                    <Label Text="{Binding PhoneMode}"
                            Grid.Column="1"
                            Grid.Row="5"
                            HorizontalOptions="Start"
@@ -143,15 +145,13 @@
                 </Grid>
 
                 <xtc:AvatarView Grid.Column="1"
-                                Text="SIC"
+                                Text="{Binding User.Initials}"
                                 HorizontalOptions="End"
                                 VerticalOptions="StartAndExpand"
                                 TextColor="{StaticResource White}"
                                 BorderColor="Thistle"
                                 Size="96"
                                 FontAttributes="Bold" />
-
-
 
                 <BoxView Grid.Column="0"
                          Grid.Row="2"
@@ -162,7 +162,7 @@
 
                 <zxing:ZXingBarcodeImageView Grid.Row="2"
                                              x:Name="QRCode"
-                                             BarcodeValue="HC1:NCFOXN%TSMAHN-HBUKN8N2A709SZ%KUB2I:ID 4NPVJ59HYB1VC-RI4*V59D-MPW$NLEEEJCY S2%KYZP-3WK34JWLG56H0API0NSLK3GW3CA58X4JK4B920AUOB5FY58O4K1O6S56-I0CCWK4FBSHD�%K:XF:EFQA5*CBVZ0G.85$0ORNYZ0-B5S8AELNRIKMIAY82O6QFE4IWM0EP8L6IWMW KAHA508XIORW6%5L*M47Q4UYQD*O%+Q.SQBDO4A7E:7LYPFTQCLA6EOPCRWF6L/5R3FMIA5.B*EM96KL8D6LFQ3MA7IUVLJREK3DICHITKOKE/BZR8SA7T5MRR5JK0DL5TW5A 6+O67N6I8EE4VOLFNJMTHEFTT*7VX3A8GWV:BI SZS4TYIT6UGKM-.TNHF:4C/2GNRRAORNFD LJ U/O71/U4V8I:N9VU.$H3IG6:4N1CLSR53S330A8B91"
+                                             BarcodeValue="{Binding GPCertificate}"
                                              BackgroundColor="Transparent"
                                              WidthRequest="390"
                                              HeightRequest="390">
@@ -180,7 +180,8 @@
                         FontAttributes="Bold"
                         FontSize="50"
                         Padding="0"
-                        Clicked="Button_Clicked"
+                        Command="{Binding ShowCertCommand}"
+                        CommandParameter="GP"
                         HeightRequest="140"
                         WidthRequest="140"
                         CornerRadius="10"
@@ -207,12 +208,12 @@
                 </zxing:ZXingBarcodeImageView>
 
                 <Grid x:Name="QRCode3"
-                             Grid.Row="1"
-                             IsVisible="false"
-                             Grid.RowSpan="3"
-                             Grid.ColumnSpan="2">
+                      Grid.Row="1"
+                      IsVisible="{Binding IsShown}"
+                      Grid.RowSpan="3"
+                      Grid.ColumnSpan="2">
 
-                    <zxing:ZXingBarcodeImageView BarcodeValue="HC1:NCFOXN%TSMAHN-HBUKN8N2A709SZ%KUB2I:ID 4NPVJ59HYB1VC-RI4*V59D-MPW$NLEEEJCY S2%KYZP-3WK34JWLG56H0API0NSLK3GW3CA58X4JK4B920AUOB5FY58O4K1O6S56-I0CCWK4FBSHD�%K:XF:EFQA5*CBVZ0G.85$0ORNYZ0-B5S8AELNRIKMIAY82O6QFE4IWM0EP8L6IWMW KAHA508XIORW6%5L*M47Q4UYQD*O%+Q.SQBDO4A7E:7LYPFTQCLA6EOPCRWF6L/5R3FMIA5.B*EM96KL8D6LFQ3MA7IUVLJREK3DICHITKOKE/BZR8SA7T5MRR5JK0DL5TW5A 6+O67N6I8EE4VOLFNJMTHEFTT*7VX3A8GWV:BI SZS4TYIT6UGKM-.TNHF:4C/2GNRRAORNFD LJ U/O71/U4V8I:N9VU.$H3IG6:4N1CLSR53S330A8B91"
+                    <zxing:ZXingBarcodeImageView BarcodeValue="{Binding SelectedCertificate}"
                                                  BackgroundColor="Transparent"
                                                  WidthRequest="390"
                                                  HeightRequest="390">
@@ -222,7 +223,8 @@
                         </zxing:ZXingBarcodeImageView.BarcodeOptions>
                     </zxing:ZXingBarcodeImageView>
 
-                    <Button Clicked="Button_Clicked"
+                    <Button Command="{Binding ShowCertCommand}"
+                            CommandParameter="-"
                             BackgroundColor="Transparent" />
 
                     <Label Text="Green Pass"

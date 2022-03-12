@@ -13,8 +13,8 @@ namespace suntvaccinat.ViewModels.Client
     {
         public User User { get; set; }
         public string PhoneMode { get; set; }
-        public string GPCertificate { get; set; } = string.Empty;
-        public string INSPCertificate { get; set; } = string.Empty;
+        public string GPCertificate { get; set; } = "--";
+        public string INSPCertificate { get; set; } = "--";
         public bool IsShown { get; set; } = false;
 
         public string SelectedCertificate { get; set; }
@@ -31,8 +31,12 @@ namespace suntvaccinat.ViewModels.Client
             ShowCertCommand = new Command<string>((elem) =>
            {
                IsShown = !IsShown;
-               if (elem != null)
+               if (elem != "-")
                    SelectedCertificate = elem == "GP" ? GPCertificate : INSPCertificate;
+
+               OnPropertyChanged(nameof(SelectedCertificate));
+               OnPropertyChanged(nameof(IsShown));
+
            });
         }
 
@@ -41,6 +45,13 @@ namespace suntvaccinat.ViewModels.Client
             GPCertificate = await SecureStorage.GetAsync(Helpers.Constants.GreenPass);
             INSPCertificate = await SecureStorage.GetAsync(Helpers.Constants.INSPPref);
 
+            var device = DeviceInfo.Model;
+            var manufacturer = DeviceInfo.Manufacturer;
+            PhoneMode = $"{manufacturer} - {device}";
+
+            User = await _eventsDataBase.GetUser();
+
+            OnPropertyChanged(nameof(PhoneMode));
             OnPropertyChanged(nameof(GPCertificate));
             OnPropertyChanged(nameof(INSPCertificate));
         }
