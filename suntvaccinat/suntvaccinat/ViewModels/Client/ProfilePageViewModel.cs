@@ -23,6 +23,8 @@ namespace suntvaccinat.ViewModels.Client
 
         public ICommand ShowCertCommand { get; set; }
 
+        public string SelectedCertLabel { get; set; }
+
 
         public ProfilePageViewModel()
         {
@@ -32,11 +34,22 @@ namespace suntvaccinat.ViewModels.Client
            {
                IsShown = !IsShown;
                if (elem != "-")
-                   SelectedCertificate = elem == "GP" ? GPCertificate : INSPCertificate;
+               {
+                   if (elem == "GP")
+                   {
+                       SelectedCertificate = GPCertificate;
+                       SelectedCertLabel = " Green Pass ";
+                   }
+                   else
+                   {
+                       SelectedCertificate = INSPCertificate;
+                       SelectedCertLabel = " INSP ";
+                   }
+               }
 
+               OnPropertyChanged(nameof(SelectedCertLabel));
                OnPropertyChanged(nameof(SelectedCertificate));
                OnPropertyChanged(nameof(IsShown));
-
            });
         }
 

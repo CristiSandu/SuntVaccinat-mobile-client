@@ -160,8 +160,9 @@
                          WidthRequest="140"
                          BackgroundColor="White" />
 
-                <zxing:ZXingBarcodeImageView Grid.Row="2"
-                                             x:Name="QRCode"
+
+                <zxing:ZXingBarcodeImageView x:Name="QRCode"
+                                             Grid.Row="2"
                                              BarcodeValue="{Binding GPCertificate}"
                                              BackgroundColor="Transparent"
                                              WidthRequest="390"
@@ -171,12 +172,17 @@
                                                      Width="400" />
                     </zxing:ZXingBarcodeImageView.BarcodeOptions>
                 </zxing:ZXingBarcodeImageView>
+                <Label Text="Green Pass"
+                       TextColor="{StaticResource OrangePeel}"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       Grid.Row="2" />
 
                 <Button Grid.Column="0"
                         x:Name="GreenPassButton"
                         Grid.Row="2"
-                        Text="Green Pass"
-                        TextColor="{StaticResource MellowApricot}"
                         FontAttributes="Bold"
                         FontSize="50"
                         Padding="0"
@@ -207,6 +213,27 @@
                     </zxing:ZXingBarcodeImageView.BarcodeOptions>
                 </zxing:ZXingBarcodeImageView>
 
+                <Label Text="INSP"
+                       TextColor="{StaticResource OrangePeel}"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       Grid.Row="2"
+                       Grid.Column="1" />
+
+                <Button Grid.Column="1"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        FontSize="50"
+                        Padding="0"
+                        Command="{Binding ShowCertCommand}"
+                        CommandParameter="INSP"
+                        HeightRequest="140"
+                        WidthRequest="140"
+                        CornerRadius="10"
+                        BackgroundColor="Transparent" />
+
                 <Grid x:Name="QRCode3"
                       Grid.Row="1"
                       IsVisible="{Binding IsShown}"
@@ -227,15 +254,19 @@
                             CommandParameter="-"
                             BackgroundColor="Transparent" />
 
-                    <Label Text="Green Pass"
+                    <Frame Padding="0"
+                           VerticalOptions="Start"
                            HorizontalOptions="Center"
-                           TextColor="{StaticResource MellowApricot}"
-                           Margin="0,20,0,0"
-                           Style="{StaticResource TitleStyle}"
-                           VerticalOptions="Start" />
+                           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DarkBackgroudColor}}"
+                           CornerRadius="10">
+                        <Label Text="{Binding SelectedCertLabel}"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource MellowApricot}"
+                               Style="{StaticResource TitleStyle}"
+                               VerticalOptions="Start" />
+                    </Frame>
 
                 </Grid>
-
 
                 <cells:LogoCard Grid.Row="4"
                                 Grid.ColumnSpan="2" />
