@@ -13,8 +13,13 @@ namespace suntvaccinat.ViewModels
     {
         public User User { get; set; } = new User();
         public ICommand NextCommand { get; set; }
+
+        Services.IEventsDataBase _eventsDataBase;
+
         public AddClientInfoPageViewModel()
         {
+            _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+
             NextCommand = new Command(async () =>
             {
                 if (ValidationInput(User))
@@ -22,6 +27,8 @@ namespace suntvaccinat.ViewModels
                     SecureStorage.RemoveAll();
                     await SecureStorage.SetAsync(Helpers.Constants.User, User.ToString());
                     Preferences.Set(Helpers.Constants.User, true);
+
+                    await _eventsDataBase.AddUser(User);
 
                     await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "User Saved", "Ok");
                     await Application.Current.MainPage.Navigation.PushAsync(new Views.Client.CertificateTypePage());
@@ -43,7 +50,7 @@ namespace suntvaccinat.ViewModels
             if (string.IsNullOrEmpty(user.Sex))
                 return false;
 
-            if (string.IsNullOrEmpty(user.Age) || !(Convert.ToInt32( user.Age) < 120 && Convert.ToInt32(user.Age) >= 1))
+            if (string.IsNullOrEmpty(user.Age) || !(Convert.ToInt32(user.Age) < 120 && Convert.ToInt32(user.Age) >= 1))
                 return false;
 
             if (string.IsNullOrEmpty(user.PhoneNumber) || !Regex.Match(user.PhoneNumber, "^07[0-9]{8}$").Success)

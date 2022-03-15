@@ -1,4 +1,6 @@
-﻿using GemBox.Pdf;
+﻿using DgcReader;
+using DgcReader.Models;
+using GemBox.Pdf;
 using GemBox.Pdf.Forms;
 using suntvaccinat.Models;
 using System;
@@ -23,6 +25,30 @@ namespace suntvaccinat.Services
             return true;
         }
 
+        public async static Task<SignedDgc> DecodeGreenPass(string certificate)
+        {
+            var dgcReader = new DgcReaderService();
+            var decoded = await dgcReader.Decode(certificate);
+
+            return decoded;
+        }
+
+        public async static Task<DgcValidationResult> DecodeVerifyGreenPass(string certificate)
+        {
+            var dgcReader = new DgcReaderService();
+
+            string acceptanceCountry = "IT";    // Specify the 2-letter ISO code of the acceptance country
+
+            // Decode and validate the qr code data.
+            // The result will contain all the details of the validated object
+            var result = await dgcReader.GetValidationResult(certificate, acceptanceCountry);
+
+            var status = result.Status;
+            // Note: all the validation details are available in the result
+
+            return result;
+        }
+
         public async static Task<ResultModel> GetDataToCompute(Stream pdfStream)
         {
             ComponentInfo.SetLicense("FREE-LIMITED-KEY");
@@ -40,8 +66,6 @@ namespace suntvaccinat.Services
                         var a2 = signatureField.Page;
                         var a3 = signatureField.Name;
                         var a4 = signatureField.Value;
-
-
 
                         var signature = signatureField.Value;
                         string rowDataContent = BytesToString(signatureField.Value.Content.SignerCertificate.GetRawData());
@@ -63,7 +87,6 @@ namespace suntvaccinat.Services
                                 Console.Write("Signature '{0}' is VALID, signed by '{1}'. ", signatureField.Name, signature.Content.SignerCertificate.SubjectCommonName);
                                 Console.WriteLine("The document has not been modified since this signature was applied.");
                             }
-
                         }
                     }
                 }

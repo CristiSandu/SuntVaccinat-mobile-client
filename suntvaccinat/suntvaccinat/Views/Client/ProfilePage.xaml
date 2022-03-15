@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xtc="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
+             x:DataType="viewmodel:ProfilePageViewModel"
+             x:Class="suntvaccinat.Views.Client.ProfilePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <BoxView BackgroundColor="{StaticResource CadetBlue}" />
+
+            <Grid Grid.RowSpan="2"
+                  ColumnSpacing="20"
+                  Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height=".2*" />
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height=".75*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid RowSpacing="4"
+                      ColumnSpacing="-16"
+                      Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Bine ati revenit, "
+                           Grid.ColumnSpan="2"
+                           FontSize="32"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                    <Label Text="user"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           FontSize="32"
+                           FontFamily="FAS"
+                           HorizontalOptions="Start"
+                           Padding="4,0,0,0"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+
+                    <Label Text="venus-mars "
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           FontSize="32"
+                           FontFamily="FAS"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+
+                    <Label Text="cake-candles  "
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           FontSize="32"
+                           FontFamily="FAS"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                    <Label Text="phone  "
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           FontSize="32"
+                           FontFamily="FAS"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                    <Label Text="mobile-screen-button"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           FontSize="32"
+                           HorizontalOptions="Start"
+                           FontFamily="FAS"
+                           Padding="4,0,0,0"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+
+                    <Label Text="{Binding User.Name}"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+
+                    <Label Text="{Binding User.Sex}"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+
+                    <Label Text="{Binding User.Age}"
+                           Grid.Column="1"
+                           Grid.Row="3"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                    <Label Text="{Binding User.PhoneNumber}"
+                           Grid.Column="1"
+                           Grid.Row="4"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                    <Label Text="{Binding PhoneMode}"
+                           Grid.Column="1"
+                           Grid.Row="5"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource White}"
+                           Style="{StaticResource TitleStyle}" />
+
+                </Grid>
+
+                <xtc:AvatarView Grid.Column="1"
+                                Text="{Binding User.Initials}"
+                                HorizontalOptions="End"
+                                VerticalOptions="StartAndExpand"
+                                TextColor="{StaticResource White}"
+                                BorderColor="Thistle"
+                                Size="96"
+                                FontAttributes="Bold" />
+
+                <BoxView Grid.Column="0"
+                         Grid.Row="2"
+                         HeightRequest="140"
+                         CornerRadius="10"
+                         WidthRequest="140"
+                         BackgroundColor="White" />
+
+
+                <zxing:ZXingBarcodeImageView x:Name="QRCode"
+                                             Grid.Row="2"
+                                             BarcodeValue="{Binding GPCertificate}"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="390"
+                                             HeightRequest="390">
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxingcommon:EncodingOptions Height="400"
+                                                     Width="400" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+                <Label Text="Green Pass"
+                       TextColor="{StaticResource OrangePeel}"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       Grid.Row="2" />
+
+                <Button Grid.Column="0"
+                        x:Name="GreenPassButton"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        FontSize="50"
+                        Padding="0"
+                        Command="{Binding ShowCertCommand}"
+                        CommandParameter="GP"
+                        HeightRequest="140"
+                        WidthRequest="140"
+                        CornerRadius="10"
+                        BackgroundColor="Transparent" />
+
+                <BoxView Grid.Column="1"
+                         Grid.Row="2"
+                         HeightRequest="140"
+                         CornerRadius="10"
+                         WidthRequest="140"
+                         BackgroundColor="White" />
+
+                <zxing:ZXingBarcodeImageView Grid.Row="2"
+                                             x:Name="QRCode2"
+                                             Grid.Column="1"
+                                             BarcodeValue="testofGereatiron"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="390"
+                                             HeightRequest="390">
+                    <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxingcommon:EncodingOptions Height="400"
+                                                     Width="400" />
+                    </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                </zxing:ZXingBarcodeImageView>
+
+                <Label Text="INSP"
+                       TextColor="{StaticResource OrangePeel}"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       Grid.Row="2"
+                       Grid.Column="1" />
+
+                <Button Grid.Column="1"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        FontSize="50"
+                        Padding="0"
+                        Command="{Binding ShowCertCommand}"
+                        CommandParameter="INSP"
+                        HeightRequest="140"
+                        WidthRequest="140"
+                        CornerRadius="10"
+                        BackgroundColor="Transparent" />
+
+                <Grid x:Name="QRCode3"
+                      Grid.Row="1"
+                      IsVisible="{Binding IsShown}"
+                      Grid.RowSpan="3"
+                      Grid.ColumnSpan="2">
+
+                    <zxing:ZXingBarcodeImageView BarcodeValue="{Binding SelectedCertificate}"
+                                                 BackgroundColor="Transparent"
+                                                 WidthRequest="390"
+                                                 HeightRequest="390">
+                        <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                            <zxingcommon:EncodingOptions Height="400"
+                                                         Width="400" />
+                        </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    </zxing:ZXingBarcodeImageView>
+
+                    <Button Command="{Binding ShowCertCommand}"
+                            CommandParameter="-"
+                            BackgroundColor="Transparent" />
+
+                    <Frame Padding="0"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Center"
+                           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DarkBackgroudColor}}"
+                           CornerRadius="10">
+                        <Label Text="{Binding SelectedCertLabel}"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource MellowApricot}"
+                               Style="{StaticResource TitleStyle}"
+                               VerticalOptions="Start" />
+                    </Frame>
+
+                </Grid>
+
+                <cells:LogoCard Grid.Row="4"
+                                Grid.ColumnSpan="2" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

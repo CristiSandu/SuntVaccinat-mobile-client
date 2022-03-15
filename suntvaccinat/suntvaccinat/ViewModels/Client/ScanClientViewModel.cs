@@ -70,6 +70,8 @@ namespace suntvaccinat.ViewModels.Client
                         {
                             await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Certificate);
                             Preferences.Set(Helpers.Constants.GreenPass, true);
+                            var result = await Services.ValidationCertificate.DecodeVerifyGreenPass(Certificate);
+                            int i = 0;
 
                             await Application.Current.MainPage.Navigation.PopAsync();
                         }else

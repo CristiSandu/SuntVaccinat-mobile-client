@@ -32,9 +32,11 @@ namespace suntvaccinat.ViewModels.Client
             {
                 if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
                 {
+
                     await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Certificate);
                     Preferences.Set(Helpers.Constants.GreenPass, true);
-
+                    var result = await Services.ValidationCertificate.DecodeGreenPass(Certificate);
+                    int i = 0;
                     await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "Certificate saved", "Ok");
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }else

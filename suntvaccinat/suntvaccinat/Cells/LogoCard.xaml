@@ -7,8 +7,8 @@
             <Image VerticalOptions="Center" 
                    Source="{AppThemeBinding Light=logo_light.png, Dark=logo_dark.png}" 
                    HeightRequest="73" WidthRequest="73" />
-            <Label Text="powered by suntvaccinat.ro" 
-                   FontAttributes="Italic" 
+            <Label Text="powered by suntvaccinat.ro"
+                   FontAttributes="Italic"
                    HorizontalOptions="Center"
                    VerticalOptions="EndAndExpand"/>
         </StackLayout>

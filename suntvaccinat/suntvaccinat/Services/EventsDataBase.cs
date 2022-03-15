@@ -27,6 +27,28 @@ namespace suntvaccinat.Services
 
             await db.CreateTableAsync<EventModel>();
             await db.CreateTableAsync<ParticipantModel>();
+            await db.CreateTableAsync<User>();
+        }
+
+        public async Task AddUser(User user)
+        {
+            await Init();
+            var users = await db.Table<User>().ToListAsync();
+
+            if (users.Count == 0)
+                await db.InsertAsync(user);
+        }
+
+        public async Task<User> GetUser()
+        {
+            var users =await db.Table<User>().ToListAsync();
+            return users.Count > 0 ? users[0] : new User();
+        }
+
+        public async Task<bool> RemoveUser(User user)
+        {
+            var number = await db.DeleteAsync<EventModel>(user.Id);
+            return number > 0;
         }
 
         public async Task AddEvent(string name, DateTime date)

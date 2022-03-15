@@ -59,6 +59,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DgcReader">
+      <Version>2.5.3</Version>
+    </PackageReference>
     <PackageReference Include="GemBox.Pdf">
       <Version>17.0.1104</Version>
     </PackageReference>
@@ -87,6 +90,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="UniqueIdAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
