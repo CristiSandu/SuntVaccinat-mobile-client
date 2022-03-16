@@ -21,5 +21,15 @@ namespace suntvaccinat.Views.Client
             //string deviceIdentifier = DependencyService.Get<IDevice>().GetIdentifier();
             //TestIMEI.Text = deviceIdentifier;
         }
+
+        private void GreenPassButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace suntvaccinat.Views.Client
         private async void GreenPass_Flow_Clicked(object sender, EventArgs e)
         {
             if (Preferences.Get(Helpers.Constants.GreenPass, false))
-                await Navigation.PushAsync(new ShowCertificatePage { BindingContext = new ViewModels.Client.ShowGreenPassViewModel() });
+                await Navigation.PushAsync(new ProfilePage());
             else
                 await Navigation.PushAsync(new EnterGreenPassPage());
         }

@@ -41,6 +41,7 @@ namespace suntvaccinat.Services
 
         public async Task<User> GetUser()
         {
+            await Init();
             var users =await db.Table<User>().ToListAsync();
             return users.Count > 0 ? users[0] : new User();
         }

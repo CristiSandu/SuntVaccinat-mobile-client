@@ -7,6 +7,8 @@ namespace suntvaccinat.Helpers
     public static class DataBaseQuerys
     {
         public static string GetEventsOrderByDate = $"SELECT * FROM EventModel ORDER BY Date";
+        public static string GetUserQuery = $"SELECT * FROM User LIMIT 1;";
+
 
         public static string GetEventsQuery(int id)
         {

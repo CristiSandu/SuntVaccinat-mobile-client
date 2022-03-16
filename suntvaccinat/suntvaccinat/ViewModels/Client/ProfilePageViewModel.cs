@@ -29,6 +29,7 @@ namespace suntvaccinat.ViewModels.Client
         public ProfilePageViewModel()
         {
             _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+            GetCertificatesAsync();
 
             ShowCertCommand = new Command<string>((elem) =>
            {
@@ -42,7 +43,7 @@ namespace suntvaccinat.ViewModels.Client
                    }
                    else
                    {
-                       SelectedCertificate = INSPCertificate;
+                       SelectedCertificate = "--";
                        SelectedCertLabel = " INSP ";
                    }
                }
@@ -53,10 +54,15 @@ namespace suntvaccinat.ViewModels.Client
            });
         }
 
-        public async Task GetCertificatesAsync()
+        public async void GetCertificatesAsync()
         {
             GPCertificate = await SecureStorage.GetAsync(Helpers.Constants.GreenPass);
             INSPCertificate = await SecureStorage.GetAsync(Helpers.Constants.INSPPref);
+
+            if (INSPCertificate == null)
+            {
+                INSPCertificate = "--";
+            }
 
             var device = DeviceInfo.Model;
             var manufacturer = DeviceInfo.Manufacturer;
@@ -64,6 +70,7 @@ namespace suntvaccinat.ViewModels.Client
 
             User = await _eventsDataBase.GetUser();
 
+            OnPropertyChanged(nameof(User));
             OnPropertyChanged(nameof(PhoneMode));
             OnPropertyChanged(nameof(GPCertificate));
             OnPropertyChanged(nameof(INSPCertificate));

@@ -26,8 +26,7 @@
                     VerticalOptions="Start"
                     HorizontalOptions="Start"
                     Margin="10,12,12,8"
-                    Clicked="BackButton_Clicked"
-                    />
+                    Clicked="BackButton_Clicked" />
 
             <Label  Style="{StaticResource TitleStyle}"
                     HorizontalOptions="Center"
