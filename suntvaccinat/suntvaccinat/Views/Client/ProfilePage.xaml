@@ -8,7 +8,17 @@
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
              x:DataType="viewmodel:ProfilePageViewModel"
              x:Class="suntvaccinat.Views.Client.ProfilePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Remove User"
+                     Order="Secondary" />
+        <ToolbarItem Text="Remove Green Pass"
+                     Order="Secondary" />
+        <ToolbarItem Text="Remove INSP"
+                     Order="Secondary" />
+
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -20,7 +30,7 @@
 
             <Grid Grid.RowSpan="2"
                   ColumnSpacing="20"
-                  Padding="20">
+                  Padding="20,0,20,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height=".2*" />
@@ -52,6 +62,7 @@
                     <Label Text="Bine ati revenit, "
                            Grid.ColumnSpan="2"
                            FontSize="32"
+                           Padding="0,-10,0,0"
                            TextColor="{StaticResource White}"
                            Style="{StaticResource TitleStyle}" />
 
@@ -148,18 +159,9 @@
                                 Text="{Binding User.Initials}"
                                 HorizontalOptions="End"
                                 VerticalOptions="StartAndExpand"
-                                TextColor="{StaticResource White}"
                                 BorderColor="Thistle"
                                 Size="96"
                                 FontAttributes="Bold" />
-
-                <BoxView Grid.Column="0"
-                         Grid.Row="2"
-                         HeightRequest="180"
-                         CornerRadius="10"
-                         WidthRequest="180"
-                         BackgroundColor="White" />
-
 
                 <zxing:ZXingBarcodeImageView x:Name="QRCode"
                                              Grid.Row="2"
@@ -172,13 +174,17 @@
                                                      Width="400" />
                     </zxing:ZXingBarcodeImageView.BarcodeOptions>
                 </zxing:ZXingBarcodeImageView>
-                <Label Text="Green Pass"
-                       TextColor="{StaticResource OrangePeel}"
-                       VerticalOptions="End"
+
+                <Frame Padding="4,0,4,4"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       FontSize="Large"
-                       FontAttributes="Bold"
-                       Grid.Row="2" />
+                       BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DarkBackgroudColor}}"
+                       CornerRadius="5">
+                    <Label Text="Green Pass"
+                           TextColor="{StaticResource MellowApricot}"
+                           Style="{StaticResource TitleStyle}" />
+                </Frame>
 
                 <Button Grid.Column="0"
                         x:Name="GreenPassButton"
@@ -194,12 +200,6 @@
                         CornerRadius="10"
                         BackgroundColor="Transparent" />
 
-                <BoxView Grid.Column="1"
-                         Grid.Row="2"
-                         HeightRequest="180"
-                         CornerRadius="10"
-                         WidthRequest="180"
-                         BackgroundColor="White" />
 
                 <zxing:ZXingBarcodeImageView Grid.Row="2"
                                              x:Name="QRCode2"
@@ -214,14 +214,17 @@
                     </zxing:ZXingBarcodeImageView.BarcodeOptions>
                 </zxing:ZXingBarcodeImageView>
 
-                <Label Text="INSP"
-                       TextColor="{StaticResource OrangePeel}"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"
-                       FontSize="Large"
-                       FontAttributes="Bold"
+                <Frame Padding="2"
                        Grid.Row="2"
-                       Grid.Column="1" />
+                       Grid.Column="1"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DarkBackgroudColor}}"
+                       CornerRadius="5">
+                    <Label Text=" INSP "
+                           TextColor="{StaticResource MellowApricot}"
+                           Style="{StaticResource TitleStyle}" />
+                </Frame>
 
                 <Button Grid.Column="1"
                         Grid.Row="2"
@@ -243,6 +246,7 @@
                       Grid.ColumnSpan="2">
 
                     <zxing:ZXingBarcodeImageView BarcodeValue="{Binding SelectedCertificate}"
+                                                 x:Name="MainCodeQR"
                                                  BackgroundColor="Transparent"
                                                  WidthRequest="390"
                                                  HeightRequest="390">
@@ -258,6 +262,7 @@
                             BackgroundColor="Transparent" />
 
                     <Frame Padding="0"
+                           x:Name="TopLabel"
                            VerticalOptions="Start"
                            HorizontalOptions="Center"
                            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundWhite}, Dark={StaticResource DarkBackgroudColor}}"
@@ -265,11 +270,12 @@
                         <Label Text="{Binding SelectedCertLabel}"
                                HorizontalOptions="Center"
                                TextColor="{StaticResource MellowApricot}"
+                               FontSize="32"
                                Style="{StaticResource TitleStyle}"
                                VerticalOptions="Start" />
                     </Frame>
 
-                  
+
                 </Grid>
 
                 <cells:LogoCard Grid.Row="4"

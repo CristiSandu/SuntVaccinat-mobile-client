@@ -22,9 +22,12 @@ namespace suntvaccinat.Views.Client
             //TestIMEI.Text = deviceIdentifier;
         }
 
-        private void GreenPassButton_Clicked(object sender, EventArgs e)
+        private async void GreenPassButton_Clicked(object sender, EventArgs e)
         {
-
+            await TopLabel.TranslateTo(0, 0, 0, Easing.Linear);
+            await MainCodeQR.ScaleTo(1, 250, Easing.CubicOut);
+            await MainCodeQR.ScaleTo(1.05,250,Easing.CubicOut);
+            await TopLabel.TranslateTo(0,-20,250, Easing.Linear);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

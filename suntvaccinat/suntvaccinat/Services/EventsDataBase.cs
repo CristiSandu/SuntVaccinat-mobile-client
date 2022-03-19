@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-[assembly:Dependency(typeof(EventsDataBase))]
+[assembly: Dependency(typeof(EventsDataBase))]
 namespace suntvaccinat.Services
 {
     public class EventsDataBase : IEventsDataBase
@@ -42,7 +42,7 @@ namespace suntvaccinat.Services
         public async Task<User> GetUser()
         {
             await Init();
-            var users =await db.Table<User>().ToListAsync();
+            var users = await db.Table<User>().ToListAsync();
             return users.Count > 0 ? users[0] : new User();
         }
 
