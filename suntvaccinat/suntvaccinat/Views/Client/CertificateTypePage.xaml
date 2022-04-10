@@ -83,7 +83,7 @@
                          VerticalOptions="Center"
                          Margin="0,0,16,0" />
 
-                <Button x:Name="OrganiserBtn"
+                <Button x:Name="INSPBtn"
                         Grid.Row="2"
                         Grid.ColumnSpan="3"
                         Text="Ministerul Sanataii PDF"
@@ -91,6 +91,7 @@
                         FontAttributes="Bold"
                         FontSize="Large"
                         HeightRequest="56"
+                        Clicked="INSPBtn_Clicked"
                         Style="{StaticResource Button2FirstPageStyle}"
                         VerticalOptions="Center"
                         CornerRadius="10" />

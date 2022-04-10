@@ -30,5 +30,13 @@ namespace suntvaccinat.Views.Client
         {
             await Navigation.PopAsync();
         }
+
+        private async void INSPBtn_Clicked(object sender, EventArgs e)
+        {
+            if (Preferences.Get(Helpers.Constants.INSPPref, false))
+                await Navigation.PushAsync(new ProfilePage());
+            else
+                await Navigation.PushAsync(new EnterGreenPassPage());
+        }
     }
 }

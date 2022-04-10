@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="suntvaccinat.Views.Client.INSP.GetINSPCertificatePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <WebView x:Name="SiteINSP"
+                     Source="https://ocw.cs.pub.ro/courses/pm"
+                     WidthRequest="400"
+                     HeightRequest="1000"
+                     android:WebView.EnableZoomControls="true"
+                     android:WebView.DisplayZoomControls="False"
+                     Navigating="SiteINSP_Navigating" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
