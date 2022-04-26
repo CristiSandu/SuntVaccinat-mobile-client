@@ -1,4 +1,5 @@
-﻿using System;
+﻿using suntvaccinat.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -25,21 +26,39 @@ namespace suntvaccinat.ViewModels.Client
         }
 
         public ICommand SaveCertificateCommand { get; set; }
+        public Services.IDevice _getDeviceInfo;
+        public Services.IEventsDataBase _database;
+        public Services.IValidationServiceAPI _validationServiceApi;
+
+        private bool _used = false;
 
         public EnterCodeViewModel()
         {
+            _getDeviceInfo = DependencyService.Get<Services.IDevice>();
+            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
+
             SaveCertificateCommand = new Command(async () =>
             {
+                if (_used)
+                    return;
                 if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
                 {
+                    _used = true;
 
-                    await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Certificate);
+                    var phoneId = _getDeviceInfo.GetIdentifier();
+                    User user = await _database.GetUser();
+
+                    var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
+                    var responsTest = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
+
+                    await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
                     Preferences.Set(Helpers.Constants.GreenPass, true);
-                    var result = await Services.ValidationCertificate.DecodeGreenPass(Certificate);
-                    int i = 0;
+
                     await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "Certificate saved", "Ok");
                     await Application.Current.MainPage.Navigation.PopAsync();
-                }else
+                }
+                else
                 {
                     await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
                 }

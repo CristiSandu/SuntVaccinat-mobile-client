@@ -78,7 +78,6 @@ namespace suntvaccinat.ViewModels.Client
                         if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
                         {
                             _used = true;
-                            var result = await Services.ValidationCertificate.DecodeGreenPass(Certificate);
                             var phoneId = _getDeviceInfo.GetIdentifier();
                             User user = await _database.GetUser();
                             
@@ -106,7 +105,6 @@ namespace suntvaccinat.ViewModels.Client
             _getDeviceInfo = DependencyService.Get<Services.IDevice>();
             _database = DependencyService.Get<Services.IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
-
         }
     }
 }
