@@ -21,6 +21,9 @@ namespace suntvaccinat.ViewModels.Client
 
         Services.IEventsDataBase _eventsDataBase;
 
+        Services.IValidationServiceAPI _validationServiceApi;
+
+
         public ICommand ShowCertCommand { get; set; }
 
         public string SelectedCertLabel { get; set; }
@@ -29,6 +32,9 @@ namespace suntvaccinat.ViewModels.Client
         public ProfilePageViewModel()
         {
             _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+
+            _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
+
             GetCertificatesAsync();
 
             ShowCertCommand = new Command<string>((elem) =>
@@ -69,6 +75,9 @@ namespace suntvaccinat.ViewModels.Client
             PhoneMode = $"{manufacturer} - {device}";
 
             User = await _eventsDataBase.GetUser();
+
+           var responsTest = await _validationServiceApi.ApiValidationGetAsync("112-54358");
+           
 
             OnPropertyChanged(nameof(User));
             OnPropertyChanged(nameof(PhoneMode));

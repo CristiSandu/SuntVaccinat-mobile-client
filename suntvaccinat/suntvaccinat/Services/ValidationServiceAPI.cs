@@ -113,6 +113,15 @@ namespace suntvaccinat.Services
         private System.Net.Http.HttpClient _httpClient;
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
+        public ValidationServiceAPI()
+        {
+            _httpClient = new System.Net.Http.HttpClient
+            {
+                BaseAddress = new System.Uri("https://validation-server20220327180626.azurewebsites.net")
+            };
+            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
+        }
+
         public ValidationServiceAPI(System.Net.Http.HttpClient httpClient)
         {
             _httpClient = httpClient;
