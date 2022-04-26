@@ -20,9 +20,7 @@ namespace suntvaccinat.ViewModels.Client
         public string SelectedCertificate { get; set; }
 
         Services.IEventsDataBase _eventsDataBase;
-
         Services.IValidationServiceAPI _validationServiceApi;
-
 
         public ICommand ShowCertCommand { get; set; }
 
@@ -75,9 +73,6 @@ namespace suntvaccinat.ViewModels.Client
             PhoneMode = $"{manufacturer} - {device}";
 
             User = await _eventsDataBase.GetUser();
-
-           var responsTest = await _validationServiceApi.ApiValidationGetAsync("112-54358");
-           
 
             OnPropertyChanged(nameof(User));
             OnPropertyChanged(nameof(PhoneMode));
