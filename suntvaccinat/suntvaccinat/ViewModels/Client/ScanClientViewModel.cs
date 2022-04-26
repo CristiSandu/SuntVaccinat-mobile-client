@@ -80,9 +80,19 @@ namespace suntvaccinat.ViewModels.Client
                             _used = true;
                             var phoneId = _getDeviceInfo.GetIdentifier();
                             User user = await _database.GetUser();
-                            
+
                             var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
-                            var responsTest = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
+                            var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistCertificateAsync(valModelRespons);
+
+                            bool responsPost;
+
+                            if (checkCertificate)
+                            {
+                                await App.Current.MainPage.DisplayAlert("Duplicate Found", "This certificate is use with another phone", "OK");
+                                return;
+                            }
+
+                            responsPost = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
 
                             await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
                             Preferences.Set(Helpers.Constants.GreenPass, true);
