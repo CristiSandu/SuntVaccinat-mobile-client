@@ -1,4 +1,5 @@
-﻿using System;
+﻿using suntvaccinat.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -54,6 +55,11 @@ namespace suntvaccinat.ViewModels.Client
         }
         public Result Result { get; set; }
 
+        Services.IDevice _getDeviceInfo;
+        Services.IEventsDataBase _database;
+        Services.IValidationServiceAPI _validationServiceApi;
+
+        private bool _used = false;
         public ICommand ScanCommand
         {
             get
@@ -66,15 +72,25 @@ namespace suntvaccinat.ViewModels.Client
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         Certificate = Result.Text;
+                        if (_used)
+                            return;
+
                         if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
                         {
-                            await SecureStorage.SetAsync(Helpers.Constants.GreenPass, Certificate);
+                            _used = true;
+                            var result = await Services.ValidationCertificate.DecodeGreenPass(Certificate);
+                            var phoneId = _getDeviceInfo.GetIdentifier();
+                            User user = await _database.GetUser();
+                            
+                            var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
+                            var responsTest = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
+
+                            await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
                             Preferences.Set(Helpers.Constants.GreenPass, true);
-                            var result = await Services.ValidationCertificate.DecodeVerifyGreenPass(Certificate);
-                            int i = 0;
 
                             await Application.Current.MainPage.Navigation.PopAsync();
-                        }else
+                        }
+                        else
                         {
                             await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
                         }
@@ -87,6 +103,9 @@ namespace suntvaccinat.ViewModels.Client
         }
         public ScanClientViewModel()
         {
+            _getDeviceInfo = DependencyService.Get<Services.IDevice>();
+            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
 
         }
     }
