@@ -27,6 +27,7 @@ namespace suntvaccinat.Services
 
             await db.CreateTableAsync<EventModel>();
             await db.CreateTableAsync<ParticipantModel>();
+            await db.CreateTableAsync<StatsModel>();
             await db.CreateTableAsync<User>();
         }
 
@@ -114,6 +115,28 @@ namespace suntvaccinat.Services
             else
                 return false;
         }
+        public async Task AddStatForEvent(int id_event)
+        {
+            await Init();
 
+            var subs = new StatsModel
+            {
+                Id_Event = id_event,
+            };
+
+            await db.InsertAsync(subs);
+        }
+        public async Task UpdateStatForEvent(StatsModel stat)
+        {
+            await Init();
+            await db.UpdateAsync(stat);
+        }
+
+        public async Task<StatsModel> GetStatByEventId(int id_event)
+        {
+            await Init();
+            var parts = await db.QueryAsync<StatsModel>(Helpers.DataBaseQuerys.GetStatsForAEventQuery(id_event));
+            return parts.Count == 0 ? new StatsModel { Id_Event = -1} : parts[0];
+        }
     }
 }

@@ -20,6 +20,11 @@ namespace suntvaccinat.Helpers
             return $"SELECT * FROM ParticipantModel WHERE id_event={id}";
         }
 
+        public static string GetStatsForAEventQuery(int id)
+        {
+            return $"SELECT * FROM StatsModel WHERE Id_Event={id}";
+        }
+
         public static string DeleteEventQuery(int id)
         {
             return $"DELETE FROM ParticipantModel WHERE id_event={id}";

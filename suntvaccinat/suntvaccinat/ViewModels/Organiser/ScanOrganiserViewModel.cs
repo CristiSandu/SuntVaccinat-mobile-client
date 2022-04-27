@@ -58,7 +58,8 @@ namespace suntvaccinat.ViewModels.Organiser
         Services.IDevice _getDeviceInfo;
         Services.IEventsDataBase _database;
         Services.IValidationServiceAPI _validationServiceApi;
-
+        Services.IStatsService _statsService;
+        
         private bool _used = false;
         public ICommand ScanCommand
         {
@@ -99,6 +100,7 @@ namespace suntvaccinat.ViewModels.Organiser
                                 return;
                             }
 
+                            await _statsService.AddNewUserToStat(decodedValue.Dgc.DateOfBirth, EventId);
                             await _database.AddUserToEvent(new ParticipantModel
                             {
                                 Name = $"{ decodedValue.Dgc.Name.FamilyName}-{decodedValue.Dgc.Name.GivenName}:{decodedValue.Dgc.DateOfBirth}",
@@ -120,6 +122,7 @@ namespace suntvaccinat.ViewModels.Organiser
         {
             EventId = _idEv;
             _getDeviceInfo = DependencyService.Get<Services.IDevice>();
+            _statsService = DependencyService.Get<Services.IStatsService>();
             _database = DependencyService.Get<Services.IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
         }

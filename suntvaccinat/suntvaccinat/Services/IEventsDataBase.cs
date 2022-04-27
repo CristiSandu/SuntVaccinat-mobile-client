@@ -17,5 +17,8 @@ namespace suntvaccinat.Services
         Task<IEnumerable<EventModel>> GetEvents(string querie);
         Task<IEnumerable<ParticipantModel>> GetPartPerEvent(string querie);
         Task RemoveEvent(int id);
+        Task AddStatForEvent(int id_event);
+        Task UpdateStatForEvent(StatsModel stat);
+        Task<StatsModel> GetStatByEventId(int id_event);
     }
 }
