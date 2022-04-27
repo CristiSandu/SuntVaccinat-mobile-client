@@ -45,6 +45,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Organiser\PersonsEventList.xaml.cs">
+      <DependentUpon>PersonsEventList.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Cells\LogoCard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -66,7 +72,7 @@
     <EmbeddedResource Update="Views\Organiser\EventsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Organiser\PersonEventList.xaml">
+    <EmbeddedResource Update="Views\Organiser\PersonsEventList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ScanPage.xaml">

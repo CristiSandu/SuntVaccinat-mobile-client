@@ -100,7 +100,7 @@ namespace suntvaccinat.Services
             return valModel;
         }
 
-        public async static Task<ValidationModel> GetValueToCheckWithServer(SignedDgc decodedValue, string phoneId)
+        public static ValidationModel GetValueToCheckWithServer(SignedDgc decodedValue, string phoneId)
         {
             ValidationModel valModel = new ValidationModel();
 

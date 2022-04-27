@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fa="clr-namespace:FontAwesome"
-             x:Class="suntvaccinat.Views.Organiser.PersonEventList"
+             x:Class="suntvaccinat.Views.Organiser.PersonsEventList"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -14,22 +14,24 @@
                              Padding="0,0,0,0"
                              HeightRequest="32"
                              Spacing="16">
-                    <Button x:Name="buttonBack"
+                    <Button x:Name="ButtonBack"
                             Style="{StaticResource BackButtonStyle}"
-                            Clicked="buttonBack_Clicked" />
-                    <Label x:Name="eventName"
+                            Clicked="ButtonBack_Clicked" />
+                    <Label x:Name="EventName"
                            Style="{StaticResource TitleStyle}"
+                           Text="{Binding Event.Name}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Center" />
-                    <Button x:Name="buttonAddPerson"
+                    <Button x:Name="ButtonAddPerson"
                             Text="plus"
+                            IsVisible="{Binding Event.IsNoEnded}"
                             Style="{StaticResource BackButtonStyle}"
-                            Clicked="buttonAddPerson_Clicked" />
+                            Clicked="ButtonAddPerson_Clicked" />
                 </StackLayout>
             </Frame>
             <CollectionView x:Name="eventsPersonsList"
                             SelectionMode="Single"
-                            SelectionChanged="eventsPersonsList_SelectionChanged">
+                            ItemsSource="{Binding ParticipantsList}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="1"
@@ -68,18 +70,20 @@
                                 VerticalOptions="Center"
                                 Text="{x:Static fa:FontAwesomeIcons.TimesCircle}"
                                 TextColor="Red"
+                                IsVisible="{Binding Event.IsNoEnded}"
                                 HeightRequest="60"
                                 WidthRequest="60"
                                 FontSize="40"
                                 Padding="8"
                                 BackgroundColor="Transparent"
                                 FontFamily="FAR"
-                                Clicked="closeEvent_Clicked" />
+                                Command="{Binding CloseEvent}" />
                     </StackLayout>
                 </CollectionView.Footer>
 
                 <CollectionView.EmptyView>
-                    <ContentView x:Name="emptyFrame">
+                    <ContentView x:Name="emptyFrame"
+                                 IsVisible="{Binding Event.IsNoEnded}">
                         <StackLayout HorizontalOptions="CenterAndExpand"
                                      VerticalOptions="CenterAndExpand">
                             <StackLayout Orientation="Horizontal"

@@ -80,17 +80,18 @@ namespace suntvaccinat.ViewModels.Organiser
                         if (_used)
                             return;
 
-                        if (elements.Length == 0)
+                        if (elements.Length == 1)
                         {
                             await App.Current.MainPage.DisplayAlert("Error", "Invalid Certificate format", "OK");
+                            await App.Current.MainPage.Navigation.PopAsync();
                             return;
                         }
 
-                        if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
+                        if (!string.IsNullOrEmpty(certificate) && certificate.StartsWith("HC1:"))
                         {
                             _used = true;
                             var decodedValue = await Services.ValidationCertificate.DecodeGreenPass(certificate);
-                            var valModelRespons = await Services.ValidationCertificate.GetValueToCheckWithServer(decodedValue, phoneId);
+                            var valModelRespons = Services.ValidationCertificate.GetValueToCheckWithServer(decodedValue, phoneId);
                             var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistDocumentsAsync(valModelRespons.DocumentId);
                             if (!checkCertificate)
                             {

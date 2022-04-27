@@ -30,7 +30,7 @@ namespace suntvaccinat.Views.Organiser
             EventModel ev = e.CurrentSelection.FirstOrDefault() as EventModel;
             if (e.CurrentSelection != null)
             {
-                await Navigation.PushAsync(new PersonEventList(ev.Name, ev.id_event));
+                await Navigation.PushAsync(new PersonsEventList(ev.Name, ev.id_event));
             }
 
             ((CollectionView)sender).SelectedItem = null;
