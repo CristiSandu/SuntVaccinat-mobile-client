@@ -65,6 +65,9 @@
     <PackageReference Include="GemBox.Pdf">
       <Version>17.0.1104</Version>
     </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.9.5.9</Version>
+    </PackageReference>
     <PackageReference Include="Resizetizer.NT">
       <Version>0.3.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

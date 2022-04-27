@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fa="clr-namespace:FontAwesome"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="suntvaccinat.Views.Organiser.PersonsEventList"
              NavigationPage.HasNavigationBar="False">
 
@@ -29,127 +30,145 @@
                             Clicked="ButtonAddPerson_Clicked" />
                 </StackLayout>
             </Frame>
-            <CollectionView x:Name="eventsPersonsList"
-                            SelectionMode="Single"
-                            ItemsSource="{Binding ParticipantsList}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
-                                     Span="1"
-                                     HorizontalItemSpacing="7"
-                                     VerticalItemSpacing="7" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="Tan"
-                               CornerRadius="5"
-                               Padding="10">
-                            <Grid VerticalOptions="FillAndExpand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}"
-                                       Grid.Row="0"
-                                       Grid.Column="0"
-                                       HorizontalOptions="Start" />
+            <Grid>
+                <CollectionView x:Name="eventsPersonsList"
+                                SelectionMode="Single"
+                                ItemsSource="{Binding ParticipantsList}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="1"
+                                         HorizontalItemSpacing="7"
+                                         VerticalItemSpacing="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Tan"
+                                   CornerRadius="5"
+                                   Padding="10">
+                                <Grid VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}"
+                                           Grid.Row="0"
+                                           Grid.Column="0"
+                                           HorizontalOptions="Start" />
 
-                                <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
-                                       Grid.Column="1"
-                                       Grid.RowSpan="2"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center" />
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.Footer>
-                    <StackLayout HorizontalOptions="Center"
-                                 VerticalOptions="Center">
-                        <Button x:Name="closeEvent"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Text="{x:Static fa:FontAwesomeIcons.TimesCircle}"
-                                TextColor="Red"
-                                IsVisible="{Binding Event.IsNoEnded}"
-                                HeightRequest="60"
-                                WidthRequest="60"
-                                FontSize="40"
-                                Padding="8"
-                                BackgroundColor="Transparent"
-                                FontFamily="FAR"
-                                Command="{Binding CloseEvent}" />
-                    </StackLayout>
-                </CollectionView.Footer>
+                                    <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"
+                                           Grid.Column="1"
+                                           Grid.RowSpan="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-                <CollectionView.EmptyView>
-                    <ContentView x:Name="emptyFrame"
-                                 IsVisible="{Binding Event.IsNoEnded}">
-                        <StackLayout HorizontalOptions="CenterAndExpand"
-                                     VerticalOptions="CenterAndExpand">
-                            <StackLayout Orientation="Horizontal"
-                                         Spacing="0"
-                                         HorizontalOptions="Center"
-                                         VerticalOptions="Center">
+                    <CollectionView.EmptyView>
+                        <ContentView x:Name="emptyFrame"
+                                     IsVisible="{Binding Event.IsNoEnded}">
+                            <StackLayout HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand">
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="0"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
 
-                                <Label Text="Apasati pe"
-                                       Margin="10,25,10,10"
+                                    <Label Text="Apasati pe"
+                                           Margin="10,25,10,10"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           HorizontalOptions="Fill"
+                                           HorizontalTextAlignment="Center" />
+
+                                    <Label Text="{x:Static fa:FontAwesomeIcons.Plus}"
+                                           TextColor="{StaticResource DefaultTextColor}"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                           FontFamily="FAS"
+                                           Margin="10,25,10,10"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           HorizontalOptions="Fill"
+                                           HorizontalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <Label Text="Pentru a adauga un participant la event "
                                        FontAttributes="Bold"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
                                        HorizontalTextAlignment="Center" />
 
-                                <Label Text="{x:Static fa:FontAwesomeIcons.Plus}"
-                                       TextColor="{StaticResource DefaultTextColor}"
-                                       HeightRequest="20"
-                                       WidthRequest="20"
-                                       FontFamily="FAS"
-                                       Margin="10,25,10,10"
-                                       FontAttributes="Bold"
-                                       FontSize="24"
-                                       HorizontalOptions="Fill"
-                                       HorizontalTextAlignment="Center" />
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="0"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
 
-                            </StackLayout>
-                            <Label Text="Pentru a adauga un participant la event "
-                                   FontAttributes="Bold"
-                                   FontSize="18"
-                                   HorizontalOptions="Fill"
-                                   HorizontalTextAlignment="Center" />
+                                    <Label Text="Sau pe"
+                                           Margin="10,25,10,10"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           HorizontalOptions="Fill"
+                                           HorizontalTextAlignment="Center" />
 
-                            <StackLayout Orientation="Horizontal"
-                                         Spacing="0"
-                                         HorizontalOptions="Center"
-                                         VerticalOptions="Center">
+                                    <Label Text="{x:Static fa:FontAwesomeIcons.TimesCircle}"
+                                           TextColor="Red"
+                                           HeightRequest="30"
+                                           WidthRequest="30"
+                                           FontFamily="FAR"
+                                           Margin="10,25,10,10"
+                                           FontAttributes="Bold"
+                                           FontSize="24"
+                                           HorizontalOptions="Fill"
+                                           HorizontalTextAlignment="Center" />
 
-                                <Label Text="Sau pe"
-                                       Margin="10,25,10,10"
+                                </StackLayout>
+                                <Label Text="Pentru a inchide evenimentul"
                                        FontAttributes="Bold"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
                                        HorizontalTextAlignment="Center" />
 
-                                <Label Text="{x:Static fa:FontAwesomeIcons.TimesCircle}"
-                                       TextColor="Red"
-                                       HeightRequest="30"
-                                       WidthRequest="30"
-                                       FontFamily="FAR"
-                                       Margin="10,25,10,10"
-                                       FontAttributes="Bold"
-                                       FontSize="24"
-                                       HorizontalOptions="Fill"
-                                       HorizontalTextAlignment="Center" />
-
                             </StackLayout>
-                            <Label Text="Pentru a inchide evenimentul"
-                                   FontAttributes="Bold"
-                                   FontSize="18"
-                                   HorizontalOptions="Fill"
-                                   HorizontalTextAlignment="Center" />
+                        </ContentView>
+                    </CollectionView.EmptyView>
 
-                        </StackLayout>
-                    </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                    <CollectionView.Header>
+                        <ContentView HeightRequest="{Binding HeightFooter}"
+                                     IsVisible="{Binding IsChartVisible}">
+                            <StackLayout VerticalOptions="Center">
+                                <Frame Style="{StaticResource FormFrame}"
+                                       Padding="4">
+                                    <microcharts:ChartView x:Name="chartView"
+                                                           HeightRequest="250"
+                                                           WidthRequest="350"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           Chart="{Binding Chart}" />
+                                </Frame>
+                            </StackLayout>
+                        </ContentView>
+                    </CollectionView.Header>
+
+                </CollectionView>
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="End">
+                    <Button x:Name="closeEvent"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="{x:Static fa:FontAwesomeIcons.TimesCircle}"
+                            TextColor="Red"
+                            IsVisible="{Binding Event.IsNoEnded}"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            FontSize="40"
+                            Padding="8"
+                            BackgroundColor="Transparent"
+                            FontFamily="FAR"
+                            Command="{Binding CloseEvent}" />
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using suntvaccinat.Models;
+﻿using Microcharts;
+using suntvaccinat.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,17 +17,25 @@ namespace suntvaccinat.ViewModels.Organiser
         
         public int EventId { get; set; }
         
+        public bool IsChartVisible { get; set; }
+        public int HeightFooter { get; set; }
+
+
         public EventModel Event { get; set; }
         
         Services.IEventsDataBase _eventsDataBase;
-        public ICommand CloseEvent { get; set; }
+        Services.IStatsService _statService;
 
+        public ICommand CloseEvent { get; set; }
+        public Chart Chart { get; set; }
 
         public PersonsEventListViewModel(string eventName, int eventId)
         {
             EventName = eventName;
             EventId = eventId;
             _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+            _statService= DependencyService.Get<Services.IStatsService>();
+
             CloseEvent = new Command(async model =>
             {
                 await _eventsDataBase.CloseAEvent(EventId);
@@ -37,11 +46,25 @@ namespace suntvaccinat.ViewModels.Organiser
         public async void GetPersons()
         {
             Event = await _eventsDataBase.GetEvByID(EventId);
+            IsChartVisible = !Event.IsNoEnded;
+
+            if (IsChartVisible)
+            {
+                Chart = await _statService.GenerateStatsForEvent(EventId);
+                HeightFooter = 270;
+                OnPropertyChanged(nameof(Chart));
+            }else
+            {
+                HeightFooter = 0;
+            }
+
+            OnPropertyChanged(nameof(HeightFooter));
             OnPropertyChanged(nameof(Event));
+            OnPropertyChanged(nameof(IsChartVisible));
+
             var users =  await _eventsDataBase.GetPartPerEvent(Helpers.DataBaseQuerys.GetParticipantsQuery(EventId));
             ParticipantsList = new ObservableCollection<ParticipantModel>(users);
             OnPropertyChanged(nameof(ParticipantsList));
-
         }
     }
 }
