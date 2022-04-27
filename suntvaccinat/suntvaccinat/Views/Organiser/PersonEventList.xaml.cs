@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.ViewModels.Organiser;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -61,7 +62,7 @@ namespace suntvaccinat.Views.Organiser
 
         private async void buttonAddPerson_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new ScanPage { BindingContext = new ScanOrganiserViewModel(_idEv) });
         }
 
         private async void closeEvent_Clicked(object sender, EventArgs e)

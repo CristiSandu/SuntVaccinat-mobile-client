@@ -100,6 +100,50 @@ namespace suntvaccinat.Services
             return valModel;
         }
 
+        public async static Task<ValidationModel> GetValueToCheckWithServer(SignedDgc decodedValue, string phoneId)
+        {
+            ValidationModel valModel = new ValidationModel();
+
+            DateTimeOffset longest = DateTimeOffset.MinValue;
+
+            TestEntry maxTimeOffestTests = null;
+            RecoveryEntry maxTimeOffestRecoveries = null;
+            VaccinationEntry maxTimeOffestVaccinations = null;
+            string certificateId = string.Empty;
+
+            if (decodedValue.Dgc.Recoveries.Any())
+            {
+                maxTimeOffestRecoveries = decodedValue.Dgc.Recoveries.Last();
+                longest = maxTimeOffestRecoveries.ValidUntil;
+                certificateId = maxTimeOffestRecoveries.CertificateIdentifier;
+            }
+            else if (decodedValue.Dgc.Tests.Any())
+            {
+                maxTimeOffestTests = decodedValue.Dgc.Tests.Last();
+                var timeOffsetLocal = maxTimeOffestTests.SampleCollectionDate.AddDays(30);
+                if (timeOffsetLocal > longest)
+                {
+                    longest = timeOffsetLocal;
+                    certificateId = maxTimeOffestTests.CertificateIdentifier;
+                }
+            }
+            else if (decodedValue.Dgc.Vaccinations.Any())
+            {
+                maxTimeOffestVaccinations = decodedValue.Dgc.Vaccinations.Last();
+                var timeOffsetLocal = maxTimeOffestVaccinations.Date.AddYears(1);
+                if (timeOffsetLocal > longest)
+                {
+                    longest = timeOffsetLocal;
+                    certificateId = maxTimeOffestVaccinations.CertificateIdentifier;
+                }
+            }
+
+            valModel.PhoneId = phoneId;
+            valModel.CertificateId = certificateId;
+
+            return valModel;
+        }
+
         public async static Task<DgcValidationResult> DecodeVerifyGreenPass(string certificate)
         {
             var dgcReader = new DgcReaderService();
