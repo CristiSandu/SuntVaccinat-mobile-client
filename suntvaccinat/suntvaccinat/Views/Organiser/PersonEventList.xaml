@@ -24,8 +24,7 @@
                     <Button x:Name="buttonAddPerson"
                             Text="plus"
                             Style="{StaticResource BackButtonStyle}"
-                            Clicked="buttonAddPerson_Clicked"
-                            />
+                            Clicked="buttonAddPerson_Clicked" />
                 </StackLayout>
             </Frame>
             <CollectionView x:Name="eventsPersonsList"
