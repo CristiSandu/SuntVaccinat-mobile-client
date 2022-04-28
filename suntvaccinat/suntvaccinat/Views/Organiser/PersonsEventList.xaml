@@ -139,7 +139,16 @@
                                      IsVisible="{Binding IsChartVisible}">
                             <StackLayout VerticalOptions="Center">
                                 <Frame Style="{StaticResource FormFrame}"
+                                       BackgroundColor="LightGray"
                                        Padding="4">
+                                    <Frame.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop Color="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}} "
+                                                          Offset="0.1" />
+                                            <GradientStop Color="{StaticResource CadetBlue}"
+                                                          Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
                                     <microcharts:ChartView x:Name="chartView"
                                                            HeightRequest="250"
                                                            WidthRequest="350"

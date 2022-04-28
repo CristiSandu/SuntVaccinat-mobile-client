@@ -67,13 +67,13 @@ namespace suntvaccinat.Services
             VaccinationEntry maxTimeOffestVaccinations = null;
             string certificateId = string.Empty;
 
-            if (decodedValue.Dgc.Recoveries.Any())
+            if (decodedValue.Dgc.Recoveries != null && decodedValue.Dgc.Recoveries.Any())
             {
                 maxTimeOffestRecoveries = decodedValue.Dgc.Recoveries.Last();
                 longest = maxTimeOffestRecoveries.ValidUntil;
                 certificateId = maxTimeOffestRecoveries.CertificateIdentifier;
             }
-            else if (decodedValue.Dgc.Tests.Any())
+            else if (decodedValue.Dgc.Tests != null && decodedValue.Dgc.Tests.Any())
             {
                 maxTimeOffestTests = decodedValue.Dgc.Tests.Last();
                 var timeOffsetLocal = maxTimeOffestTests.SampleCollectionDate.AddDays(30);
@@ -83,7 +83,7 @@ namespace suntvaccinat.Services
                     certificateId = maxTimeOffestTests.CertificateIdentifier;
                 }
             }
-            else if (decodedValue.Dgc.Vaccinations.Any())
+            else if (decodedValue.Dgc.Vaccinations != null && decodedValue.Dgc.Vaccinations.Any())
             {
                 maxTimeOffestVaccinations = decodedValue.Dgc.Vaccinations.Last();
                 var timeOffsetLocal = maxTimeOffestVaccinations.Date.AddYears(1);
@@ -111,13 +111,13 @@ namespace suntvaccinat.Services
             VaccinationEntry maxTimeOffestVaccinations = null;
             string certificateId = string.Empty;
 
-            if (decodedValue.Dgc.Recoveries.Any())
+            if (decodedValue.Dgc.Recoveries != null && decodedValue.Dgc.Recoveries.Any())
             {
                 maxTimeOffestRecoveries = decodedValue.Dgc.Recoveries.Last();
                 longest = maxTimeOffestRecoveries.ValidUntil;
                 certificateId = maxTimeOffestRecoveries.CertificateIdentifier;
             }
-            else if (decodedValue.Dgc.Tests.Any())
+            else if (decodedValue.Dgc.Tests != null && decodedValue.Dgc.Tests.Any())
             {
                 maxTimeOffestTests = decodedValue.Dgc.Tests.Last();
                 var timeOffsetLocal = maxTimeOffestTests.SampleCollectionDate.AddDays(30);
@@ -127,7 +127,7 @@ namespace suntvaccinat.Services
                     certificateId = maxTimeOffestTests.CertificateIdentifier;
                 }
             }
-            else if (decodedValue.Dgc.Vaccinations.Any())
+            else if (decodedValue.Dgc.Vaccinations != null && decodedValue.Dgc.Vaccinations.Any())
             {
                 maxTimeOffestVaccinations = decodedValue.Dgc.Vaccinations.Last();
                 var timeOffsetLocal = maxTimeOffestVaccinations.Date.AddYears(1);

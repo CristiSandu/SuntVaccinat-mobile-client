@@ -70,36 +70,52 @@ namespace suntvaccinat.Services
                 {
                     Label = "0-19",
                     ValueLabel = stat.PersonsUnder19.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
                     Color = SKColor.Parse(color.ToHex())
                 },
                 new Entry(stat.PersonsBetween2029)
                 {
                     Label = "20-29",
                     ValueLabel = stat.PersonsBetween2029.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
+
                     Color = SKColor.Parse(color.ToHex())
                 },
                 new Entry(stat.PersonsBetween3039)
                 {
                     Label = "30-39",
                     ValueLabel = stat.PersonsBetween3039.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
+
                     Color = SKColor.Parse(color.ToHex())
                 },
                 new Entry(stat.PersonsBetween4049)
                 {
                     Label = "40-49",
                     ValueLabel = stat.PersonsBetween4049.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
+
                     Color = SKColor.Parse(color.ToHex())
                 },
                 new Entry(stat.PersonsBetween5059)
                 {
                     Label = "50-59",
                     ValueLabel = stat.PersonsBetween5059.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
+
                     Color = SKColor.Parse(color.ToHex())
                 },
                   new Entry(stat.PersonsGreater60)
                 {
                     Label = "60+",
                     ValueLabel = stat.PersonsGreater60.ToString(),
+                    TextColor = SKColor.Parse(color.ToHex()),
+                    ValueLabelColor = SKColor.Parse(color.ToHex()),
                     Color = SKColor.Parse(color.ToHex())
                 }
             };
