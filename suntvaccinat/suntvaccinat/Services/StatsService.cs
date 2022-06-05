@@ -2,6 +2,7 @@
 using SkiaSharp;
 using suntvaccinat.Models;
 using suntvaccinat.Services;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace suntvaccinat.Services
 
         public StatsService()
         {
-            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _database = DependencyService.Get<IEventsDataBase>();
         }
         public async Task<bool> AddNewUserToStat(string age, int idEvent)
         {

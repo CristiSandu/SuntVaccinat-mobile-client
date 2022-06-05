@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,16 +27,16 @@ namespace suntvaccinat.ViewModels.Client
         }
 
         public ICommand SaveCertificateCommand { get; set; }
-        public Services.IDevice _getDeviceInfo;
-        public Services.IEventsDataBase _database;
+        public IDevice _getDeviceInfo;
+        public IEventsDataBase _database;
         public Services.IValidationServiceAPI _validationServiceApi;
 
         private bool _used = false;
 
         public EnterCodeViewModel()
         {
-            _getDeviceInfo = DependencyService.Get<Services.IDevice>();
-            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _getDeviceInfo = DependencyService.Get<IDevice>();
+            _database = DependencyService.Get<IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
 
             SaveCertificateCommand = new Command(async () =>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace suntvaccinat.Services
+namespace suntvaccinat.Services.Interfaces
 {
     public interface IDevice
     {

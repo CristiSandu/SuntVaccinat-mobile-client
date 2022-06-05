@@ -1,4 +1,6 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,10 +57,10 @@ namespace suntvaccinat.ViewModels.Organiser
         }
         public Result Result { get; set; }
 
-        Services.IDevice _getDeviceInfo;
-        Services.IEventsDataBase _database;
-        Services.IValidationServiceAPI _validationServiceApi;
-        Services.IStatsService _statsService;
+        IDevice _getDeviceInfo;
+        IEventsDataBase _database;
+        IValidationServiceAPI _validationServiceApi;
+        IStatsService _statsService;
         
         private bool _used = false;
         public ICommand ScanCommand
@@ -121,9 +123,9 @@ namespace suntvaccinat.ViewModels.Organiser
         public ScanOrganiserViewModel(int _idEv)
         {
             EventId = _idEv;
-            _getDeviceInfo = DependencyService.Get<Services.IDevice>();
-            _statsService = DependencyService.Get<Services.IStatsService>();
-            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _getDeviceInfo = DependencyService.Get<IDevice>();
+            _statsService = DependencyService.Get<IStatsService>();
+            _database = DependencyService.Get<IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
         }
     }

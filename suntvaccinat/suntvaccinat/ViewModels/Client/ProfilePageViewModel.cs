@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +20,7 @@ namespace suntvaccinat.ViewModels.Client
 
         public string SelectedCertificate { get; set; }
 
-        Services.IEventsDataBase _eventsDataBase;
+        IEventsDataBase _eventsDataBase;
         Services.IValidationServiceAPI _validationServiceApi;
 
         public ICommand ShowCertCommand { get; set; }
@@ -29,7 +30,7 @@ namespace suntvaccinat.ViewModels.Client
 
         public ProfilePageViewModel()
         {
-            _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+            _eventsDataBase = DependencyService.Get<IEventsDataBase>();
 
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
 

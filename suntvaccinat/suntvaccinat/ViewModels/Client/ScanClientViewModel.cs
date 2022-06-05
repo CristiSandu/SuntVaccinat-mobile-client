@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,8 +56,8 @@ namespace suntvaccinat.ViewModels.Client
         }
         public Result Result { get; set; }
 
-        Services.IDevice _getDeviceInfo;
-        Services.IEventsDataBase _database;
+        IDevice _getDeviceInfo;
+        IEventsDataBase _database;
         Services.IValidationServiceAPI _validationServiceApi;
 
         private bool _used = false;
@@ -112,8 +113,8 @@ namespace suntvaccinat.ViewModels.Client
         }
         public ScanClientViewModel()
         {
-            _getDeviceInfo = DependencyService.Get<Services.IDevice>();
-            _database = DependencyService.Get<Services.IEventsDataBase>();
+            _getDeviceInfo = DependencyService.Get<IDevice>();
+            _database = DependencyService.Get<IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
         }
     }

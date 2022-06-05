@@ -1,7 +1,7 @@
 ﻿using Microcharts;
 using System.Threading.Tasks;
 
-namespace suntvaccinat.Services
+namespace suntvaccinat.Services.Interfaces
 {
     public interface IStatsService
     {

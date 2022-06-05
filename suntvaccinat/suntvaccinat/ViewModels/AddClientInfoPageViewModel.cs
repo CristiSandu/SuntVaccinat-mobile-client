@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +15,11 @@ namespace suntvaccinat.ViewModels
         public User User { get; set; } = new User();
         public ICommand NextCommand { get; set; }
 
-        Services.IEventsDataBase _eventsDataBase;
+        IEventsDataBase _eventsDataBase;
 
         public AddClientInfoPageViewModel()
         {
-            _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+            _eventsDataBase = DependencyService.Get<IEventsDataBase>();
 
             NextCommand = new Command(async () =>
             {

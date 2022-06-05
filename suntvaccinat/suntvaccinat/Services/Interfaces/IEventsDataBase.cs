@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace suntvaccinat.Services
+namespace suntvaccinat.Services.Interfaces
 {
     public interface IEventsDataBase
     {
-        Task AddUser(User user );
+        Task AddUser(User user);
         Task<User> GetUser();
         Task<bool> RemoveUser(User user);
         Task AddEvent(string name, DateTime date);

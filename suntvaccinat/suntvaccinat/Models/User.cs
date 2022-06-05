@@ -17,7 +17,7 @@ namespace suntvaccinat.Models
         public string FullName => $"{Name} {SecondName}";
 
         [Ignore]
-        public string Initials => !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Name) ? $"{Name[0]}{SecondName[0]}" : string.Empty;
+        public string Initials => !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(SecondName) ? $"{Name[0]}{SecondName[0]}" : string.Empty;
 
         public override string ToString()
         {

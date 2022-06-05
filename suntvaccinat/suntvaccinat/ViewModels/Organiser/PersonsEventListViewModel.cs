@@ -1,5 +1,6 @@
 ﻿using Microcharts;
 using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,8 +24,8 @@ namespace suntvaccinat.ViewModels.Organiser
 
         public EventModel Event { get; set; }
         
-        Services.IEventsDataBase _eventsDataBase;
-        Services.IStatsService _statService;
+        IEventsDataBase _eventsDataBase;
+        IStatsService _statService;
 
         public ICommand CloseEvent { get; set; }
         public Chart Chart { get; set; }
@@ -33,8 +34,8 @@ namespace suntvaccinat.ViewModels.Organiser
         {
             EventName = eventName;
             EventId = eventId;
-            _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
-            _statService= DependencyService.Get<Services.IStatsService>();
+            _eventsDataBase = DependencyService.Get<IEventsDataBase>();
+            _statService= DependencyService.Get<IStatsService>();
 
             CloseEvent = new Command(async model =>
             {

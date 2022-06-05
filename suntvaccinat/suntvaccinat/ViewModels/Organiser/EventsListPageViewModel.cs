@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Models;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,11 +15,11 @@ namespace suntvaccinat.ViewModels.Organiser
         public Command<Models.EventModel> DeleteEvent { get; private set; }
         public ICommand CreateEvent { get; set; }
 
-        Services.IEventsDataBase _eventsDataBase;
+        IEventsDataBase _eventsDataBase;
 
         public EventsListPageViewModel()
         {
-            _eventsDataBase = DependencyService.Get<Services.IEventsDataBase>();
+            _eventsDataBase = DependencyService.Get<IEventsDataBase>();
             PopulateEventsList();
             DeleteEvent = new Command<Models.EventModel>(async model =>
             {

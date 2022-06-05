@@ -6,13 +6,14 @@ using Android.Views;
 using Android.Widget;
 using suntvaccinat.Droid;
 using suntvaccinat.Services;
+using suntvaccinat.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(UniqueIdAndroid))]
+[assembly: Dependency(typeof(UniqueIdAndroid))]
 namespace suntvaccinat.Droid
 {
     public class UniqueIdAndroid : IDevice
