@@ -51,6 +51,13 @@ namespace suntvaccinat.ViewModels.Client
                     User user = await _database.GetUser();
 
                     var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
+                    
+                    if (valModelRespons == null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
+                        return;
+                    }
+
                     var responsTest = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
 
                     await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
