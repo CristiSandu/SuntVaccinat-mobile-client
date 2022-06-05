@@ -204,7 +204,7 @@
                 <zxing:ZXingBarcodeImageView Grid.Row="2"
                                              x:Name="QRCode2"
                                              Grid.Column="1"
-                                             BarcodeValue="testofGereatiron"
+                                             BarcodeValue="{Binding INSPCertificate}"
                                              BackgroundColor="Transparent"
                                              WidthRequest="390"
                                              HeightRequest="390">

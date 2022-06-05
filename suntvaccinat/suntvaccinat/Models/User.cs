@@ -23,7 +23,7 @@ namespace suntvaccinat.Models
         {
             Regex pattern = new Regex("_| ");
             string rez = pattern.Replace(SecondName, "-");
-            return $"{Name.Trim(' ').ToUpper()} {rez.Trim(' ').ToUpper()} {Sex[0]} {Age.Trim(' ')}={PhoneNumber}";
+            return $"{Name.Trim(' ').ToUpper()} {rez.Trim(' ').ToUpper()} {Sex[0]} {Age.Trim(' ')}";
         }
     }
 }

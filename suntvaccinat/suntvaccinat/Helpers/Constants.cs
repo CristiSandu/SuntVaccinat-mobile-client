@@ -10,6 +10,9 @@ namespace suntvaccinat.Helpers
         public static string GreenPass = "GP";
         public static string User = "User";
 
+        public static string PhoneNumber = "Phone";
+
+
         // Preferences constants 
         public static string DefaultValue = "";
         public static string GreenPassPref = "GP";

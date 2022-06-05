@@ -1,4 +1,5 @@
 ﻿using suntvaccinat.Views.Client.GreenPass;
+using suntvaccinat.Views.Client.INSP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace suntvaccinat.Views.Client
             if (Preferences.Get(Helpers.Constants.INSPPref, false))
                 await Navigation.PushAsync(new ProfilePage());
             else
-                await Navigation.PushAsync(new EnterGreenPassPage());
+                await Navigation.PushAsync(new EnterINSPPage());
         }
     }
 }

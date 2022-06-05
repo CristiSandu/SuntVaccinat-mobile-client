@@ -48,7 +48,7 @@ namespace suntvaccinat.ViewModels.Client
                    }
                    else
                    {
-                       SelectedCertificate = "--";
+                       SelectedCertificate = INSPCertificate;
                        SelectedCertLabel = " INSP ";
                    }
                }
@@ -67,6 +67,11 @@ namespace suntvaccinat.ViewModels.Client
             if (INSPCertificate == null)
             {
                 INSPCertificate = "--";
+            }
+
+            if (GPCertificate == null)
+            {
+                GPCertificate = "--";
             }
 
             var device = DeviceInfo.Model;

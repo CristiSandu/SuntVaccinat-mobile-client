@@ -27,6 +27,7 @@ namespace suntvaccinat.ViewModels
                 {
                     SecureStorage.RemoveAll();
                     await SecureStorage.SetAsync(Helpers.Constants.User, User.ToString());
+                    await SecureStorage.SetAsync(Helpers.Constants.PhoneNumber, User.PhoneNumber);
                     Preferences.Set(Helpers.Constants.User, true);
 
                     await _eventsDataBase.AddUser(User);

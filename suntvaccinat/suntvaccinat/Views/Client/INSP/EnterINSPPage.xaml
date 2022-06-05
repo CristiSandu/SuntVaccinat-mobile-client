@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="suntvaccinat.Views.Client.INSP.EnterINSPPage"
+             xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client.INSP"
+             x:DataType="viewmodel:EnterINSPPageViewModel"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid Padding="0,4,0,4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BackBtn"
+                    Margin="10"
+                    VerticalOptions="Start"
+                    Style="{StaticResource BackButtonOnBackgroundStyle}"
+                    Clicked="BackBtn_Clicked" />
+
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Center">
+                <Label Text="Introduceti"
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       TextColor="CadetBlue"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
+                <Label Text="Certificatul INSP"
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       TextColor="CadetBlue"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <Grid Padding="16,0,16,0"
+                  Grid.Row="1"
+                  VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width=".2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="DownloadINSPBtn"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        Text="Download from Site"
+                        TextTransform="None"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HeightRequest="56"
+                        Clicked="DownloadINSPBtn_Clicked"
+                        Style="{StaticResource ButtonFirstPageStyle}"
+                        VerticalOptions="Center"
+                        CornerRadius="10" />
+
+                <BoxView Grid.Row="1"
+                         Grid.Column="0"
+                         BackgroundColor="CadetBlue"
+                         HeightRequest="2"
+                         VerticalOptions="Center"
+                         Margin="16,0,0,0" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="OR"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       TextColor="CadetBlue"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+                <BoxView Grid.Row="1"
+                         Grid.Column="2"
+                         BackgroundColor="CadetBlue"
+                         HeightRequest="2"
+                         VerticalOptions="Center"
+                         Margin="0,0,16,0" />
+
+                <Frame Grid.ColumnSpan="3"
+                       Grid.Row="2"
+                       Style="{StaticResource FormFrame}">
+                    <Label HeightRequest="100"
+                           Text="{Binding Certificate}" />
+                </Frame>
+
+                <Button x:Name="ClientBtn"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        Text="Pick from Device"
+                        TextTransform="None"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HeightRequest="56"
+                        Style="{StaticResource ButtonFirstPageStyle}"
+                        Command="{Binding SaveCertificateCommand}"
+                        VerticalOptions="Center"
+                        CornerRadius="10" />
+            </Grid>
+            <cells:LogoCard Grid.Row="2" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
