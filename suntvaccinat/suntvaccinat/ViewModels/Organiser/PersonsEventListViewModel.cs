@@ -13,20 +13,14 @@ namespace suntvaccinat.ViewModels.Organiser
     public class PersonsEventListViewModel : BaseViewModel
     {
         public ObservableCollection<ParticipantModel> ParticipantsList { get; set; } = new ObservableCollection<ParticipantModel>();    
-
         public string EventName { get; set; }
-        
         public int EventId { get; set; }
-        
         public bool IsChartVisible { get; set; }
         public int HeightFooter { get; set; }
-
-
         public EventModel Event { get; set; }
         
         IEventsDataBase _eventsDataBase;
         IStatsService _statService;
-
         public ICommand CloseEvent { get; set; }
         public Chart Chart { get; set; }
 

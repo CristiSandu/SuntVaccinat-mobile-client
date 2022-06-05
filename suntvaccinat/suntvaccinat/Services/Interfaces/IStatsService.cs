@@ -5,8 +5,7 @@ namespace suntvaccinat.Services.Interfaces
 {
     public interface IStatsService
     {
-        Task<bool> AddNewUserToStat(string age, int id_event);
+        Task<bool> AddNewUserToStat(int age, int id_event);
         Task<Chart> GenerateStatsForEvent(int idEvent);
-
     }
 }

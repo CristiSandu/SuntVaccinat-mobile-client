@@ -22,7 +22,7 @@ namespace suntvaccinat.Services
         {
             _database = DependencyService.Get<IEventsDataBase>();
         }
-        public async Task<bool> AddNewUserToStat(string age, int idEvent)
+        public async Task<bool> AddNewUserToStat(int age, int idEvent)
         {
             StatsModel stat = await _database.GetStatByEventId(idEvent);
             if (stat.Id_Event == -1)
@@ -31,24 +31,21 @@ namespace suntvaccinat.Services
                 stat = await _database.GetStatByEventId(idEvent);
             }
 
-            DateTime oDate = DateTime.Parse(age);
-            int years = DateTime.Now.Year - oDate.Year;
-
-            switch (years)
+            switch (age)
             {
                 case int n when Enumerable.Range(0, 19).Contains(n):
                     stat.PersonsUnder19 += 1;
                     break;
-                case int n when Enumerable.Range(20, 29).Contains(n):
+                case int n when Enumerable.Range(20, 10).Contains(n):
                     stat.PersonsBetween2029 += 1;
                     break;
-                case int n when Enumerable.Range(30, 39).Contains(n):
+                case int n when Enumerable.Range(30, 10).Contains(n):
                     stat.PersonsBetween3039 += 1;
                     break;
-                case int n when Enumerable.Range(40, 49).Contains(n):
+                case int n when Enumerable.Range(40, 10).Contains(n):
                     stat.PersonsBetween4049 += 1;
                     break;
-                case int n when Enumerable.Range(50, 59).Contains(n):
+                case int n when Enumerable.Range(50, 10).Contains(n):
                     stat.PersonsBetween5059 += 1;
                     break;
                 default:

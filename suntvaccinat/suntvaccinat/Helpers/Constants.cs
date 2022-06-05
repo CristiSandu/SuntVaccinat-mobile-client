@@ -11,7 +11,7 @@ namespace suntvaccinat.Helpers
         public static string User = "User";
 
         public static string PhoneNumber = "Phone";
-
+        public static string KeyINSP = "E)H@McQfThWmZq4t7w!z%C*F-JaNdRgU";
 
         // Preferences constants 
         public static string DefaultValue = "";

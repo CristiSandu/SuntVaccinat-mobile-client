@@ -1,4 +1,5 @@
-﻿using System;
+﻿using suntvaccinat.Views.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,11 +22,15 @@ namespace suntvaccinat
         }
         private async void ClientBtn_Clicked(object sender, EventArgs e)
         {
-
             if (Preferences.Get(Helpers.Constants.User, false))
-                await Navigation.PushAsync(new Views.Client.CertificateTypePage());
+            {
+                if (Preferences.Get(Helpers.Constants.GreenPass, false) && Preferences.Get(Helpers.Constants.INSPPref, false))
+                    await Navigation.PushAsync(new ProfilePage());
+                else
+                    await Navigation.PushAsync(new CertificateTypePage());
+            }
             else
-                await Navigation.PushAsync(new Views.Client.AddClientInfoPage());
+                await Navigation.PushAsync(new AddClientInfoPage());
         }
     }
 }

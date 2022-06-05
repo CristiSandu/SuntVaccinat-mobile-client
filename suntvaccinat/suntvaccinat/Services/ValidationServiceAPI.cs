@@ -115,12 +115,12 @@ namespace suntvaccinat.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId);
+        System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, bool isINSP);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, bool isINSP, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -939,22 +939,26 @@ namespace suntvaccinat.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId)
+        public virtual System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, bool isINSP)
         {
-            return ApiValidationCheckIfExistDocumentsAsync(documentId, System.Threading.CancellationToken.None);
+            return ApiValidationCheckIfExistDocumentsAsync(documentId, isINSP, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<bool> ApiValidationCheckIfExistDocumentsAsync(string documentId, bool isINSP, System.Threading.CancellationToken cancellationToken)
         {
             if (documentId == null)
                 throw new System.ArgumentNullException("documentId");
 
+            if (isINSP == null)
+                throw new System.ArgumentNullException("isINSP");
+
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/Validation/CheckIfExistDocuments/{documentId}");
+            urlBuilder_.Append("api/Validation/CheckIfExistDocuments/{documentId}/{isINSP}");
             urlBuilder_.Replace("{documentId}", System.Uri.EscapeDataString(ConvertToString(documentId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{isINSP}", System.Uri.EscapeDataString(ConvertToString(isINSP, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = _httpClient;
             var disposeClient_ = false;

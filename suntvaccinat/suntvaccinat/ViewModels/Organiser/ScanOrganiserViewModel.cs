@@ -1,11 +1,9 @@
-﻿using suntvaccinat.Models;
+﻿using Newtonsoft.Json;
+using suntvaccinat.Models;
 using suntvaccinat.Services;
 using suntvaccinat.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing;
 
@@ -57,11 +55,10 @@ namespace suntvaccinat.ViewModels.Organiser
         }
         public Result Result { get; set; }
 
-        IDevice _getDeviceInfo;
         IEventsDataBase _database;
         IValidationServiceAPI _validationServiceApi;
         IStatsService _statsService;
-        
+
         private bool _used = false;
         public ICommand ScanCommand
         {
@@ -93,23 +90,51 @@ namespace suntvaccinat.ViewModels.Organiser
                         if (!string.IsNullOrEmpty(certificate) && certificate.StartsWith("HC1:"))
                         {
                             _used = true;
-                            var decodedValue = await Services.ValidationCertificate.DecodeGreenPass(certificate);
-                            var valModelRespons = Services.ValidationCertificate.GetValueToCheckWithServer(decodedValue, phoneId);
-                            var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistDocumentsAsync(valModelRespons.DocumentId);
+                            var decodedValue = await ValidationCertificate.DecodeGreenPass(certificate);
+                            var valModelRespons = ValidationCertificate.GetValueToCheckWithServer(decodedValue, phoneId);
+                            var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistDocumentsAsync(valModelRespons.DocumentId, false);
                             if (!checkCertificate)
                             {
                                 await App.Current.MainPage.DisplayAlert("Error", "Invalid Certificate pair", "OK");
                                 return;
                             }
 
-                            await _statsService.AddNewUserToStat(decodedValue.Dgc.DateOfBirth, EventId);
+                            DateTime oDate = DateTime.Parse(decodedValue.Dgc.DateOfBirth);
+                            int age = DateTime.Now.Year - oDate.Year;
+
+                            await _statsService.AddNewUserToStat(age, EventId);
                             await _database.AddUserToEvent(new ParticipantModel
                             {
-                                Name = $"{ decodedValue.Dgc.Name.FamilyName}-{decodedValue.Dgc.Name.GivenName}:{decodedValue.Dgc.DateOfBirth}",
+                                Name = $"{decodedValue.Dgc.Name.FamilyName}-{decodedValue.Dgc.Name.GivenName}:{decodedValue.Dgc.DateOfBirth}",
                                 id_event = EventId
                             });
 
-                            await App.Current.MainPage.Navigation.PopAsync();
+                            await Application.Current.MainPage.Navigation.PopAsync();
+                            return;
+                        }
+
+                        if (!string.IsNullOrEmpty(certificate))
+                        {
+                            var decodedCertificate = ValidationCertificate.DecodeINSP(certificate);
+                            var userInfoINSP = JsonConvert.DeserializeObject<UserINSPModel>(decodedCertificate);
+                            var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistDocumentsAsync($"{phoneId}-{userInfoINSP.ID}", true);
+                            
+                            if (!checkCertificate)
+                            {
+                                await Application.Current.MainPage.DisplayAlert("Error", "Invalid Certificate pair", "OK");
+                                return;
+                            }
+
+                            int age = Convert.ToInt32(userInfoINSP.Age);
+                            
+                            await _statsService.AddNewUserToStat(age, EventId);
+                            await _database.AddUserToEvent(new ParticipantModel
+                            {
+                                Name = $"{ userInfoINSP.Name}-{userInfoINSP.SecondName}:{userInfoINSP.Age}",
+                                id_event = EventId
+                            });
+
+                            await Application.Current.MainPage.Navigation.PopAsync();
                         }
                     });
 
@@ -123,7 +148,6 @@ namespace suntvaccinat.ViewModels.Organiser
         public ScanOrganiserViewModel(int _idEv)
         {
             EventId = _idEv;
-            _getDeviceInfo = DependencyService.Get<IDevice>();
             _statsService = DependencyService.Get<IStatsService>();
             _database = DependencyService.Get<IEventsDataBase>();
             _validationServiceApi = DependencyService.Get<Services.IValidationServiceAPI>();
