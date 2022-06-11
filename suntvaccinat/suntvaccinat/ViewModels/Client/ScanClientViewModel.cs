@@ -96,6 +96,7 @@ namespace suntvaccinat.ViewModels.Client
                             if (checkCertificate)
                             {
                                 await App.Current.MainPage.DisplayAlert("Duplicate Found", "This certificate is use with another phone", "OK");
+                                await Application.Current.MainPage.Navigation.PopAsync();
                                 return;
                             }
 

@@ -123,6 +123,12 @@
   <data name="CancelBtnLabel" xml:space="preserve">
     <value>Inchide</value>
   </data>
+  <data name="CertificateMsgFirstPart" xml:space="preserve">
+    <value>Selecteaza tipul</value>
+  </data>
+  <data name="CertificateMsgSecondPart" xml:space="preserve">
+    <value>de certificat</value>
+  </data>
   <data name="ClientBtnLabel" xml:space="preserve">
     <value>Sunt Vaccinat</value>
   </data>
@@ -134,6 +140,12 @@
   </data>
   <data name="ClientINSPMethodLabel" xml:space="preserve">
     <value>Introduceti certificatul INSP</value>
+  </data>
+  <data name="ClientINSPMsgFirstPart" xml:space="preserve">
+    <value>Introduceti</value>
+  </data>
+  <data name="ClientINSPMsgSecondPart" xml:space="preserve">
+    <value>Certificatul INSP</value>
   </data>
   <data name="ContinueMessage" xml:space="preserve">
     <value>Continua ca</value>
@@ -209,6 +221,9 @@
   </data>
   <data name="ScanGPBtnLabel" xml:space="preserve">
     <value>Scaneaza QR</value>
+  </data>
+  <data name="ScanMsgLabel" xml:space="preserve">
+    <value>Plaseaza linia rosie peste codul de bare pe care vrei sa il scanezi </value>
   </data>
   <data name="SecondNameLabel" xml:space="preserve">
     <value>Prenume (ex: Ilie-Cristian, Vasile)</value>

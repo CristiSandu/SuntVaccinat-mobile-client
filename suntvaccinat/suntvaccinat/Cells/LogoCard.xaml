@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Cells.LogoCard">
   <ContentView.Content>
         <StackLayout VerticalOptions="EndAndExpand">
             <Image VerticalOptions="Center" 
                    Source="{AppThemeBinding Light=logo_light.png, Dark=logo_dark.png}" 
                    HeightRequest="73" WidthRequest="73" />
-            <Label Text="powered by suntvaccinat.ro"
+            <Label Text="{x:Static resources:AppResources.SloganLabel}"
                    FontAttributes="Italic"
                    HorizontalOptions="Center"
                    VerticalOptions="EndAndExpand"/>

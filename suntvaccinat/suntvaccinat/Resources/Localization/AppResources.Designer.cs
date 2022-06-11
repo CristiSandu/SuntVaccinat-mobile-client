@@ -79,6 +79,24 @@ namespace suntvaccinat.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the.
+        /// </summary>
+        public static string CertificateMsgFirstPart {
+            get {
+                return ResourceManager.GetString("CertificateMsgFirstPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to certificate type.
+        /// </summary>
+        public static string CertificateMsgSecondPart {
+            get {
+                return ResourceManager.GetString("CertificateMsgSecondPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;m vaccinated.
         /// </summary>
         public static string ClientBtnLabel {
@@ -111,6 +129,24 @@ namespace suntvaccinat.Resources.Localization {
         public static string ClientINSPMethodLabel {
             get {
                 return ResourceManager.GetString("ClientINSPMethodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the .
+        /// </summary>
+        public static string ClientINSPMsgFirstPart {
+            get {
+                return ResourceManager.GetString("ClientINSPMsgFirstPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSP certificate.
+        /// </summary>
+        public static string ClientINSPMsgSecondPart {
+            get {
+                return ResourceManager.GetString("ClientINSPMsgSecondPart", resourceCulture);
             }
         }
         
@@ -336,6 +372,15 @@ namespace suntvaccinat.Resources.Localization {
         public static string ScanGPBtnLabel {
             get {
                 return ResourceManager.GetString("ScanGPBtnLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place the red line over the barcode you&apos;d like to scan..
+        /// </summary>
+        public static string ScanMsgLabel {
+            get {
+                return ResourceManager.GetString("ScanMsgLabel", resourceCulture);
             }
         }
         

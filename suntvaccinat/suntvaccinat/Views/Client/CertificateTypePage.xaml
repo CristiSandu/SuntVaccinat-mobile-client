@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Client.CertificateTypePage"
              NavigationPage.HasNavigationBar="False">
 
@@ -20,14 +21,14 @@
                     Clicked="BackBtn_Clicked" />
 
             <StackLayout Grid.Row="0"
-                         VerticalOptions="Center">
-                <Label Text="Selecteaza tipul "
+                         VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="200">
+                <Label Text="{x:Static resources:AppResources.CertificateMsgFirstPart}"
                        FontAttributes="Bold"
                        FontSize="24"
                        TextColor="CadetBlue"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
-                <Label Text="de certificat "
+                <Label Text="{x:Static resources:AppResources.CertificateMsgSecondPart}"
                        FontAttributes="Bold"
                        FontSize="24"
                        TextColor="CadetBlue"
@@ -52,7 +53,7 @@
                 <Button x:Name="GreenPass_Flow"
                         Grid.Row="0"
                         Grid.ColumnSpan="3"
-                        Text="Certificat Verde"
+                        Text="{x:Static resources:AppResources.GreenPassLabel}"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"
@@ -70,7 +71,7 @@
                          Margin="16,0,0,0" />
                 <Label Grid.Row="1"
                        Grid.Column="1"
-                       Text="OR"
+                       Text="{x:Static resources:AppResources.OrLabel}"
                        FontSize="Medium"
                        FontAttributes="Bold"
                        TextColor="CadetBlue"
@@ -86,7 +87,7 @@
                 <Button x:Name="INSPBtn"
                         Grid.Row="2"
                         Grid.ColumnSpan="3"
-                        Text="Ministerul Sanataii PDF"
+                        Text="{x:Static resources:AppResources.INSPLabel}"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"

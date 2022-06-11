@@ -37,7 +37,7 @@
                Text="{x:Static resources:AppResources.ContinueMessage}"
                FontSize="24"
                FontAttributes="Bold"
-               TextColor="CadetBlue"
+               TextColor="{StaticResource CadetBlue}"
                VerticalOptions="Center"
                HorizontalOptions="CenterAndExpand">
         </Label>
@@ -71,7 +71,7 @@
                  Margin="16,0,0,0" />
         <Label Grid.Row="5"
                Grid.Column="1"
-               Text="OR"
+               Text="{x:Static resources:AppResources.OrLabel}"
                FontSize="Medium"
                FontAttributes="Bold"
                TextColor="CadetBlue"
@@ -87,7 +87,7 @@
         <Button x:Name="OrganiserBtn"
                 Grid.Row="6"
                 Grid.ColumnSpan="3"
-                Text="Organizator"
+                Text="{x:Static resources:AppResources.OrganizerBtnLabel}"
                 HeightRequest="56"
                 Style="{StaticResource Button2FirstPageStyle}"
                 VerticalOptions="Center"
@@ -96,7 +96,7 @@
 
         <Label Grid.ColumnSpan="3"
                Grid.Row="8"
-               Text="O initiativa suntvaccinat.ro"
+               Text="{x:Static resources:AppResources.SloganLabel}"
                FontAttributes="Bold"
                HorizontalOptions="Center"
                VerticalOptions="EndAndExpand" />

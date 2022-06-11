@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
-             x:Class="suntvaccinat.Views.Client.GreenPass.EnterGreenPassPage"
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
+             x:Class="suntvaccinat.Views.Client.GreenPass.EnterGreenPassPage"
              x:DataType="viewmodel:EnterCodeViewModel"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -22,13 +23,13 @@
 
             <StackLayout Grid.Row="0"
                          VerticalOptions="Center">
-                <Label Text="Introduceti"
+                <Label Text="{x:Static resources:AppResources.ClientINSPMsgFirstPart}"
                        FontAttributes="Bold"
                        FontSize="24"
                        TextColor="CadetBlue"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
-                <Label Text="Certificatul Verde"
+                <Label Text="{x:Static resources:AppResources.GreenPassLabel}"
                        FontAttributes="Bold"
                        FontSize="24"
                        TextColor="CadetBlue"
@@ -55,7 +56,7 @@
                 <Button x:Name="ScannGreenPassBtn"
                         Grid.Row="0"
                         Grid.ColumnSpan="3"
-                        Text="Scan QR"
+                        Text="{x:Static resources:AppResources.ScanGPBtnLabel}"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"
@@ -74,7 +75,7 @@
 
                 <Label Grid.Row="1"
                        Grid.Column="1"
-                       Text="OR"
+                       Text="{x:Static resources:AppResources.OrLabel}"
                        FontSize="Medium"
                        FontAttributes="Bold"
                        TextColor="CadetBlue"
@@ -91,7 +92,7 @@
                 <Frame Grid.ColumnSpan="3"
                        Grid.Row="2"
                        Style="{StaticResource FormFrame}">
-                    <Editor Placeholder="Enter code here"
+                    <Editor Placeholder="{x:Static resources:AppResources.PlaceholderGP}"
                             HeightRequest="100"
                             Text="{Binding Certificate}"
                             AutoSize="TextChanges" />
@@ -100,7 +101,7 @@
                 <Button x:Name="ClientBtn"
                         Grid.Row="3"
                         Grid.ColumnSpan="3"
-                        Text="Save"
+                        Text="{x:Static resources:AppResources.SaveBtnLabel}"
                         TextTransform="None"
                         FontAttributes="Bold"
                         FontSize="Large"
