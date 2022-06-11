@@ -46,6 +46,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Localization\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\Organiser\PersonsEventList.xaml.cs">
       <DependentUpon>PersonsEventList.xaml</DependentUpon>
     </Compile>
@@ -54,6 +59,10 @@
   <ItemGroup>
     <EmbeddedResource Update="Cells\LogoCard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localization\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Client\CertificateTypePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

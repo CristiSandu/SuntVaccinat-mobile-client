@@ -1,6 +1,7 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="suntvaccinat.MainPage"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              NavigationPage.HasNavigationBar="False">
 
     <Grid Padding="16"
@@ -33,7 +34,7 @@
 
         <Label Grid.Row="2"
                Grid.ColumnSpan="3"
-               Text="Continue as"
+               Text="{x:Static resources:AppResources.ContinueMessage}"
                FontSize="24"
                FontAttributes="Bold"
                TextColor="CadetBlue"
@@ -44,10 +45,12 @@
         <Button x:Name="ClientBtn"
                 Grid.Row="4"
                 Grid.ColumnSpan="3"
-                Text="Sunt Vaccinat"
+                Text="{x:Static resources:AppResources.ClientBtnLabel}"
                 HeightRequest="56"
                 Style="{StaticResource ButtonFirstPageStyle}"
                 VerticalOptions="Center"
+                TextTransform="None"
+                FontSize="Medium"
                 CornerRadius="10"
                 Clicked="ClientBtn_Clicked">
             <Button.Background>
