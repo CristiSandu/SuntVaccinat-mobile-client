@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <WebView x:Name="SiteINSP"
-                     Source="https://ocw.cs.pub.ro/courses/pm"
+                     Source="https://adulti.renv.ro/users/login"
                      WidthRequest="400"
                      HeightRequest="1000"
                      android:WebView.EnableZoomControls="true"

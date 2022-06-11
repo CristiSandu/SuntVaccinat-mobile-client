@@ -19,14 +19,14 @@ namespace suntvaccinat.Views.Client.INSP
             BindingContext = new EnterINSPPageViewModel();
         }
 
-        private void BackBtn_Clicked(object sender, EventArgs e)
+        private async void BackBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
-        private void DownloadINSPBtn_Clicked(object sender, EventArgs e)
+        private async void DownloadINSPBtn_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new GetINSPCertificatePage());
         }
     }
 }
