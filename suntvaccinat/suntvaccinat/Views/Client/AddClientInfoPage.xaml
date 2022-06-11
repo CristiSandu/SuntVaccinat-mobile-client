@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="suntvaccinat.Views.Client.AddClientInfoPage"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels"
              x:DataType="viewmodel:AddClientInfoPageViewModel"
              NavigationPage.HasNavigationBar="False">
@@ -23,7 +24,7 @@
                                 Clicked="ButtonAddPersonBack_Clicked"/>
 
                         <Label x:Name="eventName"
-                               Text="Add information"
+                               Text="{x:Static resources:AppResources.InformationPageTitle}"
                                Style="{StaticResource TitleStyle}"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="Center" />
@@ -32,18 +33,18 @@
                 <StackLayout>
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="nameEntry"
-                               Placeholder="Nume de Familie"
+                               Placeholder="{x:Static resources:AppResources.NameLabel}"
                                Text="{Binding User.Name}" />
                     </Frame>
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="secondNameEntry"
-                               Placeholder="Prenume (ex: Ilie-Cristian, Vasile)"
+                               Placeholder="{x:Static resources:AppResources.SecondNameLabel}"
                                Text="{Binding User.SecondName}" />
                     </Frame>
                     <Frame Style="{StaticResource FormFrame}">
                         <StackLayout>
                             <Picker x:Name="sexPicker"
-                                    Title="Sex"
+                                    Title="{x:Static resources:AppResources.GenderLabel}"
                                     SelectedItem="{Binding User.Sex}">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
@@ -56,7 +57,7 @@
                     </Frame>
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="ageEntry"
-                               Placeholder="Varsta"
+                               Placeholder="{x:Static resources:AppResources.AgeLabel}"
                                Text="{Binding User.Age}"
                                Keyboard="Numeric">
                             <Entry.Behaviors>
@@ -69,7 +70,7 @@
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="phoneNumber"
                                Text="{Binding User.PhoneNumber}"
-                               Placeholder="Numar de Telefon"
+                               Placeholder="{x:Static resources:AppResources.PhoneNumberLabel}"
                                Keyboard="Numeric"
                                MaxLength="10">
                             <Entry.Behaviors>
@@ -84,11 +85,11 @@
                 <StackLayout HorizontalOptions="Center"
                              Orientation="Horizontal">
                     <Button x:Name="NextBtn"
-                            Text="Next"
+                            Text="{x:Static resources:AppResources.NextBtnLabel}"
                             Style="{StaticResource ButtonCheckedStyle}"
                             Command="{Binding NextCommand}" />
                     <Button x:Name="CancelBtn"
-                            Text="Cancel"
+                            Text="{x:Static resources:AppResources.CancelBtnLabel}"
                             Style="{StaticResource ButtonUnCheckStyle}"
                             Clicked="CancelBtn_Clicked" />
                 </StackLayout>

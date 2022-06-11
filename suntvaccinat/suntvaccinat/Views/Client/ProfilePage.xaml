@@ -6,16 +6,17 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxingcommon="clr-namespace:ZXing.Common;assembly=zxing.portable"
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels.Client"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:DataType="viewmodel:ProfilePageViewModel"
              x:Class="suntvaccinat.Views.Client.ProfilePage"
              NavigationPage.HasNavigationBar="True">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Remove User"
+        <ToolbarItem Text="{x:Static resources:AppResources.RemoveUserLabel}"
                      Order="Secondary" />
-        <ToolbarItem Text="Remove Green Pass"
+        <ToolbarItem Text="{x:Static resources:AppResources.RemoveGreenPassLabel}"
                      Order="Secondary" />
-        <ToolbarItem Text="Remove INSP"
+        <ToolbarItem Text="{x:Static resources:AppResources.RemoveINSPLabel}"
                      Order="Secondary" />
 
     </ContentPage.ToolbarItems>
@@ -45,7 +46,8 @@
 
                 <Grid RowSpacing="4"
                       ColumnSpacing="-16"
-                      Grid.ColumnSpan="2">
+                      Grid.ColumnSpan="2"
+                      Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
@@ -59,7 +61,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Bine ati revenit, "
+                    <Label Text="{x:Static resources:AppResources.ProfilePageMsgLabel}"
                            Grid.ColumnSpan="2"
                            FontSize="32"
                            Padding="0,-10,0,0"
@@ -117,6 +119,7 @@
 
 
                     <Label Text="{Binding User.FullName}"
+                           WidthRequest="200"
                            Grid.Column="1"
                            Grid.Row="1"
                            HorizontalOptions="Start"
@@ -156,6 +159,7 @@
                 </Grid>
 
                 <xtc:AvatarView Grid.Column="1"
+                                
                                 Text="{Binding User.Initials}"
                                 HorizontalOptions="End"
                                 VerticalOptions="StartAndExpand"

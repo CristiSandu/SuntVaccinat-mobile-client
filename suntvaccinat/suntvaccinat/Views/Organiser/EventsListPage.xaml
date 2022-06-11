@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fa="clr-namespace:FontAwesome"
              xmlns:converter="clr-namespace:suntvaccinat.Convertors"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
+             
              x:Class="suntvaccinat.Views.Organiser.EventsListPage"
              NavigationPage.HasNavigationBar="False">
 
@@ -22,7 +24,7 @@
                     <Button x:Name="backBtn"
                             Style="{StaticResource BackButtonStyle}"
                             Clicked="backBtn_Clicked" />
-                    <Label Text="Events"
+                    <Label Text="{x:Static resources:AppResources.EventsPageLabel}"
                            Style="{StaticResource TitleStyle}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Center" />
@@ -102,7 +104,7 @@
                             <StackLayout Orientation="Horizontal"
                                          HorizontalOptions="Center"
                                          VerticalOptions="Center">
-                                <Label Text="Apasati pe "
+                                <Label Text="{x:Static resources:AppResources.PressOnMsg}"
                                        Margin="10,25,10,10"
                                        FontAttributes="Bold"
                                        FontSize="18"
@@ -120,7 +122,7 @@
                                        HorizontalOptions="Fill"
                                        HorizontalTextAlignment="Center" />
                             </StackLayout>
-                            <Label Text="Pentru a adauga un eveniment nou"
+                            <Label Text="{x:Static resources:AppResources.ToAddNewEventMsg}"
                                    Margin="10,15,10,10"
                                    FontAttributes="Bold"
                                    FontSize="18"

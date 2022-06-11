@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:fa="clr-namespace:FontAwesome"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Organiser.PersonsEventList"
              NavigationPage.HasNavigationBar="False">
 
@@ -75,7 +76,7 @@
                                              HorizontalOptions="Center"
                                              VerticalOptions="Center">
 
-                                    <Label Text="Apasati pe"
+                                    <Label Text="{x:Static resources:AppResources.PressOnMsg}"
                                            Margin="10,25,10,10"
                                            FontAttributes="Bold"
                                            FontSize="18"
@@ -94,7 +95,7 @@
                                            HorizontalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <Label Text="Pentru a adauga un participant la event "
+                                <Label Text="{x:Static resources:AppResources.ForAddingToEventMsg}"
                                        FontAttributes="Bold"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
@@ -105,7 +106,7 @@
                                              HorizontalOptions="Center"
                                              VerticalOptions="Center">
 
-                                    <Label Text="Sau pe"
+                                    <Label Text="{x:Static resources:AppResources.OrOnMsg}"
                                            Margin="10,25,10,10"
                                            FontAttributes="Bold"
                                            FontSize="18"
@@ -124,7 +125,7 @@
                                            HorizontalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <Label Text="Pentru a inchide evenimentul"
+                                <Label Text="{x:Static resources:AppResources.ToCloseEventMsg}"
                                        FontAttributes="Bold"
                                        FontSize="18"
                                        HorizontalOptions="Fill"

@@ -1,6 +1,7 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="suntvaccinat.MainPage"
+             xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              NavigationPage.HasNavigationBar="False">
 
     <Grid Padding="16"
@@ -33,10 +34,10 @@
 
         <Label Grid.Row="2"
                Grid.ColumnSpan="3"
-               Text="Continue as"
+               Text="{x:Static resources:AppResources.ContinueMessage}"
                FontSize="24"
                FontAttributes="Bold"
-               TextColor="CadetBlue"
+               TextColor="{StaticResource CadetBlue}"
                VerticalOptions="Center"
                HorizontalOptions="CenterAndExpand">
         </Label>
@@ -44,10 +45,12 @@
         <Button x:Name="ClientBtn"
                 Grid.Row="4"
                 Grid.ColumnSpan="3"
-                Text="Sunt Vaccinat"
+                Text="{x:Static resources:AppResources.ClientBtnLabel}"
                 HeightRequest="56"
                 Style="{StaticResource ButtonFirstPageStyle}"
                 VerticalOptions="Center"
+                TextTransform="None"
+                FontSize="Medium"
                 CornerRadius="10"
                 Clicked="ClientBtn_Clicked">
             <Button.Background>
@@ -68,7 +71,7 @@
                  Margin="16,0,0,0" />
         <Label Grid.Row="5"
                Grid.Column="1"
-               Text="OR"
+               Text="{x:Static resources:AppResources.OrLabel}"
                FontSize="Medium"
                FontAttributes="Bold"
                TextColor="CadetBlue"
@@ -84,7 +87,7 @@
         <Button x:Name="OrganiserBtn"
                 Grid.Row="6"
                 Grid.ColumnSpan="3"
-                Text="Organizator"
+                Text="{x:Static resources:AppResources.OrganizerBtnLabel}"
                 HeightRequest="56"
                 Style="{StaticResource Button2FirstPageStyle}"
                 VerticalOptions="Center"
@@ -93,7 +96,7 @@
 
         <Label Grid.ColumnSpan="3"
                Grid.Row="8"
-               Text="O initiativa suntvaccinat.ro"
+               Text="{x:Static resources:AppResources.SloganLabel}"
                FontAttributes="Bold"
                HorizontalOptions="Center"
                VerticalOptions="EndAndExpand" />
