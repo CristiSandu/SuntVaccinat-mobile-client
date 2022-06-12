@@ -46,7 +46,7 @@ namespace suntvaccinat.ViewModels.Organiser
             if (IsChartVisible)
             {
                 Chart = await _statService.GenerateStatsForEvent(EventId);
-                HeightFooter = 270;
+                HeightFooter = 290;
                 OnPropertyChanged(nameof(Chart));
             }else
             {

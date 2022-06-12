@@ -27,6 +27,7 @@
   <ItemGroup>
     <PackageReference Include="DgcReader" Version="2.5.3" />
     <PackageReference Include="GemBox.Pdf" Version="17.0.1104" />
+    <PackageReference Include="ImageFromXamarinUI" Version="1.0.0" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Resizetizer.NT" Version="0.3.0">
       <PrivateAssets>all</PrivateAssets>
