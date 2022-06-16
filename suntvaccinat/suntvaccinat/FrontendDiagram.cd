@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="suntvaccinat.Cells.LogoCard" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cells\LogoCard.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Convertors.EndedColorConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Convertors\EndedColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="suntvaccinat.Helpers.Constants" Collapsed="true">
+    <Position X="30.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAgAAAAAABAAQCAAAQAAAAABAAAABACAAAEAAEAE=</HashCode>
+      <FileName>Helpers\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Helpers.DataBaseQuerys" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgAAAQAAAAAAAAAAQAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\DataBaseQuerys.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Helpers.HelperFunctions" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\HelperFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FontAwesome.FontAwesomeIcons" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>//////////////////////////////////////////8=</HashCode>
+      <FileName>Helpers\FontAwesome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.EventModel" Collapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAAAAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Models\EventModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.INSPValidationModel" Collapsed="true">
+    <Position X="28.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\INSPValidationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.ParticipantModel" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ParticipantModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.ResultModel" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAIAAAAEAAAAAAAAAAgIAQAAgAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.StatsModel" Collapsed="true">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAIAAAAAAAEAAAAAQAAAAAAAAAAAABAIEAAAAAAA=</HashCode>
+      <FileName>Models\StatsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.User" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAABIAEAECAQAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Models.UserINSPModel" Collapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgACAAEAAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\UserINSPModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Resources.Localization.AppResources" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgwAAJADIRAgAIAAwKALNARQDQCABUAAEAEAICKESJI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.EventsDataBase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAoAAAAAQAgBAAAAEAAAAAAAQIAAgEBACAAAACAA=</HashCode>
+      <FileName>Services\EventsDataBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="suntvaccinat.Services.StatsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAQAAABAAAAAAAA=</HashCode>
+      <FileName>Services\StatsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="suntvaccinat.Services.ValidationCertificate" Collapsed="true">
+    <Position X="25.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAggAAAAEAAAAAACAAAQAQAUAgAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationCertificate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.ValidationServiceAPI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgEgAIAAAEIAAhBAAAAAAAAAwBEQAAAAIAyAEQAE=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="suntvaccinat.Services.CheckIfCertificateExistRequest" Collapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.INSPValidationModel" Collapsed="true">
+    <Position X="30.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAQAAAIBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.RegisterCertificateRequest" Collapsed="true">
+    <Position X="30.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.RegisterINSPResponsModel" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.ValidationModel" Collapsed="true">
+    <Position X="27" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAIABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.ApiException" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAEAAAAAAAACAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Services.ApiException&lt;TResult&gt;" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Client.INSP.EnterINSPPageViewModel">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAUAAAAAAAAQAQAAAAEAQAAA=</HashCode>
+      <FileName>ViewModels\Client\INSP\EnterINSPPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Client.EnterCodeViewModel">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAUAAAAAAAAQAQAAAAEAQAAA=</HashCode>
+      <FileName>ViewModels\Client\EnterCodeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Client.ProfilePageViewModel">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAIAEAQAAAIAAAAAAAEABAAAAgAAEAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModels\Client\ProfilePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Client.ScanClientViewModel">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAACAAAA0QAAAIAAAQSQAAAAEAAAAA=</HashCode>
+      <FileName>ViewModels\Client\ScanClientViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Client.ShowGreenPassViewModel">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABABAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Client\ShowGreenPassViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Organiser.EventsListPageViewModel">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAYAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Organiser\EventsListPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Organiser.PersonsEventListViewModel">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAgAQAAgAAAAAAAEAAAAoAEgAAAAAAAQAAEAAA=</HashCode>
+      <FileName>ViewModels\Organiser\PersonsEventListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.Organiser.ScanOrganiserViewModel">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAiAAAAAAAACAAAAkQAAAIAAAQSQAAAAEAAAIA=</HashCode>
+      <FileName>ViewModels\Organiser\ScanOrganiserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.AddClientInfoPageViewModel">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAACAEAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AddClientInfoPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.ViewModels.BaseViewModel">
+    <Position X="9.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.GreenPass.EnterGreenPassPage" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Views\Client\GreenPass\EnterGreenPassPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.INSP.EnterINSPPage" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Client\INSP\EnterINSPPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.INSP.GetINSPCertificatePage" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAEAAAAAAAAAAUAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Client\INSP\GetINSPCertificatePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.AddClientInfoPage" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Client\AddClientInfoPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.CertificateTypePage" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Views\Client\CertificateTypePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.ProfilePage" Collapsed="true">
+    <Position X="28.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Views\Client\ProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Client.ShowCertificatePage" Collapsed="true">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAABAAAAA=</HashCode>
+      <FileName>Views\Client\ShowCertificatePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Organiser.EventsListPage" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Organiser\EventsListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.Organiser.PersonsEventList" Collapsed="true">
+    <Position X="27" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAgAAgAAAAAAAAAAAAAAAARAAAAAAAAAAAQ=</HashCode>
+      <FileName>Views\Organiser\PersonsEventList.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.Views.ScanPage" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ScanPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.App" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suntvaccinat.MainPage" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="suntvaccinat.Services.Interfaces.IDevice">
+    <Position X="21.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IDevice.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="suntvaccinat.Services.Interfaces.IEventsDataBase">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAoAAAAAQAgBAAAAEAAAAAAAQIAAgEBAAAAAACAA=</HashCode>
+      <FileName>Services\Interfaces\IEventsDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="suntvaccinat.Services.Interfaces.IStatsService">
+    <Position X="25.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IStatsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="suntvaccinat.Services.IValidationServiceAPI">
+    <Position X="27" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAIAAAEIAAAAAAAAAAAAAQBEQAAAAAACAAQAE=</HashCode>
+      <FileName>Services\ValidationServiceAPI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -26,13 +26,13 @@
                 <Label Text="{x:Static resources:AppResources.ClientINSPMsgFirstPart}"
                        FontAttributes="Bold"
                        FontSize="24"
-                       TextColor="CadetBlue"
+                       TextColor="{StaticResource CadetBlue}"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
                 <Label Text="{x:Static resources:AppResources.ClientINSPMsgSecondPart}"
                        FontAttributes="Bold"
                        FontSize="24"
-                       TextColor="CadetBlue"
+                       TextColor="{StaticResource CadetBlue}"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand" />
             </StackLayout>
@@ -67,7 +67,7 @@
 
                 <BoxView Grid.Row="1"
                          Grid.Column="0"
-                         BackgroundColor="CadetBlue"
+                         BackgroundColor="{StaticResource CadetBlue}"
                          HeightRequest="2"
                          VerticalOptions="Center"
                          Margin="16,0,0,0" />
@@ -77,13 +77,13 @@
                        Text="{x:Static resources:AppResources.OrLabel}"
                        FontSize="Medium"
                        FontAttributes="Bold"
-                       TextColor="CadetBlue"
+                       TextColor="{StaticResource CadetBlue}"
                        HorizontalOptions="Center"
                        VerticalOptions="Center" />
 
                 <BoxView Grid.Row="1"
                          Grid.Column="2"
-                         BackgroundColor="CadetBlue"
+                         BackgroundColor="{StaticResource CadetBlue}"
                          HeightRequest="2"
                          VerticalOptions="Center"
                          Margin="0,0,16,0" />

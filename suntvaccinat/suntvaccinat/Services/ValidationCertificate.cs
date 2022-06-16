@@ -12,6 +12,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Base45Utility;
+using OfficeOpenXml.Packaging.Ionic.Zlib;
+using Com.AugustCellars.COSE;
+using PeterO.Cbor;
+using suntvaccinat.Models.GreenPassModels;
+using Newtonsoft.Json;
 
 namespace suntvaccinat.Services
 {
@@ -35,15 +41,38 @@ namespace suntvaccinat.Services
             return decoded;
         }
 
-        public static bool ValidateGreenPassForName(SignedDgc decodedValue, User user)
+
+        public async static Task<GreenPassModel> DecodeGreenPassPersonal(string certificate)
+        {
+            var qrmessage = certificate.Substring(4);//remove first 4 chars
+            Base45Utility.Base45 base45 = new Base45Utility.Base45();
+
+            byte[] decodedBase45 = base45.Decode(qrmessage);//using base45 lib
+            var cose = ZlibStream.UncompressBuffer(decodedBase45);//using zlib or similar
+
+            var decrypted = Message.DecodeFromBytes(cose).GetContent(); //using COSE
+
+            CBORObject cbor = CBORObject.DecodeFromBytes(decrypted);    //using Peter.O.. CBOR
+
+            var keys = cbor.Keys;
+
+            Console.WriteLine(keys);
+            var jsonDecoded = cbor.ToJSONString();
+
+            GreenPassModel myDeserializedClass = JsonConvert.DeserializeObject<GreenPassModel>(jsonDecoded);
+
+            return myDeserializedClass;
+        }
+
+        public static bool ValidateGreenPassForName(GreenPassModel decodedValue, User user)
         {
             if (decodedValue != null)
             {
-                DateTime oDate = DateTime.Parse(decodedValue.Dgc.DateOfBirth);
+                DateTime oDate = DateTime.Parse(decodedValue.Body.Content.DateOfBirth);
                 int years = DateTime.Now.Year - oDate.Year;
 
-                if (decodedValue.Dgc.Name.FamilyName == user.Name.ToUpper().Trim() &&
-                    decodedValue.Dgc.Name.GivenName == user.SecondName.ToUpper().Trim() &&
+                if (decodedValue.Body.Content.Name.Surname == user.Name.ToUpper().Trim() &&
+                    decodedValue.Body.Content.Name.Forename == user.SecondName.ToUpper().Trim() &&
                     years == Convert.ToInt32(user.Age))
                 {
                     return true;
@@ -56,27 +85,28 @@ namespace suntvaccinat.Services
         public async static Task<ValidationModel> GetValueToSaveOnServer(string certificate, string phoneId, User user)
         {
             ValidationModel valModel = new ValidationModel();
-            var decodedValue = await DecodeGreenPass(certificate);
+
+            var decodedValue = await DecodeGreenPassPersonal(certificate);
 
             //if (!ValidateGreenPassForName(decodedValue, user))
             //    return null;
 
             DateTimeOffset longest = DateTimeOffset.MinValue;
 
-            TestEntry maxTimeOffestTests = null;
-            RecoveryEntry maxTimeOffestRecoveries = null;
-            VaccinationEntry maxTimeOffestVaccinations = null;
+            Models.GreenPassModels.TestEntry maxTimeOffestTests = null;
+            Models.GreenPassModels.RecoveryEntry maxTimeOffestRecoveries = null;
+            Models.GreenPassModels.VaccinationEntry maxTimeOffestVaccinations = null;
             string certificateId = string.Empty;
 
-            if (decodedValue.Dgc.Recoveries != null && decodedValue.Dgc.Recoveries.Any())
+            if (decodedValue.Body.Content.Recoveries != null && decodedValue.Body.Content.Recoveries.Any())
             {
-                maxTimeOffestRecoveries = decodedValue.Dgc.Recoveries.Last();
-                longest = maxTimeOffestRecoveries.ValidUntil;
+                maxTimeOffestRecoveries = decodedValue.Body.Content.Recoveries.Last();
+                longest = maxTimeOffestRecoveries.ExpirationDate;
                 certificateId = maxTimeOffestRecoveries.CertificateIdentifier;
             }
-            else if (decodedValue.Dgc.Tests != null && decodedValue.Dgc.Tests.Any())
+            else if (decodedValue.Body.Content.Tests != null && decodedValue.Body.Content.Tests.Any())
             {
-                maxTimeOffestTests = decodedValue.Dgc.Tests.Last();
+                maxTimeOffestTests = decodedValue.Body.Content.Tests.Last();
                 var timeOffsetLocal = maxTimeOffestTests.SampleCollectionDate.AddDays(30);
                 if (timeOffsetLocal > longest)
                 {
@@ -84,10 +114,10 @@ namespace suntvaccinat.Services
                     certificateId = maxTimeOffestTests.CertificateIdentifier;
                 }
             }
-            else if (decodedValue.Dgc.Vaccinations != null && decodedValue.Dgc.Vaccinations.Any())
+            else if (decodedValue.Body.Content.Vaccines != null && decodedValue.Body.Content.Vaccines.Any())
             {
-                maxTimeOffestVaccinations = decodedValue.Dgc.Vaccinations.Last();
-                var timeOffsetLocal = maxTimeOffestVaccinations.Date.AddYears(1);
+                maxTimeOffestVaccinations = decodedValue.Body.Content.Vaccines.Last();
+                var timeOffsetLocal = maxTimeOffestVaccinations.DateOfVaccination.AddYears(1);
                 if (timeOffsetLocal > longest)
                 {
                     longest = timeOffsetLocal;
@@ -101,26 +131,26 @@ namespace suntvaccinat.Services
             return valModel;
         }
 
-        public static ValidationModel GetValueToCheckWithServer(SignedDgc decodedValue, string phoneId)
+        public static ValidationModel GetValueToCheckWithServer(GreenPassModel decodedValue, string phoneId)
         {
             ValidationModel valModel = new ValidationModel();
 
             DateTimeOffset longest = DateTimeOffset.MinValue;
 
-            TestEntry maxTimeOffestTests = null;
-            RecoveryEntry maxTimeOffestRecoveries = null;
-            VaccinationEntry maxTimeOffestVaccinations = null;
+            Models.GreenPassModels.TestEntry maxTimeOffestTests = null;
+            Models.GreenPassModels.RecoveryEntry maxTimeOffestRecoveries = null;
+            Models.GreenPassModels.VaccinationEntry maxTimeOffestVaccinations = null;
             string certificateId = string.Empty;
 
-            if (decodedValue.Dgc.Recoveries != null && decodedValue.Dgc.Recoveries.Any())
+            if (decodedValue.Body.Content.Recoveries != null && decodedValue.Body.Content.Recoveries.Any())
             {
-                maxTimeOffestRecoveries = decodedValue.Dgc.Recoveries.Last();
-                longest = maxTimeOffestRecoveries.ValidUntil;
+                maxTimeOffestRecoveries = decodedValue.Body.Content.Recoveries.Last();
+                longest = maxTimeOffestRecoveries.ExpirationDate;
                 certificateId = maxTimeOffestRecoveries.CertificateIdentifier;
             }
-            else if (decodedValue.Dgc.Tests != null && decodedValue.Dgc.Tests.Any())
+            else if (decodedValue.Body.Content.Tests != null && decodedValue.Body.Content.Tests.Any())
             {
-                maxTimeOffestTests = decodedValue.Dgc.Tests.Last();
+                maxTimeOffestTests = decodedValue.Body.Content.Tests.Last();
                 var timeOffsetLocal = maxTimeOffestTests.SampleCollectionDate.AddDays(30);
                 if (timeOffsetLocal > longest)
                 {
@@ -128,10 +158,10 @@ namespace suntvaccinat.Services
                     certificateId = maxTimeOffestTests.CertificateIdentifier;
                 }
             }
-            else if (decodedValue.Dgc.Vaccinations != null && decodedValue.Dgc.Vaccinations.Any())
+            else if (decodedValue.Body.Content.Vaccines != null && decodedValue.Body.Content.Vaccines.Any())
             {
-                maxTimeOffestVaccinations = decodedValue.Dgc.Vaccinations.Last();
-                var timeOffsetLocal = maxTimeOffestVaccinations.Date.AddYears(1);
+                maxTimeOffestVaccinations = decodedValue.Body.Content.Vaccines.Last();
+                var timeOffsetLocal = maxTimeOffestVaccinations.DateOfVaccination.AddYears(1);
                 if (timeOffsetLocal > longest)
                 {
                     longest = timeOffsetLocal;
