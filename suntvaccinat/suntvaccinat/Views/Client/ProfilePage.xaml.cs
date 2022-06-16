@@ -18,8 +18,6 @@ namespace suntvaccinat.Views.Client
             InitializeComponent();
             BindingContext = new ViewModels.Client.ProfilePageViewModel();
 
-            //string deviceIdentifier = DependencyService.Get<IDevice>().GetIdentifier();
-            //TestIMEI.Text = deviceIdentifier;
         }
 
         private async void GreenPassButton_Clicked(object sender, EventArgs e)
@@ -33,6 +31,11 @@ namespace suntvaccinat.Views.Client
         private void Button_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SettingsPage());
         }
     }
 }
