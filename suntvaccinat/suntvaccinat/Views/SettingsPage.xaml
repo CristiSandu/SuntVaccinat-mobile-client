@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="suntvaccinat.Views.SettingsPage"
+             xmlns:vm="clr-namespace:suntvaccinat.ViewModels"
+             xmlns:cells="clr-namespace:suntvaccinat.Cells"
+             NavigationPage.HasNavigationBar="False"
+             Title="Settings">
+
+    <ContentPage.BindingContext>
+        <vm:SettingsPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid Padding="0,4,0,4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height=".6*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BackBtn"
+                    Margin="10"
+                    VerticalOptions="Start"
+                    Style="{StaticResource BackButtonOnBackgroundStyle}"
+                    Clicked="BackBtn_Clicked" />
+
+            <Label Text="Theme"
+                   Margin="20,10,0,0"
+                   HorizontalOptions="Start"
+                   Style="{StaticResource TitleStyle}"
+                   VerticalOptions="Start"
+                   Grid.Row="1" />
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         VerticalOptions="Start">
+                <Button x:Name="LightBtn"
+                        Style="{StaticResource ButtonCheckedStyle}"
+                        Clicked="ChangeTheme_Clicked"
+                        Text="Light" />
+                <Button x:Name="DarkBtn"
+                        Style="{StaticResource ButtonCheckedStyle}"
+                        Clicked="ChangeTheme_Clicked"
+                        Text="Dark" />
+            </StackLayout>
+
+            <Label Text="Language"
+                   Margin="20,10,0,0"
+                   HorizontalOptions="Start"
+                   Style="{StaticResource TitleStyle}"
+                   VerticalOptions="Start"
+                   Grid.Row="2" />
+
+            <StackLayout Grid.Row="2"
+                         Grid.Column="1"
+                         Orientation="Horizontal"
+                         VerticalOptions="Start">
+                <Button x:Name="RoBtn"
+                        Style="{StaticResource ButtonCheckedStyle}"
+                        Clicked="ChangeLanguage_Clicked"
+                        Text="Ro" />
+                <Button x:Name="EnBtn"
+                        Text="En"
+                        Clicked="ChangeLanguage_Clicked"
+                        Style="{StaticResource ButtonCheckedStyle}" />
+            </StackLayout>
+
+            <Image Grid.Row="4"
+                   Grid.ColumnSpan="2"
+                   HeightRequest="160"
+                   WidthRequest="228"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Source="settings.png" />
+
+            <cells:LogoCard Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

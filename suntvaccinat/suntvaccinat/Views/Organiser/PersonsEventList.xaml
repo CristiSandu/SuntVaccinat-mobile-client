@@ -29,6 +29,11 @@
                             IsVisible="{Binding Event.IsNoEnded}"
                             Style="{StaticResource BackButtonStyle}"
                             Clicked="ButtonAddPerson_Clicked" />
+                    <Button x:Name="ButtonShareStats"
+                            Text="share-from-square"
+                            IsVisible="{Binding IsChartVisible}"
+                            Style="{StaticResource BackButtonStyle}"
+                            Clicked="ButtonShareStats_Clicked" />
                 </StackLayout>
             </Frame>
             <Grid>
@@ -136,7 +141,8 @@
                     </CollectionView.EmptyView>
 
                     <CollectionView.Header>
-                        <ContentView HeightRequest="{Binding HeightFooter}"
+                        <ContentView x:Name="StatsView"
+                                     HeightRequest="{Binding HeightFooter}"
                                      IsVisible="{Binding IsChartVisible}">
                             <StackLayout VerticalOptions="Center">
                                 <Frame Style="{StaticResource FormFrame}"
@@ -157,6 +163,13 @@
                                                            VerticalOptions="Center"
                                                            Chart="{Binding Chart}" />
                                 </Frame>
+                                <Label x:Name="EventNameStat"
+                                       IsVisible="true"
+                                       Style="{StaticResource TitleStyle}"
+                                       Text="{Binding Event.Name}"
+                                       HeightRequest="200"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
                             </StackLayout>
                         </ContentView>
                     </CollectionView.Header>

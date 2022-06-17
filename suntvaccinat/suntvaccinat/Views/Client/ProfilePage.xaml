@@ -18,6 +18,8 @@
                      Order="Secondary" />
         <ToolbarItem Text="{x:Static resources:AppResources.RemoveINSPLabel}"
                      Order="Secondary" />
+        <ToolbarItem Text="Settings"
+                     Order="Secondary" Clicked="ToolbarItem_Clicked"/>
 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

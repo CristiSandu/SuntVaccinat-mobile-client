@@ -90,7 +90,7 @@ namespace suntvaccinat.ViewModels.Organiser
                         if (!string.IsNullOrEmpty(certificate) && certificate.StartsWith("HC1:"))
                         {
                             _used = true;
-                            var decodedValue = await ValidationCertificate.DecodeGreenPass(certificate);
+                            var decodedValue = await ValidationCertificate.DecodeGreenPassPersonal(certificate);
                             var valModelRespons = ValidationCertificate.GetValueToCheckWithServer(decodedValue, phoneId);
                             var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistDocumentsAsync(valModelRespons.DocumentId, false);
                             if (!checkCertificate)
@@ -99,13 +99,13 @@ namespace suntvaccinat.ViewModels.Organiser
                                 return;
                             }
 
-                            DateTime oDate = DateTime.Parse(decodedValue.Dgc.DateOfBirth);
+                            DateTime oDate = DateTime.Parse(decodedValue.Body.Content.DateOfBirth);
                             int age = DateTime.Now.Year - oDate.Year;
 
                             await _statsService.AddNewUserToStat(age, EventId);
                             await _database.AddUserToEvent(new ParticipantModel
                             {
-                                Name = $"{decodedValue.Dgc.Name.FamilyName}-{decodedValue.Dgc.Name.GivenName}:{decodedValue.Dgc.DateOfBirth}",
+                                Name = $"{decodedValue.Body.Content.Name.Surname}-{decodedValue.Body.Content.Name.Forename}:{decodedValue.Body.Content.DateOfBirth}",
                                 id_event = EventId
                             });
 

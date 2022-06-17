@@ -100,6 +100,21 @@
                FontAttributes="Bold"
                HorizontalOptions="Center"
                VerticalOptions="EndAndExpand" />
+
+        <Button Text="gears"
+                FontSize="35"
+                Padding="0"
+                Margin="0,0,-20,-20"
+                WidthRequest="75"
+                HeightRequest="120"
+                BackgroundColor="Transparent"
+                FontFamily="FAS"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="End"
+                x:Name="SettingsBtn"
+                Clicked="SettingsBtn_Clicked"
+                Grid.Column="2"
+                Grid.Row="8" />
     </Grid>
 
 </ContentPage>

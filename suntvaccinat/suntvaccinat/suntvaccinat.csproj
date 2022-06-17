@@ -1,95 +1,106 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<LangVersion>9</LangVersion>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Resources\Fonts\fa_brands_400.ttf" />
-    <None Remove="Resources\Fonts\fa_regular_400.ttf" />
-    <None Remove="Resources\Fonts\fa_solid_900.ttf" />
-    <None Remove="Resources\Images\logo_dark.png" />
-    <None Remove="Resources\Images\logo_light.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Fonts\fa_brands_400.ttf" />
+		<None Remove="Resources\Fonts\fa_regular_400.ttf" />
+		<None Remove="Resources\Fonts\fa_solid_900.ttf" />
+		<None Remove="Resources\Images\logo_dark.png" />
+		<None Remove="Resources\Images\logo_light.png" />
+		<None Remove="Resources\Images\settings.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Fonts\fa_brands_400.ttf" />
-    <EmbeddedResource Include="Resources\Fonts\fa_regular_400.ttf" />
-    <EmbeddedResource Include="Resources\Fonts\fa_solid_900.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Fonts\fa_brands_400.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\fa_regular_400.ttf" />
+		<EmbeddedResource Include="Resources\Fonts\fa_solid_900.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DgcReader" Version="2.5.3" />
-    <PackageReference Include="GemBox.Pdf" Version="17.0.1104" />
-    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
-    <PackageReference Include="Resizetizer.NT" Version="0.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
-    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Base45Utility" Version="1.4.0" />
+		<PackageReference Include="Com.AugustCellars.COSE" Version="1.7.0" />
+		<PackageReference Include="DgcReader" Version="2.5.3" />
+		<PackageReference Include="EPPlus" Version="6.0.5" />
+		<PackageReference Include="GemBox.Pdf" Version="17.0.1104" />
+		<PackageReference Include="ImageFromXamarinUI" Version="1.0.0" />
+		<PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+		<PackageReference Include="PeterO.Cbor" Version="4.5.2" />
+		<PackageReference Include="Resizetizer.NT" Version="0.3.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.2" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+		<PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <SharedImage Include="Resources\Images\logo_dark.png" BaseSize="211,211" />
-    <SharedImage Include="Resources\Images\logo_light.png" BaseSize="211,211" />
-  </ItemGroup>
+	<ItemGroup>
+		<SharedImage Include="Resources\Images\logo_dark.png" BaseSize="211,211" />
+		<SharedImage Include="Resources\Images\logo_light.png" BaseSize="211,211" />
+		<SharedImage Include="Resources\Images\settings.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Resources\Localization\AppResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Organiser\PersonsEventList.xaml.cs">
-      <DependentUpon>PersonsEventList.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resources\Localization\AppResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Organiser\PersonsEventList.xaml.cs">
+			<DependentUpon>PersonsEventList.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Cells\LogoCard.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Localization\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\CertificateTypePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\GreenPass\EnterGreenPassPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\INSP\EnterINSPPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\INSP\GetINSPCertificatePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\ProfilePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Client\ShowCertificatePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Organiser\EventsListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Organiser\PersonsEventList.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ScanPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Cells\LogoCard.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Localization\AppResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\CertificateTypePage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\GreenPass\EnterGreenPassPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\INSP\EnterINSPPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\INSP\GetINSPCertificatePage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\ProfilePage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Client\ShowCertificatePage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Organiser\EventsListPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Organiser\PersonsEventList.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\ScanPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SettingsPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 </Project>

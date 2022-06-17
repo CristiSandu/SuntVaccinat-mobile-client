@@ -1,4 +1,5 @@
-﻿using suntvaccinat.Views.Client;
+﻿using suntvaccinat.Views;
+using suntvaccinat.Views.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,11 @@ namespace suntvaccinat
             }
             else
                 await Navigation.PushAsync(new AddClientInfoPage());
+        }
+
+        private async void SettingsBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SettingsPage());
         }
     }
 }
