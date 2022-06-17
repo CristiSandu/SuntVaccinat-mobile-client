@@ -6,6 +6,7 @@
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Client.INSP.EnterINSPPage"
              x:DataType="viewmodel:EnterINSPPageViewModel"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid Padding="0,4,0,4">

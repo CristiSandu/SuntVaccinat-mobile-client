@@ -52,11 +52,13 @@ namespace suntvaccinat.Services
 
             var decrypted = Message.DecodeFromBytes(cose).GetContent(); //using COSE
 
+
             CBORObject cbor = CBORObject.DecodeFromBytes(decrypted);    //using Peter.O.. CBOR
 
-            var keys = cbor.Keys;
 
-            Console.WriteLine(keys);
+            var Keyid  = cbor["kid"];
+            
+            Console.WriteLine(Keyid);
             var jsonDecoded = cbor.ToJSONString();
 
             GreenPassModel myDeserializedClass = JsonConvert.DeserializeObject<GreenPassModel>(jsonDecoded);

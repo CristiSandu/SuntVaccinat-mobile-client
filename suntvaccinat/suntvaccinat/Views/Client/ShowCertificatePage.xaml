@@ -7,6 +7,8 @@
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
              x:DataType="viewmodel:ShowGreenPassViewModel"
              x:Class="suntvaccinat.Views.Client.ShowCertificatePage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
+             
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid>

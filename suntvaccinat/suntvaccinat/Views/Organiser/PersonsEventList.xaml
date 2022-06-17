@@ -5,6 +5,7 @@
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Organiser.PersonsEventList"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
@@ -84,12 +85,15 @@
                                     <Label Text="{x:Static resources:AppResources.PressOnMsg}"
                                            Margin="10,25,10,10"
                                            FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                            FontSize="18"
                                            HorizontalOptions="Fill"
                                            HorizontalTextAlignment="Center" />
 
                                     <Label Text="{x:Static fa:FontAwesomeIcons.Plus}"
+
                                            TextColor="{StaticResource DefaultTextColor}"
+                                           
                                            HeightRequest="20"
                                            WidthRequest="20"
                                            FontFamily="FAS"
@@ -102,6 +106,7 @@
                                 </StackLayout>
                                 <Label Text="{x:Static resources:AppResources.ForAddingToEventMsg}"
                                        FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
                                        HorizontalTextAlignment="Center" />
@@ -113,6 +118,8 @@
 
                                     <Label Text="{x:Static resources:AppResources.OrOnMsg}"
                                            Margin="10,25,10,10"
+                                           TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
+                                           
                                            FontAttributes="Bold"
                                            FontSize="18"
                                            HorizontalOptions="Fill"
@@ -132,6 +139,7 @@
                                 </StackLayout>
                                 <Label Text="{x:Static resources:AppResources.ToCloseEventMsg}"
                                        FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
                                        HorizontalTextAlignment="Center" />
@@ -165,6 +173,7 @@
                                 </Frame>
                                 <Label x:Name="EventNameStat"
                                        IsVisible="true"
+                                       TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                        Style="{StaticResource TitleStyle}"
                                        Text="{Binding Event.Name}"
                                        HeightRequest="200"

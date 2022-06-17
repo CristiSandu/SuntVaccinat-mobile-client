@@ -4,6 +4,8 @@
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Client.CertificateTypePage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
+             
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>

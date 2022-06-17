@@ -4,7 +4,7 @@
              xmlns:fa="clr-namespace:FontAwesome"
              xmlns:converter="clr-namespace:suntvaccinat.Convertors"
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
-             
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
              x:Class="suntvaccinat.Views.Organiser.EventsListPage"
              NavigationPage.HasNavigationBar="False">
 
@@ -106,6 +106,7 @@
                                          VerticalOptions="Center">
                                 <Label Text="{x:Static resources:AppResources.PressOnMsg}"
                                        Margin="10,25,10,10"
+                                       TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                        FontAttributes="Bold"
                                        FontSize="18"
                                        HorizontalOptions="Fill"
@@ -123,6 +124,7 @@
                                        HorizontalTextAlignment="Center" />
                             </StackLayout>
                             <Label Text="{x:Static resources:AppResources.ToAddNewEventMsg}"
+                                   TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                    Margin="10,15,10,10"
                                    FontAttributes="Bold"
                                    FontSize="18"

@@ -6,6 +6,8 @@
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:Class="suntvaccinat.Views.Client.GreenPass.EnterGreenPassPage"
              x:DataType="viewmodel:EnterCodeViewModel"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
+             
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid Padding="0,4,0,4">
@@ -93,6 +95,8 @@
                        Grid.Row="2"
                        Style="{StaticResource FormFrame}">
                     <Editor Placeholder="{x:Static resources:AppResources.PlaceholderGP}"
+                            PlaceholderColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DefaultTextColor}}"
+                            TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                             HeightRequest="100"
                             Text="{Binding Certificate}"
                             AutoSize="TextChanges" />

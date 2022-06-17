@@ -9,6 +9,8 @@
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              x:DataType="viewmodel:ProfilePageViewModel"
              x:Class="suntvaccinat.Views.Client.ProfilePage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
+             
              NavigationPage.HasNavigationBar="True">
 
     <ContentPage.ToolbarItems>

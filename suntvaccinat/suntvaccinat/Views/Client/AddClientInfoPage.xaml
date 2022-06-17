@@ -6,7 +6,21 @@
              xmlns:resources="clr-namespace:suntvaccinat.Resources.Localization"
              xmlns:viewmodel="clr-namespace:suntvaccinat.ViewModels"
              x:DataType="viewmodel:AddClientInfoPageViewModel"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
+             
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryStyle"
+                   TargetType="Entry">
+                <Setter Property="PlaceholderColor"
+                        Value="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DefaultTextColor}}" />
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <ScrollView>
@@ -33,17 +47,21 @@
                 <StackLayout>
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="nameEntry"
+                               Style="{StaticResource EntryStyle}"
                                Placeholder="{x:Static resources:AppResources.NameLabel}"
                                Text="{Binding User.Name}" />
                     </Frame>
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="secondNameEntry"
+                               Style="{StaticResource EntryStyle}"
                                Placeholder="{x:Static resources:AppResources.SecondNameLabel}"
                                Text="{Binding User.SecondName}" />
                     </Frame>
                     <Frame Style="{StaticResource FormFrame}">
                         <StackLayout>
                             <Picker x:Name="sexPicker"
+                                    TitleColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DefaultTextColor}}"
+                                    TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                                     Title="{x:Static resources:AppResources.GenderLabel}"
                                     SelectedItem="{Binding User.Sex}">
                                 <Picker.ItemsSource>
@@ -58,6 +76,7 @@
                     <Frame Style="{StaticResource FormFrame}">
                         <Entry x:Name="ageEntry"
                                Placeholder="{x:Static resources:AppResources.AgeLabel}"
+                               Style="{StaticResource EntryStyle}"
                                Text="{Binding User.Age}"
                                Keyboard="Numeric">
                             <Entry.Behaviors>
@@ -71,6 +90,7 @@
                         <Entry x:Name="phoneNumber"
                                Text="{Binding User.PhoneNumber}"
                                Placeholder="{x:Static resources:AppResources.PhoneNumberLabel}"
+                               Style="{StaticResource EntryStyle}"
                                Keyboard="Numeric"
                                MaxLength="10">
                             <Entry.Behaviors>

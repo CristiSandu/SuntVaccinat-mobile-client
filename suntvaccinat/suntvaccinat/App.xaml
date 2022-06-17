@@ -13,7 +13,7 @@
             <Color x:Key="TextColorDark">CadetBlue</Color>
             <Color x:Key="TextColorWhite">CadetBlue</Color>
 
-            <Color x:Key="DarkBackgroudColor">#2e2e2e</Color>
+            <Color x:Key="DarkBackgroudColor">#303030</Color>
             
             <Color x:Key="OrangePeel">#FF9F1C</Color>
             <Color x:Key="MellowApricot">#FFBF69</Color>

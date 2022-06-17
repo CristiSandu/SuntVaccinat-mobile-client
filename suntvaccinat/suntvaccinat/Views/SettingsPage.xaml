@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:suntvaccinat.ViewModels"
              xmlns:cells="clr-namespace:suntvaccinat.Cells"
              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DarkBackgroudColor}, Light={StaticResource BackgroundWhite}}"
              Title="Settings">
 
     <ContentPage.BindingContext>
@@ -36,6 +37,7 @@
             <Label Text="Theme"
                    Margin="20,10,0,0"
                    HorizontalOptions="Start"
+                   TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                    Style="{StaticResource TitleStyle}"
                    VerticalOptions="Start"
                    Grid.Row="1" />
@@ -56,6 +58,7 @@
             <Label Text="Language"
                    Margin="20,10,0,0"
                    HorizontalOptions="Start"
+                   TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                    Style="{StaticResource TitleStyle}"
                    VerticalOptions="Start"
                    Grid.Row="2" />

@@ -9,6 +9,7 @@
                    Source="{AppThemeBinding Light=logo_light.png, Dark=logo_dark.png}" 
                    HeightRequest="73" WidthRequest="73" />
             <Label Text="{x:Static resources:AppResources.SloganLabel}"
+                   TextColor="{AppThemeBinding Dark={StaticResource BackgroundWhite}, Light={StaticResource DarkBackgroudColor}}"
                    FontAttributes="Italic"
                    HorizontalOptions="Center"
                    VerticalOptions="EndAndExpand"/>
