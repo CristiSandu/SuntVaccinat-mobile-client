@@ -20,7 +20,6 @@ namespace suntvaccinat.ViewModels.Organiser
         public EventsListPageViewModel()
         {
             _eventsDataBase = DependencyService.Get<IEventsDataBase>();
-            PopulateEventsList();
             DeleteEvent = new Command<Models.EventModel>(async model =>
             {
                 MyEvents.Remove(model);

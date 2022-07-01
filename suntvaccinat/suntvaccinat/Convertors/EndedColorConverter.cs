@@ -14,12 +14,10 @@ namespace suntvaccinat.Convertors
             {
                 bool val = (bool)value;
 
-                if (val == false)
-                {
-                    Color col = Color.Tan;
-                    return Color.FromHex("#8e9c8b");
-                }
+                return !val ? Color.FromHex("#8e9c8b") : Color.Tan;
+
             }
+
             return Color.Tan;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

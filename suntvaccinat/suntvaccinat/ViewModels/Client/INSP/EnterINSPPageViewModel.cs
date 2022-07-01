@@ -97,7 +97,7 @@ namespace suntvaccinat.ViewModels.Client.INSP
                    Preferences.Set(Helpers.Constants.INSPPref, true);
 
                    await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "INSP Certificate saved", "Ok");
-                   await Application.Current.MainPage.Navigation.PopAsync();
+                   await Application.Current.MainPage.Navigation.PopToRootAsync();
                }
            });
         }

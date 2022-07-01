@@ -15,6 +15,10 @@
 
             <zxing:ZXingDefaultOverlay x:Name="scannerOverlay"
                                        BottomText="Place the red line over the barcode you'd like to scan." />
+            <ActivityIndicator IsVisible="{Binding IsLoading}"
+                               IsRunning="{Binding IsLoading}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

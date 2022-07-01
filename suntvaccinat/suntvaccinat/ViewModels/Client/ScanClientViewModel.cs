@@ -32,11 +32,10 @@ namespace suntvaccinat.ViewModels.Client
             get { return _isAnalyzing; }
             set
             {
-                if (!Equals(_isAnalyzing, value))
+                if (_isAnalyzing != value)
                 {
                     _isAnalyzing = value;
                     OnPropertyChanged(nameof(IsAnalyzing));
-
                 }
             }
         }
@@ -47,13 +46,16 @@ namespace suntvaccinat.ViewModels.Client
             get { return _isScanning; }
             set
             {
-                if (!Equals(_isScanning, value))
+                if (_isScanning != value)
                 {
                     _isScanning = value;
                     OnPropertyChanged(nameof(IsScanning));
+                    OnPropertyChanged(nameof(IsLoading));
                 }
             }
         }
+
+        public bool IsLoading { get => !_isScanning; }
         public Result Result { get; set; }
 
         IDevice _getDeviceInfo;
@@ -65,53 +67,63 @@ namespace suntvaccinat.ViewModels.Client
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
                     IsAnalyzing = false;
                     IsScanning = false;
 
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Certificate = Result.Text;
+                    if (_used)
+                        return;
+
+                    if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
                     {
-                        Certificate = Result.Text;
-                        if (_used)
-                            return;
+                        _used = true;
+                        var phoneId = _getDeviceInfo.GetIdentifier();
+                        User user = await _database.GetUser();
 
-                        if (!string.IsNullOrEmpty(Certificate) && Certificate.StartsWith("HC1:"))
+                        var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
+                        if (valModelRespons == null)
                         {
-                            _used = true;
-                            var phoneId = _getDeviceInfo.GetIdentifier();
-                            User user = await _database.GetUser();
-
-                            var valModelRespons = await Services.ValidationCertificate.GetValueToSaveOnServer(Certificate, phoneId, user);
-                            if (valModelRespons == null)
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
-                                return;
-                            }
+                            });
+                            return;
+                        }
 
-                            var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistCertificateAsync(new Services.CheckIfCertificateExistRequest { CertificateId = valModelRespons.CertificateId, IsINSP = false });
+                        var checkCertificate = await _validationServiceApi.ApiValidationCheckIfExistCertificateAsync(new Services.CheckIfCertificateExistRequest { CertificateId = valModelRespons.CertificateId, IsINSP = false });
 
-                            bool responsPost;
+                        bool responsPost;
 
-                            if (checkCertificate)
+                        if (checkCertificate)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await App.Current.MainPage.DisplayAlert("Duplicate Found", "This certificate is use with another phone", "OK");
                                 await Application.Current.MainPage.Navigation.PopAsync();
-                                return;
-                            }
-
-                            responsPost = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
-
-                            await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
-                            Preferences.Set(Helpers.Constants.GreenPass, true);
-
-                            await Application.Current.MainPage.Navigation.PopAsync();
+                            });
+                            return;
                         }
-                        else
+
+                        responsPost = await _validationServiceApi.ApiValidationPostAsync(valModelRespons);
+
+                        await SecureStorage.SetAsync(Helpers.Constants.GreenPass, $"{Certificate}////{phoneId}");
+                        Preferences.Set(Helpers.Constants.GreenPass, true);
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Application.Current.MainPage.DisplayAlert(Helpers.Constants.SuccessMsg, "Green Pass Add Succesfully!", "Ok");
+                            await Application.Current.MainPage.Navigation.PopToRootAsync();
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
                             await Application.Current.MainPage.DisplayAlert(Helpers.Constants.ErrorMsg, "Certificate is not valid", "Ok");
-                        }
-                    });
+                        });
+                    }
 
                     IsAnalyzing = true;
                     IsScanning = true;

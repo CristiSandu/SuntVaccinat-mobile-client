@@ -56,9 +56,6 @@ namespace suntvaccinat.Services
             CBORObject cbor = CBORObject.DecodeFromBytes(decrypted);    //using Peter.O.. CBOR
 
 
-            var Keyid  = cbor["kid"];
-            
-            Console.WriteLine(Keyid);
             var jsonDecoded = cbor.ToJSONString();
 
             GreenPassModel myDeserializedClass = JsonConvert.DeserializeObject<GreenPassModel>(jsonDecoded);
@@ -89,6 +86,7 @@ namespace suntvaccinat.Services
             ValidationModel valModel = new ValidationModel();
 
             var decodedValue = await DecodeGreenPassPersonal(certificate);
+
 
             //if (!ValidateGreenPassForName(decodedValue, user))
             //    return null;

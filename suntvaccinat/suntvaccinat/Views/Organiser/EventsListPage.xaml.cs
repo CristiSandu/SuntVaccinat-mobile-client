@@ -36,6 +36,11 @@ namespace suntvaccinat.Views.Organiser
             ((CollectionView)sender).SelectedItem = null;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            (BindingContext as EventsListPageViewModel).PopulateEventsList();
+        }
         private async void backBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
