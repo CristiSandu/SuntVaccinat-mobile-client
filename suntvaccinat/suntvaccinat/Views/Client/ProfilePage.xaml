@@ -15,11 +15,17 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{x:Static resources:AppResources.RemoveUserLabel}"
-                     Order="Secondary" />
+                     Order="Secondary" 
+                     Clicked="ToolbarItem_Clicked_3"
+                     />
         <ToolbarItem Text="{x:Static resources:AppResources.RemoveGreenPassLabel}"
-                     Order="Secondary" />
+                     Order="Secondary" 
+                     Clicked="ToolbarItem_Clicked_2"
+                     />
         <ToolbarItem Text="{x:Static resources:AppResources.RemoveINSPLabel}"
-                     Order="Secondary" />
+                     Order="Secondary" 
+                     Clicked="ToolbarItem_Clicked_1"
+                     />
         <ToolbarItem Text="Settings"
                      Order="Secondary" Clicked="ToolbarItem_Clicked"/>
 
